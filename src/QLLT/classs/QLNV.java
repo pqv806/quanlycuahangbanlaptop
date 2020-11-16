@@ -7,7 +7,7 @@ package QLLT.classs;
 
 /**
  *
- * @author vinh dz vl
+ * @author vinh
  */
 public class QLNV {
     public String manv,tennv,ngaysinh,diachi,trangthai;
