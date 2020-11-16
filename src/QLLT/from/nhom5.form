@@ -48,7 +48,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; C&#x1eed;a H&#xe0;ng LapTop nh&#xf3;m 5"/>
+        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; C&#x1eed;a H&#xe0;ng B&#xe1;n LapTop nh&#xf3;m 2"/>
       </Properties>
     </Component>
   </SubComponents>
