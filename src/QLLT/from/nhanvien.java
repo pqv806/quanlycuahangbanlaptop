@@ -13,8 +13,11 @@ import QLLT.from.fromcon.themNV;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  * @author vinh
  */
 public class nhanvien extends javax.swing.JPanel {
-   
+   DefaultTableModel model;
 Ketnoi.KetNoi cn = new KetNoi();
     QLNV n = new QLNV();
   
@@ -60,7 +63,7 @@ Ketnoi.KetNoi cn = new KetNoi();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         bltthem = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txttim = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
@@ -106,15 +109,25 @@ Ketnoi.KetNoi cn = new KetNoi();
             }
         });
 
-        jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder("tìm kiếm"));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txttim.setBorder(javax.swing.BorderFactory.createTitledBorder("tìm kiếm"));
+        txttim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txttimActionPerformed(evt);
+            }
+        });
+        txttim.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txttimKeyReleased(evt);
             }
         });
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_replay_30px.png"))); // NOI18N
         jButton7.setText("làm mới");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,7 +141,7 @@ Ketnoi.KetNoi cn = new KetNoi();
                 .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton7))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -150,7 +163,7 @@ Ketnoi.KetNoi cn = new KetNoi();
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(219, Short.MAX_VALUE))
@@ -186,9 +199,9 @@ Ketnoi.KetNoi cn = new KetNoi();
 
     }//GEN-LAST:event_bltthemActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txttimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttimActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txttimActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -210,6 +223,32 @@ Ketnoi.KetNoi cn = new KetNoi();
         jButton1.setEnabled(true);
     }//GEN-LAST:event_tblnhanvienMouseClicked
 
+    private void txttimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimKeyReleased
+        // TODO add your handling code here:
+       themDL();
+       if(txttim.equals(""))
+       {   
+       DAO_NV.dolentable(tblnhanvien);
+       }
+       else
+       {
+           try {
+           DAO_NV.TimKiemKhachHang(n, tblnhanvien);
+       } catch (SQLException ex) {
+           Logger.getLogger(nhanvien.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       }
+       
+       
+       
+    }//GEN-LAST:event_txttimKeyReleased
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        themDL();
+        DAO_NV.dolentable(tblnhanvien);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bltthem;
@@ -219,13 +258,13 @@ Ketnoi.KetNoi cn = new KetNoi();
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblnhanvien;
+    private javax.swing.JTextField txttim;
     // End of variables declaration//GEN-END:variables
 
       public void themDL()
-      {
-           n.setManv(ma);
+      {n.setTim(txttim.getText());
+        n.setManv(ma);
         n.setDiachi(diachi);
         n.setNgaysinh(ngayinh);
         n.setSdt(sdt);

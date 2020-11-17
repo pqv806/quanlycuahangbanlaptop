@@ -29,7 +29,7 @@ import javax.swing.table.DefaultTableModel;
  * @author vinh
  */
 public class sanpham1 extends javax.swing.JPanel {
- Connection cn;
+
     DefaultTableModel model;
     public static String ma, maloai, ten, dongia, soluong, hinh,mota;
     
@@ -52,6 +52,7 @@ public class sanpham1 extends javax.swing.JPanel {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        jDesktopPanesp = new javax.swing.JDesktopPane();
         txtdongia = new javax.swing.JTextField();
         bltthem = new javax.swing.JButton();
         txttensp = new javax.swing.JTextField();
@@ -67,27 +68,30 @@ public class sanpham1 extends javax.swing.JPanel {
         txtlsp = new javax.swing.JTextField();
         txtmasp = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        txttim1 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablelsp = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablephieunhap = new javax.swing.JTable();
         txttim2 = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jDesktopPane = new javax.swing.JDesktopPane();
+        jButton12 = new javax.swing.JButton();
+        txttim3 = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        table1 = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
 
         jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 jPanel1ComponentShown(evt);
             }
         });
+
+        jDesktopPanesp.setLayout(new java.awt.BorderLayout());
 
         txtdongia.setBorder(javax.swing.BorderFactory.createTitledBorder("đơn giá"));
 
@@ -211,6 +215,11 @@ public class sanpham1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(611, Short.MAX_VALUE)
+                    .addComponent(jDesktopPanesp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(252, 252, 252)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,122 +254,14 @@ public class sanpham1 extends javax.swing.JPanel {
                                 .addGap(32, 32, 32)
                                 .addComponent(jButton1)))))
                 .addGap(27, 27, 27))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(477, Short.MAX_VALUE)
+                    .addComponent(jDesktopPanesp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(17, 17, 17)))
         );
 
         jTabbedPane1.addTab("sản phẩm", jPanel1);
-
-        jPanel2.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                jPanel2ComponentShown(evt);
-            }
-        });
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Add.png"))); // NOI18N
-        jButton4.setText("thêm");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        txttim1.setBorder(javax.swing.BorderFactory.createTitledBorder("tìm kiếm"));
-        txttim1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttim1ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search.png"))); // NOI18N
-        jButton5.setText("tìm kiếm");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Delete.png"))); // NOI18N
-        jButton6.setText("xóa");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Edit.png"))); // NOI18N
-        jButton8.setText("sửa");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_replay_30px.png"))); // NOI18N
-        jButton9.setText("làm mới");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-
-        tablelsp.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "1", "2", "3"
-            }
-        ));
-        tablelsp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablelspMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(tablelsp);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txttim1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton9))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(64, 64, 64)
-                        .addComponent(jButton6)
-                        .addGap(77, 77, 77)
-                        .addComponent(jButton8)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8)
-                    .addComponent(jButton6)
-                    .addComponent(jButton4))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txttim1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(154, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("loại sản phẩm", jPanel2);
 
         jPanel3.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -440,6 +341,127 @@ public class sanpham1 extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("phiếu nhập", jPanel3);
 
+        jPanel2.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel2ComponentShown(evt);
+            }
+        });
+
+        jDesktopPane.setLayout(new java.awt.BorderLayout());
+
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Add.png"))); // NOI18N
+        jButton12.setText("thêm");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
+        txttim3.setBorder(javax.swing.BorderFactory.createTitledBorder("tìm kiếm"));
+        txttim3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttim3ActionPerformed(evt);
+            }
+        });
+
+        table1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "1", "2", "3"
+            }
+        ));
+        table1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table1MouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(table1);
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search.png"))); // NOI18N
+        jButton4.setText("tìm kiếm");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Delete.png"))); // NOI18N
+        jButton13.setText("xóa");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Edit.png"))); // NOI18N
+        jButton14.setText("sửa");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_replay_30px.png"))); // NOI18N
+        jButton15.setText("làm mới");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton12)
+                        .addGap(64, 64, 64)
+                        .addComponent(jButton13)
+                        .addGap(77, 77, 77)
+                        .addComponent(jButton14))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txttim3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton15)))
+                .addGap(72, 72, 72)
+                .addComponent(jDesktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
+                .addGap(241, 241, 241))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(jDesktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton14)
+                            .addComponent(jButton13)
+                            .addComponent(jButton12))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txttim3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(156, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("loại sản phẩm", jPanel2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -453,12 +475,12 @@ public class sanpham1 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bltthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bltthemActionPerformed
-        // TODO add your handling code here:
-//        themsp sp = new themsp();
-//
-//        jDesktopPane1.add(sp);
-//
-//        sp.setVisible(true);
+        
+        themsp sp = new themsp();
+
+        jDesktopPanesp.add(sp);
+
+        sp.setVisible(true);
     }//GEN-LAST:event_bltthemActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -476,33 +498,33 @@ public class sanpham1 extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
-        try {
-            String sql = "SELECT * FROM dbo.sanpham\n"
-            + "      WHERE masp LIKE ?";
-            PreparedStatement ptsm = cn.prepareStatement(sql);
-            ptsm.setString(1, txttim.getText());
-            ResultSet rs = ptsm.executeQuery();
-
-            model.setRowCount(0);
-            while (rs.next()) {
-
-                Vector sp = new Vector();
-                sp.add(rs.getString(1));
-                sp.add(rs.getString(2));
-                sp.add(rs.getString(3));
-                sp.add(rs.getString(4));
-                sp.add(rs.getString(5));
-                sp.add(rs.getString(6));
-
-                model.addRow(sp);
-
-            }
-
-            table.setModel(model);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Lỗi tìm kiếm");
-        }
+//        try {
+//            String sql = "SELECT * FROM dbo.sanpham\n"
+//            + "      WHERE masp LIKE ?";
+//         //   PreparedStatement ptsm = cn.prepareStatement(sql);
+//            ptsm.setString(1, txttim.getText());
+//            ResultSet rs = ptsm.executeQuery();
+//
+//            model.setRowCount(0);
+//            while (rs.next()) {
+//
+//                Vector sp = new Vector();
+//                sp.add(rs.getString(1));
+//                sp.add(rs.getString(2));
+//                sp.add(rs.getString(3));
+//                sp.add(rs.getString(4));
+//                sp.add(rs.getString(5));
+//                sp.add(rs.getString(6));
+//
+//                model.addRow(sp);
+//
+//            }
+//
+//            table.setModel(model);
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Lỗi tìm kiếm");
+//        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
@@ -517,7 +539,7 @@ public class sanpham1 extends javax.swing.JPanel {
         // TODO add your handling code here:
         model.setRowCount(0);
         txttim.setText("");
-        loaddatatable();
+      //  loaddatatable();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -528,17 +550,17 @@ public class sanpham1 extends javax.swing.JPanel {
 
             String sql = "DELETE dbo.sanpham WHERE masp LIKE ?";
 
-            PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setString(1, table.getValueAt(table.getSelectedRow(), 0).toString());
-
+        //    PreparedStatement pst = cn.prepareStatement(sql);
+          //  pst.setString(1, table.getValueAt(table.getSelectedRow(), 0).toString());
+//
             int hoi = JOptionPane.showConfirmDialog(this, "xóa sản phẩm");
             if (hoi == JOptionPane.YES_OPTION) {
 
-                pst.executeUpdate();
+              //  pst.executeUpdate();
 
                 JOptionPane.showMessageDialog(this, "xóa thành công");
                 model.setRowCount(0);
-                loaddatatable();
+          //      loaddatatable();
 
             } else {
                 JOptionPane.showMessageDialog(this, "chưa xóa");
@@ -549,100 +571,6 @@ public class sanpham1 extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-//        themloaisp tlsp=new themloaisp();
-//        jDesktopPane1.add(tlsp);
-//        tlsp.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void txttim1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttim1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttim1ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-
-        try {
-            String sql = "SELECT * FROM dbo.loaisanpham\n" +
-            "      WHERE malsp LIKE ?";
-            PreparedStatement ptsm = cn.prepareStatement(sql);
-            ptsm.setString(1, txttim.getText());
-            ResultSet rs = ptsm.executeQuery();
-
-            model.setRowCount(0);
-            while(rs.next()){
-
-                Vector sp = new Vector();
-                sp.add(rs.getString(1));
-                sp.add(rs.getString(2));
-                sp.add(rs.getString(3));
-
-                model.addRow(sp);
-
-            }
-
-            table.setModel(model);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Lỗi tìm kiếm");
-        }
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        try {
-
-//            cn = helper.hepper.ketnoi("qllaptop4");
-
-            String sql = "DELETE dbo.loaisanpham WHERE malsp LIKE ?";
-
-            PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setString(1, table.getValueAt(table.getSelectedRow(), 0).toString());
-
-            int hoi = JOptionPane.showConfirmDialog(this, "xóa loại sản phẩm");
-            if (hoi == JOptionPane.YES_OPTION) {
-
-                pst.executeUpdate();
-
-                JOptionPane.showMessageDialog(this, "xóa thành công");
-                model.setRowCount(0);
-                loaddatatable();
-
-            } else {
-                JOptionPane.showMessageDialog(this, "chưa xóa");
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "lỗi xóa sp");
-        }
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-//        sualoaisp slsp=new sualoaisp();
-//        jDesktopPane1.add(slsp);
-//        slsp.setVisible(true);
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-        model.setRowCount(0);
-        txttim.setText("");
-        loaddatatable();
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void tablelspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablelspMouseClicked
-
-        int row = tablelsp.getSelectedRow();
-        maloai=tablelsp.getValueAt(row, 0).toString();
-        ten=tablelsp.getValueAt(row, 1).toString();
-
-        mota=tablelsp.getValueAt(row, 2).toString();
-        jButton1.setEnabled(true);
-        jButton3.setEnabled(true);
-    }//GEN-LAST:event_tablelspMouseClicked
-
     private void jPanel1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentShown
         // TODO add your handling code here:
            String heder[] = {"Mã SP", "tên SP", "mã loại", "Đơn giá", "số lượng", "hình", "mô tả",};
@@ -652,7 +580,7 @@ public class sanpham1 extends javax.swing.JPanel {
 //        cn = helper.hepper.ketnoi("qllaptop4");
         jButton1.setEnabled(false);
         jButton3.setEnabled(false);
-        loaddatatable();
+     //   loaddatatable();
     }//GEN-LAST:event_jPanel1ComponentShown
 
     private void jPanel2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel2ComponentShown
@@ -660,18 +588,18 @@ public class sanpham1 extends javax.swing.JPanel {
         String heder[] = {"Mã loại", "tên loại", "mô tả"};
         String data[][] = null;
         model = new DefaultTableModel(data, heder);
-        tablelsp.setModel(model);
+       // tablelsp.setModel(model);
 //        cn = helper.hepper.ketnoi("qllaptop4");
         System.out.println("kết nối thành công");
           jButton1.setEnabled(false);
         jButton3.setEnabled(false);
-        loaddatatableloaisp();
+     //   loaddatatableloaisp();
         
     }//GEN-LAST:event_jPanel2ComponentShown
 
     private void tablephieunhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablephieunhapMouseClicked
         // TODO add your handling code here:
-        jButton8.setEnabled(true);
+      //  jButton8.setEnabled(true);
     }//GEN-LAST:event_tablephieunhapMouseClicked
 
     private void txttim2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttim2ActionPerformed
@@ -681,39 +609,39 @@ public class sanpham1 extends javax.swing.JPanel {
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
 
-        try {
-            String sql = "SELECT * FROM dbo.phieunhap\n"
-            + "WHERE mapn LIKE ?";
-            PreparedStatement ptsm = cn.prepareStatement(sql);
-            ptsm.setString(1, txttim.getText());
-            ResultSet rs = ptsm.executeQuery();
-
-            model.setRowCount(0);
-            while (rs.next()) {
-
-                Vector sp = new Vector();
-                sp.add(rs.getString(1));
-                sp.add(rs.getString(2));
-                sp.add(rs.getString(3));
-                sp.add(rs.getString(4));
-                sp.add(rs.getString(5));
-
-                model.addRow(sp);
-
-            }
-
-            table.setModel(model);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Lỗi tìm kiếm");
-        }
+//        try {
+//            String sql = "SELECT * FROM dbo.phieunhap\n"
+//            + "WHERE mapn LIKE ?";
+//        //    PreparedStatement ptsm = cn.prepareStatement(sql);
+//          //  ptsm.setString(1, txttim.getText());
+//           // ResultSet rs = ptsm.executeQuery();
+//
+//            model.setRowCount(0);
+//            while (rs.next()) {
+//
+//                Vector sp = new Vector();
+//                sp.add(rs.getString(1));
+//                sp.add(rs.getString(2));
+//                sp.add(rs.getString(3));
+//                sp.add(rs.getString(4));
+//                sp.add(rs.getString(5));
+//
+//                model.addRow(sp);
+//
+//            }
+//
+//            table.setModel(model);
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Lỗi tìm kiếm");
+//        }
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
         model.setRowCount(0);
         txttim.setText("");
-        loaddatatable();
+       // loaddatatable();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jPanel3ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel3ComponentShown
@@ -724,9 +652,103 @@ public class sanpham1 extends javax.swing.JPanel {
         tablephieunhap.setModel(model);
 //        cn = helper.hepper.ketnoi("qllaptop4");
         System.out.println("kết nối thành công");
-        jButton8.setEnabled(false);
-        loaddatatablephieunhap();
+       // jButton8.setEnabled(false);
+        //loaddatatablephieunhap();
     }//GEN-LAST:event_jPanel3ComponentShown
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+//        themloaisp tlsp=new themloaisp();
+//        jDesktopPane1.add(tlsp);
+//        tlsp.setVisible(true);
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void txttim3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttim3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttim3ActionPerformed
+
+    private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
+
+        int row = table.getSelectedRow();
+        maloai=table.getValueAt(row, 0).toString();
+        ten=table.getValueAt(row, 1).toString();
+
+        mota=table.getValueAt(row, 2).toString();
+        jButton1.setEnabled(true);
+        jButton3.setEnabled(true);
+    }//GEN-LAST:event_table1MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+//
+//        try {
+//            String sql = "SELECT * FROM dbo.loaisanpham\n" +
+//            "      WHERE malsp LIKE ?";
+//          //  PreparedStatement ptsm = cn.prepareStatement(sql);
+//         //   ptsm.setString(1, txttim.getText());
+//            ResultSet rs = .executeQuery();
+//
+//            model.setRowCount(0);
+//            while(rs.next()){
+//
+//                Vector sp = new Vector();
+//                sp.add(rs.getString(1));
+//                sp.add(rs.getString(2));
+//                sp.add(rs.getString(3));
+//
+//                model.addRow(sp);
+//
+//            }
+//
+//            table.setModel(model);
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Lỗi tìm kiếm");
+//        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+        try {
+
+            //            cn = helper.hepper.ketnoi("qllaptop4");
+
+            String sql = "DELETE dbo.loaisanpham WHERE malsp LIKE ?";
+
+           // PreparedStatement pst = cn.prepareStatement(sql);
+     //       pst.setString(1, table.getValueAt(table.getSelectedRow(), 0).toString());
+
+            int hoi = JOptionPane.showConfirmDialog(this, "xóa loại sản phẩm");
+            if (hoi == JOptionPane.YES_OPTION) {
+
+     //           pst.executeUpdate();
+
+                JOptionPane.showMessageDialog(this, "xóa thành công");
+                model.setRowCount(0);
+             
+
+            } else {
+                JOptionPane.showMessageDialog(this, "chưa xóa");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "lỗi xóa sp");
+        }
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+//        sualoaisp slsp=new sualoaisp();
+//        jDesktopPane1.add(slsp);
+//        slsp.setVisible(true);
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        // TODO add your handling code here:
+        model.setRowCount(0);
+        txttim.setText("");
+      
+    }//GEN-LAST:event_jButton15ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -734,25 +756,27 @@ public class sanpham1 extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JDesktopPane jDesktopPane;
+    private javax.swing.JDesktopPane jDesktopPanesp;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel jpn;
     private javax.swing.JLabel lblhinh;
     private javax.swing.JTable table;
-    private javax.swing.JTable tablelsp;
+    private javax.swing.JTable table1;
     private javax.swing.JTable tablephieunhap;
     private javax.swing.JTextField txtdongia;
     private javax.swing.JTextField txtlsp;
@@ -760,92 +784,11 @@ public class sanpham1 extends javax.swing.JPanel {
     private javax.swing.JTextField txtsoluong;
     private javax.swing.JTextField txttensp;
     private javax.swing.JTextField txttim;
-    private javax.swing.JTextField txttim1;
     private javax.swing.JTextField txttim2;
+    private javax.swing.JTextField txttim3;
     // End of variables declaration//GEN-END:variables
 
-     private void loaddatatable() {
-        try {
-            String sql = "SELECT * FROM dbo.sanpham";
-            Statement stm = cn.createStatement();
-            //khai báo re sun sét nhận dữ liệu khi thực thi truy vấn select
-            ResultSet rs = stm.executeQuery(sql);
-            // duyệt rs đổ dữ liệu table
-            while (rs.next()) {
-                Vector sp = new Vector();
-                sp.add(rs.getString(1));
-                sp.add(rs.getString(2));
-                sp.add(rs.getString(3));
-                sp.add(rs.getString(4));
-                sp.add(rs.getString(5));
-                sp.add(rs.getString(6));
-                sp.add(rs.getString(7));
-
-                model.addRow(sp);
-            }
-            table.setModel(model);
-
-            rs.close();
-            stm.close();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-
-        }
-    }
-      private void loaddatatableloaisp() {
-         try {
-            String sql = "SELECT * FROM dbo.loaisanpham";
-            Statement stm = cn.createStatement();
-            //khai báo re sun sét nhận dữ liệu khi thực thi truy vấn select
-            ResultSet rs = stm.executeQuery(sql);
-            // duyệt rs đổ dữ liệu table
-            while (rs.next()) {
-                Vector lsp = new Vector();
-                lsp.add(rs.getString(1));
-                lsp.add(rs.getString(2));
-                lsp.add(rs.getString(3));
-
-              
-                model.addRow(lsp);
-            }
-            tablelsp.setModel(model);
-        
-            rs.close();
-            stm.close();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-
-        }
-    }
- private void loaddatatablephieunhap() {
-        try {
-            String sql = "SELECT * FROM dbo.phieunhap";
-            Statement stm = cn.createStatement();
-            //khai báo re sun sét nhận dữ liệu khi thực thi truy vấn select
-            ResultSet rs = stm.executeQuery(sql);
-            // duyệt rs đổ dữ liệu table
-            while (rs.next()) {
-                Vector sp = new Vector();
-                sp.add(rs.getString(1));
-                sp.add(rs.getString(2));
-                sp.add(rs.getString(3));
-                sp.add(rs.getString(4));
-                sp.add(rs.getString(5));
-
-                model.addRow(sp);
-            }
-            tablephieunhap.setModel(model);
-
-            rs.close();
-            stm.close();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-
-        }
-    }
+   
     public void hinh(String hinh) {
         ImageIcon img = new ImageIcon("src\\img\\" + hinh);
         Image im = img.getImage();

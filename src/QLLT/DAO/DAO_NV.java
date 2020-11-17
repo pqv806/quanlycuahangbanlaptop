@@ -5,8 +5,11 @@
  */
 package QLLT.DAO;
 
+import Ketnoi.KetNoi;
 import QLLT.classs.QLNV;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -97,4 +100,33 @@ public class DAO_NV {
         } catch (Exception e) {
         }
     }
-}
+  public static  void TimKiemKhachHang(QLNV n,JTable tblNV) throws SQLException {
+        String sql = "";
+
+        sql = "select * from nhanvien\n"
+                    + "where manv = N'" + n.getTim()+ "'";
+        ResultSet rs = KetNoi.Select(sql);
+           DefaultTableModel model = (DefaultTableModel) tblNV.getModel();
+        Vector v = null;
+            model.setRowCount(0);
+            while (rs.next()) {
+                v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+                
+
+                v.add(rs.getString(6));
+                model.addRow(v);
+            }
+            tblNV.setModel(model);
+        }
+ 
+    }
+        
+    
+   
+    
+
