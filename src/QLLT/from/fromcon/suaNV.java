@@ -5,6 +5,9 @@
  */
 package QLLT.from.fromcon;
 
+import Ketnoi.KetNoi;
+import QLLT.DAO.DAO_NV;
+import QLLT.classs.QLNV;
 import QLLT.from.nhanvien;
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -17,7 +20,8 @@ import javax.swing.JOptionPane;
  */
 public class suaNV extends javax.swing.JInternalFrame {
 
-    Connection cn;
+     Ketnoi.KetNoi cn= new KetNoi();
+     QLNV n= new QLNV();
 
     /**
      * Creates new form suaNV
@@ -178,29 +182,9 @@ public class suaNV extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        try {
-            cn = helper.hepper.ketnoi("qllaptop4");
-            String sql = "UPDATE dbo.nhanvien SET tennv LIKE ?,ngaysinh LIKE ?,diachi LIKE ?,sdt LIKE ?,trangthai LIKE ?\n"
-                    + "WHERE manv LIKE ?";
-            PreparedStatement pst = cn.prepareStatement(sql);
-
-            pst.setString(1, txttenNV.getText().trim());
-            pst.setString(2, txtngaysinh.getText().trim());
-            pst.setString(3, txtdiachi.getText().trim());
-
-            pst.setString(4, txtsdt.getText().trim());
-            pst.setString(5, txttrangthai1.getText().trim());
-
-            pst.setString(6, txtmaNV.getText().trim());
-            JOptionPane.showMessageDialog(this, "đã sửa");
-               dispose();
-            pst.executeUpdate();
-            pst.close();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
+            laydl();
+            DAO_NV.update(n);
+            
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -240,5 +224,14 @@ public class suaNV extends javax.swing.JInternalFrame {
         txtsdt.setText("");
         txtdiachi.setText("");
         txttrangthai1.setText("");
+    }
+    public  void laydl()
+    {
+        n.setManv(txtmaNV.getText().trim());
+        n.setDiachi(txtdiachi.getText().trim());
+        n.setNgaysinh(txtngaysinh.getText().trim());
+        n.setSdt(txtsdt.getText().trim());
+        n.setTennv(txttenNV.getText().trim());
+        n.setTrangthai(txttrangthai1.getText().trim());
     }
 }

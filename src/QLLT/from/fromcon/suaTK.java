@@ -135,26 +135,26 @@ public class suaTK extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         try {
-            cn = helper.hepper.ketnoi("qllaptop4");
-            String sql = "UPDATE dbo.taikhoan SET matkhau=?,manv=?,maquyen=?\n" +
-"WHERE tentaikhoan LIKE ?";
-            PreparedStatement pst = cn.prepareStatement(sql);
-
-            pst.setString(4, txttk.getText().trim());
-            pst.setString(1, txtmk.getText().trim());
-            pst.setString(3, txtq.getText().trim());
-            pst.setString(2, txtmnv.getText().trim());
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(this, "đã sửa");
-               
-           
-            dispose();
-            pst.close();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
+//         try {
+//            cn = helper.hepper.ketnoi("qllaptop4");
+//            String sql = "UPDATE dbo.taikhoan SET matkhau=?,manv=?,maquyen=?\n" +
+//"WHERE tentaikhoan LIKE ?";
+//            PreparedStatement pst = cn.prepareStatement(sql);
+//
+//            pst.setString(4, txttk.getText().trim());
+//            pst.setString(1, txtmk.getText().trim());
+//            pst.setString(3, txtq.getText().trim());
+//            pst.setString(2, txtmnv.getText().trim());
+//            pst.executeUpdate();
+//            JOptionPane.showMessageDialog(this, "đã sửa");
+//               
+//           
+//            dispose();
+//            pst.close();
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, e);
+//        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

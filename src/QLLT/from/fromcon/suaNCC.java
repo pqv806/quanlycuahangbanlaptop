@@ -183,29 +183,29 @@ public class suaNCC extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         try {
-                cn = helper.hepper.ketnoi("qllaptop4");
-                String sql = "UPDATE dbo.nhacungcap\n" +
-"SET tenncc=?,diachi=?,sdt=?,fax=?\n" +
-"WHERE mancc LIKE ?";
-                PreparedStatement pst = cn.prepareStatement(sql);
-
-                pst.setString(1, txttenncc.getText().trim());
-                pst.setString(2, txtdiachi.getText().trim());
-                pst.setString(3, txtdienthoai.getText().trim());
-              
-                pst.setString(4, txtfax.getText().trim());
-                pst.setString(5, txtmancc.getText().trim());
-             
-JOptionPane.showMessageDialog(this, "đã sửa");
-   dispose();
-                pst.executeUpdate();
-                pst.close();
-            
-              
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e);
-            }
+//         try {
+//                cn = helper.hepper.ketnoi("qllaptop4");
+//                String sql = "UPDATE dbo.nhacungcap\n" +
+//"SET tenncc=?,diachi=?,sdt=?,fax=?\n" +
+//"WHERE mancc LIKE ?";
+//                PreparedStatement pst = cn.prepareStatement(sql);
+//
+//                pst.setString(1, txttenncc.getText().trim());
+//                pst.setString(2, txtdiachi.getText().trim());
+//                pst.setString(3, txtdienthoai.getText().trim());
+//              
+//                pst.setString(4, txtfax.getText().trim());
+//                pst.setString(5, txtmancc.getText().trim());
+//             
+//JOptionPane.showMessageDialog(this, "đã sửa");
+//   dispose();
+//                pst.executeUpdate();
+//                pst.close();
+//            
+//              
+//            } catch (Exception e) {
+//                JOptionPane.showMessageDialog(this, e);
+//            }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

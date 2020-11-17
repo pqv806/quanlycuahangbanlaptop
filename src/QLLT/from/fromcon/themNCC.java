@@ -177,7 +177,7 @@ public class themNCC extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try {
-            cn = helper.hepper.ketnoi("qllaptop4");
+        //    cn = helper.hepper.ketnoi("qllaptop4");
             String sql = "INSERT INTO dbo.nhacungcap\n"
                     + "        ( mancc, tenncc, diachi, sdt, fax  )\n"
                     + "VALUES  ( ?,?,?,?,?\n"

@@ -34,7 +34,7 @@ public class taikhoan extends javax.swing.JPanel {
         String data[][] = null;
         model = new DefaultTableModel(data, heder);
         table.setModel(model);
-        cn = helper.hepper.ketnoi("qllaptop4");
+      //  cn = helper.hepper.ketnoi("qllaptop4");
         System.out.println("kết nối thành công");
         jButton3.setEnabled(false);
         jButton1.setEnabled(false);
@@ -192,7 +192,7 @@ public class taikhoan extends javax.swing.JPanel {
         // TODO add your handling code here:
         try {
 
-            cn = helper.hepper.ketnoi("qllaptop4");
+      //      cn = helper.hepper.ketnoi("qllaptop4");
 
             String sql = "DELETE dbo.taikhoan\n"
                     + "WHERE tentaikhoan LIKE ?";

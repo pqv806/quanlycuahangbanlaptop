@@ -32,7 +32,7 @@ Connection cn;
         String data[][] = null;
         model = new DefaultTableModel(data, heder);
         table.setModel(model);
-        cn = helper.hepper.ketnoi("qllaptop4");
+//        cn = helper.hepper.ketnoi("qllaptop4");
         System.out.println("kết nối thành công");
           jButton1.setEnabled(false);
         jButton3.setEnabled(false);
@@ -236,7 +236,7 @@ Connection cn;
         // TODO add your handling code here:
          try {
             
-            cn = helper.hepper.ketnoi("qllaptop4");
+//            cn = helper.hepper.ketnoi("qllaptop4");
       
             String sql = "DELETE dbo.loaisanpham WHERE malsp LIKE ?";
           

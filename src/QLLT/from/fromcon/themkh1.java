@@ -162,7 +162,7 @@ public class themkh1 extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try {
-            cn = helper.hepper.ketnoi("qllaptop4");
+     //       cn = helper.hepper.ketnoi("qllaptop4");
             String sql = "INSERT INTO dbo.khachhang\n"
                     + "        ( makh, tenkh, diachi, sdt, trangthai )\n"
                     + "VALUES  ( ?,?,?,?,?\n"

@@ -43,7 +43,7 @@ public class nhaphang extends javax.swing.JPanel {
 
         hienthitentable();
         hienthitentable1();
-        cn = helper.hepper.ketnoi("qllaptop4");
+     //   cn = helper.hepper.ketnoi("qllaptop4");
         System.out.println("kết nối thành công");
         ngay();
         dongho();
@@ -623,7 +623,7 @@ public class nhaphang extends javax.swing.JPanel {
         // TODO add your handling code here:
          try {
 
-            cn = helper.hepper.ketnoi("qllaptop4");
+//            cn = helper.hepper.ketnoi("qllaptop4");
             String sql =  "INSERT INTO dbo.phieunhap\n"
                     + "        (   mancc, manv, ngaynhap, tongtien )\n"
                     + "VALUES  ( ?,?,?,?\n"

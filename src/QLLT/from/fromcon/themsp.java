@@ -256,7 +256,7 @@ public class themsp extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if (check()) {
             try {
-                cn = helper.hepper.ketnoi("qllaptop4");
+            //    cn = helper.hepper.ketnoi("qllaptop4");
                 String sql = "INSERT INTO dbo.sanpham\n"
                         + "        ( masp ,\n"
                         + "          tensp ,\n"

@@ -43,10 +43,9 @@ public class banhang extends javax.swing.JPanel {
      */
     public banhang() {
         initComponents();
-
         hienthitentable();
         hienthitentable1();
-        cn = helper.hepper.ketnoi("qllaptop4");
+        //cn = helper.hepper.ketnoi("qllaptop4");
         System.out.println("kết nối thành công");
         ngay();
         dongho();
@@ -549,7 +548,7 @@ public class banhang extends javax.swing.JPanel {
         // TODO add your handling code here:
         try {
 
-            cn = helper.hepper.ketnoi("qllaptop4");
+//            cn = helper.hepper.ketnoi("qllaptop4");
             String sql = "INSERT INTO dbo.hoadon\n"
                     + "        (  manv, makh, ngaylap, tongtien )\n"
                     + "VALUES  ( ?,?,?,?\n"

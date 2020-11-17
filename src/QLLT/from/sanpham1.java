@@ -524,7 +524,7 @@ public class sanpham1 extends javax.swing.JPanel {
         // TODO add your handling code here:
         try {
 
-            cn = helper.hepper.ketnoi("qllaptop4");
+//            cn = helper.hepper.ketnoi("qllaptop4");
 
             String sql = "DELETE dbo.sanpham WHERE masp LIKE ?";
 
@@ -593,7 +593,7 @@ public class sanpham1 extends javax.swing.JPanel {
         // TODO add your handling code here:
         try {
 
-            cn = helper.hepper.ketnoi("qllaptop4");
+//            cn = helper.hepper.ketnoi("qllaptop4");
 
             String sql = "DELETE dbo.loaisanpham WHERE malsp LIKE ?";
 
@@ -649,7 +649,7 @@ public class sanpham1 extends javax.swing.JPanel {
         String data[][] = null;
         model = new DefaultTableModel(data, heder);
         table.setModel(model);
-        cn = helper.hepper.ketnoi("qllaptop4");
+//        cn = helper.hepper.ketnoi("qllaptop4");
         jButton1.setEnabled(false);
         jButton3.setEnabled(false);
         loaddatatable();
@@ -661,7 +661,7 @@ public class sanpham1 extends javax.swing.JPanel {
         String data[][] = null;
         model = new DefaultTableModel(data, heder);
         tablelsp.setModel(model);
-        cn = helper.hepper.ketnoi("qllaptop4");
+//        cn = helper.hepper.ketnoi("qllaptop4");
         System.out.println("kết nối thành công");
           jButton1.setEnabled(false);
         jButton3.setEnabled(false);
@@ -722,7 +722,7 @@ public class sanpham1 extends javax.swing.JPanel {
         String data[][] = null;
         model = new DefaultTableModel(data, heder);
         tablephieunhap.setModel(model);
-        cn = helper.hepper.ketnoi("qllaptop4");
+//        cn = helper.hepper.ketnoi("qllaptop4");
         System.out.println("kết nối thành công");
         jButton8.setEnabled(false);
         loaddatatablephieunhap();

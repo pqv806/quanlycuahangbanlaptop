@@ -36,7 +36,7 @@ public class sanpham extends javax.swing.JPanel {
         String data[][] = null;
         model = new DefaultTableModel(data, heder);
         table.setModel(model);
-        cn = helper.hepper.ketnoi("qllaptop4");
+      //  cn = helper.hepper.ketnoi("qllaptop4");
         System.out.println("kết nối thành công");
         jButton1.setEnabled(false);
         jButton3.setEnabled(false);
@@ -273,7 +273,7 @@ public class sanpham extends javax.swing.JPanel {
         // TODO add your handling code here:
         try {
 
-            cn = helper.hepper.ketnoi("qllaptop4");
+//            cn = helper.hepper.ketnoi("qllaptop4");
 
             String sql = "DELETE dbo.sanpham WHERE masp LIKE ?";
 

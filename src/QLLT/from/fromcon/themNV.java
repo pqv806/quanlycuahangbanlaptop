@@ -5,6 +5,9 @@
  */
 package QLLT.from.fromcon;
 
+import Ketnoi.KetNoi;
+import QLLT.DAO.DAO_NV;
+import QLLT.classs.QLNV;
 import QLLT.from.nhanvien;
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -16,12 +19,15 @@ import javax.swing.JOptionPane;
  * @author vinh
  */
 public class themNV extends javax.swing.JInternalFrame {
-    Connection cn;
+    Ketnoi.KetNoi cn= new KetNoi();
+    QLNV n= new QLNV();
+    
     /**
      * Creates new form themNV
      */
     public themNV() {
         initComponents();
+        
     }
 
     /**
@@ -176,36 +182,9 @@ public class themNV extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try {
-            cn = helper.hepper.ketnoi("qllaptop4");
-            String sql = "INSERT INTO dbo.nhanvien\n"
-                    + "        ( manv, tennv,ngaysinh, diachi, sdt, trangthai )\n"
-                    + "VALUES  ( ?,?,?,?,?,?\n"
-                    + "          )";
-            try (PreparedStatement pst = cn.prepareStatement(sql)) {
-                pst.setString(1, txtmaNV.getText().trim());
-                pst.setString(2, txttenNV.getText().trim());
-                pst.setString(3, txtngaysinh.getText().trim());
-                pst.setString(4, txtdiachi.getText().trim());
-
-                pst.setString(5, txtsdt.getText().trim());
-    pst.setString(6, txttrangthai1.getText().trim());
-                int ck = pst.executeUpdate();
-
-                pst.close();
-
-                if (ck > 0) {
-
-                    JOptionPane.showMessageDialog(this, "đã lưu");
-                      this.clear();
-                         dispose();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e);
-            }
-        } catch (HeadlessException e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
+        themDL();
+        DAO_NV.Insert(n);
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -239,5 +218,15 @@ public class themNV extends javax.swing.JInternalFrame {
         txtsdt.setText("");
         txtdiachi.setText("");
         txttrangthai1.setText("");
+    }
+    public void themDL()
+    {
+        n.setManv(txtmaNV.getText().trim());
+        n.setDiachi(txtdiachi.getText().trim());
+        n.setNgaysinh(txtngaysinh.getText().trim());
+        n.setSdt(txtsdt.getText().trim());
+        n.setTennv(txttenNV.getText().trim());
+        n.setTrangthai(txttrangthai1.getText().trim());
+        
     }
 }

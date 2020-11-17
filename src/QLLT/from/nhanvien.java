@@ -5,6 +5,9 @@
  */
 package QLLT.from;
 
+import Ketnoi.KetNoi;
+import QLLT.DAO.DAO_NV;
+import QLLT.classs.QLNV;
 import QLLT.from.fromcon.suaNV;
 import QLLT.from.fromcon.themNV;
 import java.sql.Connection;
@@ -20,23 +23,24 @@ import javax.swing.table.DefaultTableModel;
  * @author vinh
  */
 public class nhanvien extends javax.swing.JPanel {
-Connection cn;
-    DefaultTableModel model;
+   
+Ketnoi.KetNoi cn = new KetNoi();
+    QLNV n = new QLNV();
+  
      public static String ma,ten,ngayinh,diachi,sdt,trangthai;
     /**
      * Creates new form nhanvien
      */
     public nhanvien() {
         initComponents();
-         String heder[] = {"Manv", "tên nv", "ngày sinh", "địa chỉ", "sdt", "trạng thái"};
-        String data[][] = null;
-        model = new DefaultTableModel(data, heder);
-        table.setModel(model);
-        cn = helper.hepper.ketnoi("qllaptop4");
-        System.out.println("kết nối thành công");
+         
+       
+        DAO_NV.dolentable(tblnhanvien);
+     
+     
         jButton3.setEnabled(false);
         jButton1.setEnabled(false);
-        loaddatatable();
+       
 
     }
 
@@ -52,7 +56,7 @@ Connection cn;
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        tblnhanvien = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         bltthem = new javax.swing.JButton();
@@ -63,7 +67,7 @@ Connection cn;
 
         jDesktopPane1.setBackground(new java.awt.Color(240, 240, 240));
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        tblnhanvien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -71,12 +75,12 @@ Connection cn;
                 "manv", "tennv", "ngay sinh", "dia chi", "sdt", "trang thai"
             }
         ));
-        table.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblnhanvien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableMouseClicked(evt);
+                tblnhanvienMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(table);
+        jScrollPane1.setViewportView(tblnhanvien);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Edit.png"))); // NOI18N
         jButton3.setText("sửa");
@@ -169,33 +173,9 @@ Connection cn;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-  try {
-
-            cn = helper.hepper.ketnoi("qllaptop4");
-
-            String sql = "DELETE dbo.nhanvien \n" +
-"WHERE manv LIKE ?";
-
-            PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setString(1, table.getValueAt(table.getSelectedRow(), 0).toString());
-
-            int hoi = JOptionPane.showConfirmDialog(this, "xóa nhân viên");
-            if (hoi == JOptionPane.YES_OPTION) {
-
-                pst.executeUpdate();
-
-                JOptionPane.showMessageDialog(this, "xóa thành công");
-                model.setRowCount(0);
-                loaddatatable();
-
-            } else {
-                JOptionPane.showMessageDialog(this, "chưa xóa");
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "lỗi xóa sp");
-        }
+      themDL();
+      DAO_NV.Delete(n);
+      DAO_NV.dolentable(tblnhanvien);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bltthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bltthemActionPerformed
@@ -217,18 +197,18 @@ Connection cn;
         snv.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+    private void tblnhanvienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblnhanvienMouseClicked
         // TODO add your handling code here:
-         int row = table.getSelectedRow();
-        ma=table.getValueAt(row, 0).toString();
-        ten=table.getValueAt(row, 1).toString();
-        ngayinh=table.getValueAt(row, 2).toString();
-        diachi=table.getValueAt(row, 3).toString();
-        sdt=table.getValueAt(row, 4).toString();
-        trangthai=table.getValueAt(row, 5).toString();
+         int row = tblnhanvien.getSelectedRow();
+        ma=tblnhanvien.getValueAt(row, 0).toString();
+        ten=tblnhanvien.getValueAt(row, 1).toString();
+        ngayinh=tblnhanvien.getValueAt(row, 2).toString();
+        diachi=tblnhanvien.getValueAt(row, 3).toString();
+        sdt=tblnhanvien.getValueAt(row, 4).toString();
+        trangthai=tblnhanvien.getValueAt(row, 5).toString();
         jButton3.setEnabled(true);
         jButton1.setEnabled(true);
-    }//GEN-LAST:event_tableMouseClicked
+    }//GEN-LAST:event_tblnhanvienMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -240,35 +220,16 @@ Connection cn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable table;
+    private javax.swing.JTable tblnhanvien;
     // End of variables declaration//GEN-END:variables
 
-      private void loaddatatable() {
-        try {
-            String sql = "SELECT * FROM nhanvien";
-            Statement stm = cn.createStatement();
-            //khai báo re sun sét nhận dữ liệu khi thực thi truy vấn select
-            ResultSet rs = stm.executeQuery(sql);
-            // duyệt rs đổ dữ liệu table
-            while (rs.next()) {
-                Vector nv = new Vector();
-                nv.add(rs.getString(1));
-                nv.add(rs.getString(2));
-                nv.add(rs.getString(3));
-                nv.add(rs.getString(4));
-                nv.add(rs.getString(5));
-                nv.add(rs.getString(6));
-              
-                model.addRow(nv);
-            }
-            table.setModel(model);
-            cn.close();
-            rs.close();
-            stm.close();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-
-        }
-    }
+      public void themDL()
+      {
+           n.setManv(ma);
+        n.setDiachi(diachi);
+        n.setNgaysinh(ngayinh);
+        n.setSdt(sdt);
+        n.setTennv(ten);
+        n.setTrangthai(trangthai);
+      }
 }

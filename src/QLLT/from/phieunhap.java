@@ -32,7 +32,7 @@ public class phieunhap extends javax.swing.JPanel {
         String data[][] = null;
         model = new DefaultTableModel(data, heder);
         table.setModel(model);
-        cn = helper.hepper.ketnoi("qllaptop4");
+ //       cn = helper.hepper.ketnoi("qllaptop4");
         System.out.println("kết nối thành công");
         jButton8.setEnabled(false);
         loaddatatable();

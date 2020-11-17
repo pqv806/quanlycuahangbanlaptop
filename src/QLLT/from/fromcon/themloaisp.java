@@ -149,7 +149,7 @@ public class themloaisp extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 
       try {
-            cn = helper.hepper.ketnoi("qllaptop4");
+      //      cn = helper.hepper.ketnoi("qllaptop4");
           String sql = "INSERT INTO dbo.loaisanpham\n" +
 "        ( malsp, tenlsp, mota )\n" +
 "VALUES  ( ?,?,?\n" +

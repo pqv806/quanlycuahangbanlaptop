@@ -23,7 +23,7 @@ public class login extends javax.swing.JFrame {
      */
     public login() {
         initComponents();
-           cn = helper.hepper.ketnoi("qllaptop4");
+          // cn = helper.hepper.ketnoi("qllaptop4");
              
     }
 

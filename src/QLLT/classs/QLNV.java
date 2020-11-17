@@ -10,20 +10,7 @@ package QLLT.classs;
  * @author vinh ăn lìn
  */
 public class QLNV {
-    public String manv,tennv,ngaysinh,diachi,trangthai;
-    public int sdt;
-
-    public QLNV() {
-    }
-
-    public QLNV(String manv, String tennv, String ngaysinh, String diachi, String trangthai, int sdt) {
-        this.manv = manv;
-        this.tennv = tennv;
-        this.ngaysinh = ngaysinh;
-        this.diachi = diachi;
-        this.trangthai = trangthai;
-        this.sdt = sdt;
-    }
+    public String manv,tennv,ngaysinh,diachi,sdt,trangthai;
 
     public String getManv() {
         return manv;
@@ -57,6 +44,14 @@ public class QLNV {
         this.diachi = diachi;
     }
 
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
     public String getTrangthai() {
         return trangthai;
     }
@@ -64,14 +59,9 @@ public class QLNV {
     public void setTrangthai(String trangthai) {
         this.trangthai = trangthai;
     }
+    
 
-    public int getSdt() {
-        return sdt;
-    }
-
-    public void setSdt(int sdt) {
-        this.sdt = sdt;
-    }
+  
     
     
 }
