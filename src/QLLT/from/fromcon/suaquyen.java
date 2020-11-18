@@ -5,7 +5,11 @@
  */
 package QLLT.from.fromcon;
 
+import Ketnoi.KetNoi;
+import QLLT.DAO.DAO_Quyen;
+import QLLT.classs.QLquyen;
 import QLLT.from.quyen;
+import QLLT.from.taikhoan;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -16,16 +20,17 @@ import javax.swing.JOptionPane;
  */
 public class suaquyen extends javax.swing.JInternalFrame {
 
-    Connection cn;
+    Ketnoi.KetNoi cn = new KetNoi();
+    QLquyen n = new QLquyen();
 
     /**
      * Creates new form suaquyen
      */
     public suaquyen() {
         initComponents();
-        this.txtq.setText(quyen.ma);
-            this.txtchitiet.setText(quyen.chitet);
-                this.txttk.setText(quyen.ten);
+        this.txtq.setText(taikhoan.mq);
+        this.txtchitiet.setText(taikhoan.chitiet);
+        this.txttk.setText(taikhoan.tenq);
     }
 
     /**
@@ -44,6 +49,8 @@ public class suaquyen extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtchitiet = new javax.swing.JTextArea();
+
+        setClosable(true);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Edit.png"))); // NOI18N
         jButton1.setText("sửa");
@@ -123,29 +130,15 @@ public class suaquyen extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try {
-         //   cn = helper.hepper.ketnoi("qllaptop4");
-            String sql = "UPDATE dbo.phanquyen SET tenquyen=?,chitietquyen=?\n"
-                    + "WHERE maquyen LIKE ?";
-            PreparedStatement pst = cn.prepareStatement(sql);
-
-            pst.setString(1, txttk.getText().trim());
-            pst.setString(3, txtq.getText().trim());
-            pst.setString(2, txtchitiet.getText().trim());
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(this, "đã sửa");
-
-            dispose();
-            pst.close();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
+        themDL();
+        DAO_Quyen.update(n);
+        JOptionPane.showMessageDialog(this, "đã sửa");
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        quyen nv = new quyen();
+        taikhoan nv = new taikhoan();
         nv.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -161,6 +154,11 @@ public class suaquyen extends javax.swing.JInternalFrame {
         txttk.setText("");
     }
 
+    public void themDL() {
+        n.setMaq(txtq.getText());
+        n.setTen(txttk.getText());
+        n.setChitietq(txtchitiet.getText());
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

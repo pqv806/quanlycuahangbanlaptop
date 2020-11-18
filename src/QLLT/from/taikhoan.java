@@ -6,8 +6,10 @@
 package QLLT.from;
 
 import Ketnoi.KetNoi;
+import QLLT.DAO.DAO_Quyen;
 import QLLT.DAO.DAO_TK;
 import QLLT.classs.QLTK;
+import QLLT.classs.QLquyen;
 import QLLT.from.fromcon.suaTK;
 import QLLT.from.fromcon.suaquyen;
 import QLLT.from.fromcon.themTK;
@@ -30,9 +32,10 @@ import javax.swing.table.DefaultTableModel;
 public class taikhoan extends javax.swing.JPanel {
 
     DefaultTableModel model;
-    public static String ten, mk, manv, mq;
+    public static String ma,ten,tenq, mk, manv, mq,chitiet;
     Ketnoi.KetNoi cn = new KetNoi();
     QLTK n = new QLTK();
+    QLquyen m = new QLquyen();
     long count, sotrang, trang = 1;
 
     /**
@@ -47,11 +50,14 @@ public class taikhoan extends javax.swing.JPanel {
             sotrang = count / 5 + 1;
         }
         DAO_TK.dolentable(tbltk, 1);
+         DAO_Quyen.dolentable(tblquyen, trang);
         lbltrang.setText("1");
         lblsotrang.setText("1/" + sotrang);
 
         jButton3.setEnabled(false);
         jButton1.setEnabled(false);
+         jButton6.setEnabled(false);
+        jButton5.setEnabled(false);
 
     }
 
@@ -86,10 +92,15 @@ public class taikhoan extends javax.swing.JPanel {
         jButton6 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         txttim1 = new javax.swing.JTextField();
-        jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table1 = new javax.swing.JTable();
+        tblquyen = new javax.swing.JTable();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
+        lbltrang1 = new javax.swing.JLabel();
+        jButton17 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
+        lblsotrang1 = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -257,7 +268,6 @@ public class taikhoan extends javax.swing.JPanel {
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
@@ -269,7 +279,7 @@ public class taikhoan extends javax.swing.JPanel {
                         .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         jPanel1.add(jDesktopPane1, java.awt.BorderLayout.CENTER);
@@ -279,6 +289,11 @@ public class taikhoan extends javax.swing.JPanel {
         jPanel2.setLayout(new java.awt.CardLayout());
 
         jDesktopPane2.setBackground(new java.awt.Color(240, 240, 240));
+        jDesktopPane2.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jDesktopPane2ComponentShown(evt);
+            }
+        });
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Edit.png"))); // NOI18N
         jButton5.setText("sửa");
@@ -311,14 +326,6 @@ public class taikhoan extends javax.swing.JPanel {
             }
         });
 
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search.png"))); // NOI18N
-        jButton9.setText("tìm kiếm");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_replay_30px.png"))); // NOI18N
         jButton10.setText("làm mới");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -327,52 +334,110 @@ public class taikhoan extends javax.swing.JPanel {
             }
         });
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
+        tblquyen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "1", "2", "3"
+                "mã quyền", "tên quyền", "chi tiết quyền"
             }
         ));
-        table1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblquyen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                table1MouseClicked(evt);
+                tblquyenMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(table1);
+        tblquyen.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                tblquyenComponentShown(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblquyen);
+
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/109458344_606525943604283_1735448384254130874_n.png"))); // NOI18N
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/107816534_335383491191669_6858896409213148801_n.png"))); // NOI18N
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+
+        lbltrang1.setText("jLabel1");
+
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/108190622_330299054646593_925802538658998860_n.png"))); // NOI18N
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+
+        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/107792122_206608630685120_4490402718207329408_n (1).png"))); // NOI18N
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
+
+        lblsotrang1.setText("jLabel2");
 
         jDesktopPane2.setLayer(jButton5, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jButton6, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jButton8, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(txttim1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jButton9, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jButton10, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jButton15, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jButton16, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(lbltrang1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jButton17, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jButton18, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(lblsotrang1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
         jDesktopPane2Layout.setHorizontalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                .addGap(111, 111, 111)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addComponent(txttim1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton10))
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE))
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addComponent(jButton8)
-                        .addGap(64, 64, 64)
-                        .addComponent(jButton6)
-                        .addGap(77, 77, 77)
-                        .addComponent(jButton5)))
+                        .addGap(157, 157, 157)
+                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txttim1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                .addComponent(jButton8)
+                                .addGap(52, 52, 52)
+                                .addComponent(jButton6)))
+                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(jButton10))
+                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(jButton5)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(jButton15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton16)
+                .addGap(18, 18, 18)
+                .addComponent(lbltrang1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton17)
+                .addGap(18, 18, 18)
+                .addComponent(jButton18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblsotrang1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jDesktopPane2Layout.setVerticalGroup(
@@ -383,14 +448,25 @@ public class taikhoan extends javax.swing.JPanel {
                     .addComponent(jButton5)
                     .addComponent(jButton6)
                     .addComponent(jButton8))
-                .addGap(20, 20, 20)
-                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txttim1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txttim1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblsotrang1)
+                            .addComponent(lbltrang1)))
+                    .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         jPanel2.add(jDesktopPane2, "card2");
@@ -454,79 +530,26 @@ public class taikhoan extends javax.swing.JPanel {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         suaquyen slsp = new suaquyen();
-        jDesktopPane1.add(slsp);
+        jDesktopPane2.add(slsp);
         slsp.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-//        try {
-//
-//            //      cn = helper.hepper.ketnoi("qllaptop4");
-//
-//            String sql = "DELETE dbo.phanquyen\n" +
-//            "WHERE maquyen LIKE ?";
-//
-//            PreparedStatement pst = cn.prepareStatement(sql);
-//            pst.setString(1, tbltk.getValueAt(tbltk.getSelectedRow(), 0).toString());
-//
-//            int hoi = JOptionPane.showConfirmDialog(this, "xóa quyền");
-//            if (hoi == JOptionPane.YES_OPTION) {
-//
-//                pst.executeUpdate();
-//
-//                JOptionPane.showMessageDialog(this, "xóa thành công");
-//                model.setRowCount(0);
-//                loaddatatable();
-//
-//            } else {
-//                JOptionPane.showMessageDialog(this, "chưa xóa");
-//            }
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "lỗi xóa sp");
-//        }
+       themDL();
+        DAO_Quyen.Delete(m);
+        DAO_Quyen.dolentable(tblquyen, trang);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
         themquyen tlsp = new themquyen();
-        jDesktopPane1.add(tlsp);
+        jDesktopPane2.add(tlsp);
         tlsp.setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void txttim1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttim1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txttim1ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-//
-//        try {
-//            String sql = "SELECT * FROM dbo.phanquyen\n" +
-//            "WHERE maquyen LIKE ?";
-//            PreparedStatement ptsm = cn.prepareStatement(sql);
-//            ptsm.setString(1, txttim.getText());
-//            ResultSet rs = ptsm.executeQuery();
-//
-//            model.setRowCount(0);
-//            while (rs.next()) {
-//
-//                Vector sp = new Vector();
-//                sp.add(rs.getString(1));
-//                sp.add(rs.getString(2));
-//                sp.add(rs.getString(3));
-//
-//                model.addRow(sp);
-//
-//            }
-//
-//            tbltk.setModel(model);
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "Lỗi tìm kiếm");
-//        }
-    }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
@@ -535,23 +558,23 @@ public class taikhoan extends javax.swing.JPanel {
 //        loaddatatable();
     }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
+    private void tblquyenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblquyenMouseClicked
 
-//        int row = table.getSelectedRow();
-//        ma = table.getValueAt(row, 0).toString();
-//        ten = table.getValueAt(row, 1).toString();
-//
-//        chitet = table.getValueAt(row, 2).toString();
-//
-//        jButton1.setEnabled(true);
-//        jButton3.setEnabled(true);
-    }//GEN-LAST:event_table1MouseClicked
+        int row = tblquyen.getSelectedRow();
+        mq = tblquyen.getValueAt(row, 0).toString();
+        tenq = tblquyen.getValueAt(row, 1).toString();
+
+       chitiet  = tblquyen.getValueAt(row, 2).toString();
+
+        jButton6.setEnabled(true);
+        jButton5.setEnabled(true);
+    }//GEN-LAST:event_tblquyenMouseClicked
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
         if (trang > 1) {
             trang--;
-            DAO_TK.dolentable(tbltk, trang);
+           DAO_Quyen.dolentable(tblquyen, trang);
             lblsotrang.setText(trang + "/" + sotrang);
             lbltrang.setText("" + trang);
         }
@@ -561,7 +584,7 @@ public class taikhoan extends javax.swing.JPanel {
         // TODO add your handling code here:
         trang = 1;
 
-        DAO_TK.dolentable(tbltk, trang);
+      DAO_Quyen.dolentable(tblquyen, trang);
         lblsotrang.setText(trang + "/" + sotrang);
         lbltrang.setText("" + trang);
 
@@ -597,6 +620,54 @@ public class taikhoan extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txttimKeyReleased
 
+    private void jDesktopPane2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jDesktopPane2ComponentShown
+        // TODO add your handling code here:
+  
+    }//GEN-LAST:event_jDesktopPane2ComponentShown
+
+    private void tblquyenComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tblquyenComponentShown
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_tblquyenComponentShown
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        // TODO add your handling code here:
+         trang = 1;
+
+        DAO_Quyen.dolentable(tblquyen, trang);
+        lblsotrang1.setText(trang + "/" + sotrang);
+        lbltrang1.setText("" + trang);
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+        if (trang > 1) {
+            trang--;
+            DAO_TK.dolentable(tbltk, trang);
+            lblsotrang1.setText(trang + "/" + sotrang);
+            lbltrang1.setText("" + trang);
+        }
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+         if (trang < sotrang) {
+            trang++;
+            DAO_TK.dolentable(tbltk, trang);
+            lblsotrang1.setText(trang + "/" + sotrang);
+            lbltrang1.setText("" + trang);
+        }
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        // TODO add your handling code here:
+         trang = sotrang;
+
+        DAO_Quyen.dolentable(tblquyen, trang);
+        lblsotrang1.setText(trang + "/" + sotrang);
+        lbltrang1.setText("" + trang);
+    }//GEN-LAST:event_jButton18ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -605,13 +676,16 @@ public class taikhoan extends javax.swing.JPanel {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JPanel jPanel1;
@@ -620,8 +694,10 @@ public class taikhoan extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblsotrang;
+    private javax.swing.JLabel lblsotrang1;
     private javax.swing.JLabel lbltrang;
-    private javax.swing.JTable table1;
+    private javax.swing.JLabel lbltrang1;
+    private javax.swing.JTable tblquyen;
     private javax.swing.JTable tbltk;
     private javax.swing.JTextField txttim;
     private javax.swing.JTextField txttim1;
@@ -642,5 +718,6 @@ public class taikhoan extends javax.swing.JPanel {
     public void themDL() {
         n.setTim(txttim.getText());
         n.setManv(manv);
+        m.setMaq(mq);
     }
 }

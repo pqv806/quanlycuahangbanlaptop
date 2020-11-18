@@ -5,6 +5,9 @@
  */
 package QLLT.from.fromcon;
 
+import Ketnoi.KetNoi;
+import QLLT.DAO.DAO_Quyen;
+import QLLT.classs.QLquyen;
 import QLLT.from.quyen;
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -16,7 +19,8 @@ import javax.swing.JOptionPane;
  * @author vinh
  */
 public class themquyen extends javax.swing.JInternalFrame {
-   Connection cn;
+    Ketnoi.KetNoi cn= new KetNoi();
+    QLquyen n=new QLquyen();
     /**
      * Creates new form themquyen
      */
@@ -115,34 +119,10 @@ public class themquyen extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try {
-       //     cn = helper.hepper.ketnoi("qllaptop4");
-            String sql = "INSERT INTO dbo.phanquyen\n"
-            + "        (  maquyen, tenquyen, chitietquyen )\n"
-            + "VALUES  ( ?,?,?\n"
-            + "          )";
-            try (PreparedStatement pst = cn.prepareStatement(sql)) {
-                pst.setString(1, txtq.getText().trim());
-                pst.setString(2, txttk.getText().trim());
-                pst.setString(3, txtchitiet.getText().trim());
-                
-
-                int ck = pst.executeUpdate();
-
-                pst.close();
-
-                if (ck > 0) {
-
-                    JOptionPane.showMessageDialog(this, "đã lưu");
-                    this.clear();
-                    dispose();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e);
-            }
-        } catch (HeadlessException e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
+       themDL();
+        DAO_Quyen.Insert(n);
+        JOptionPane.showMessageDialog(this, "đã thêm");
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -173,4 +153,9 @@ public class themquyen extends javax.swing.JInternalFrame {
         txtq.setText("");
         txttk.setText("");
         }
+    public void themDL() {
+       n.setMaq(txtq.getText());
+        n.setTen(txttk.getText());
+        n.setChitietq(txtchitiet.getText());
+    }
 }
