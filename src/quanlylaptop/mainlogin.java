@@ -18,7 +18,7 @@ import quanlylaptopadmin.trangchinh;
  */
 public class mainlogin {
     public static void main(String[] args) {
-//        new login().setVisible(true);
+      //new login().setVisible(true);
 new trangchinh().setVisible(true);
     }
 }

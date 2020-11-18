@@ -5,6 +5,9 @@
  */
 package QLLT.from;
 
+import Ketnoi.KetNoi;
+import Ketnoi.MD5;
+import QLLT.DAO.DAO_Dangnhap;
 import QLLT.nhanvien.trangchinh1;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +20,7 @@ import quanlylaptopadmin.trangchinh;
  * @author vinh
  */
 public class login extends javax.swing.JFrame {
-    Connection cn;
+  Ketnoi.KetNoi cn=new KetNoi();
     /**
      * Creates new form login
      */
@@ -149,39 +152,14 @@ public class login extends javax.swing.JFrame {
         if (txt_user.getText().equals("") || txt_pass.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "không được để trống ô nào");
         } else {
-            try {
-                String sql = "SELECT * FROM dbo.taikhoan\n" +
-                    "WHERE tentaikhoan LIKE ? and matkhau LIKE ?";
-                PreparedStatement pst = cn.prepareStatement(sql);
-                pst.setString(1, txt_user.getText());
-                pst.setString(2, txt_pass.getText());
-                ResultSet rs = pst.executeQuery();
-                if (rs.next()) {
-                    String role = rs.getString(4);
-                    if (role.equals("Q01")) {
-                        JOptionPane.showMessageDialog(this, "đăng nhập thành công");
-                        trangchinh ql = new trangchinh();
-                        ql.setVisible(true);
-                        dispose();
-                    } else if (role.equals("Q02")) {
-                        JOptionPane.showMessageDialog(this, "đăng nhập thành công");
-                        trangchinh1 a = new trangchinh1();
-                        a.setVisible(true);
-                        dispose();
-                    }
-
-                } else {
-                    JOptionPane.showMessageDialog(this, "đăng nhập thất bại");
-                    return;
-                }
-                rs.close();
-                pst.close();
-                
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "lỗi đăng nhập");
-
-            }
+             String TK = txt_user.getText();
+        String MK = String.valueOf(txt_pass.getPassword());
+        boolean chay = DAO_Dangnhap.KT_DangNhap(TK, MK);
+        if (chay) {
+           JOptionPane.showMessageDialog(this, "đăng nhập thành công ");
+           dispose();
+           
+        }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

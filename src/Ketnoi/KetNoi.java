@@ -61,7 +61,7 @@ public class KetNoi {
             return ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Lỗi kết nối update");
-         
+          e.printStackTrace();
             return -1;
         }
     }

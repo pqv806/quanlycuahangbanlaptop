@@ -6,11 +6,14 @@
 package QLLT.DAO;
 
 import Ketnoi.KetNoi;
+import Ketnoi.MD5;
 import QLLT.classs.QLNV;
 import QLLT.classs.QLTK;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -50,18 +53,17 @@ public class DAO_TK {
         try {
             String sql = "insert into taikhoan(tentaikhoan,matkhau,manv,maquyen) \n"
                     + "values(N'" + n.getTentk()+ "'"
-                    + ",N'" + n.getMk()+ "'"
+                    + ",N'" +n.getMk()+ "'"
                     + ",'" + n.getManv()+ "'"
                     + ",N'" + n.getMaquyen()+ "')";
-
-            if (Ketnoi.KetNoi.Update(sql) > 0) {
+            if (Ketnoi.KetNoi.Update2(sql) > 0) {
                 System.out.println("Thêm mới thành công");
             } else {
                 System.out.println("Thất bại");
             }
 
-        } catch (Exception e) {
-        }
+        } catch (Exception ex) {
+          }
     }
      public static void Delete(QLTK n) {
         try {
