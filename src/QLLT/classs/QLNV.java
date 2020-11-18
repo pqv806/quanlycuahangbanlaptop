@@ -12,6 +12,7 @@ package QLLT.classs;
 public class QLNV {
     public String manv,tennv,ngaysinh,diachi,sdt,trangthai,tim;
 
+
     public String getManv() {
         return manv;
     }

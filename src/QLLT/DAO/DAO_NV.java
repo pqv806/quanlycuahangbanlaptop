@@ -10,7 +10,10 @@ import QLLT.classs.QLNV;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,16 +21,17 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author vinh
  */
-public class DAO_NV {
-    public static ResultSet LayDLNV() {
-        String sql = "Select * from NhanVien";
-        return Ketnoi.KetNoi.Select(sql);
 
-    }
-     public static void dolentable(JTable tblNV) {
+public class DAO_NV {
+    private ArrayList<QLNV> dsnv = new ArrayList<>();
+
+     public static void dolentable(JTable tblNV, long trang) {
         try {
+            String sql = "SELECT TOP 5 *\n"
+                    + "FROM dbo.nhanvien \n"
+                    + "WHERE manv NOT IN (SELECT TOP " + (trang * 5 - 5) + " manv FROM dbo.nhanvien)";
             DefaultTableModel model = (DefaultTableModel) tblNV.getModel();
-            ResultSet rs = DAO_NV.LayDLNV();
+            ResultSet rs = KetNoi.Select(sql);
             Vector v = null;
             model.setRowCount(0);
             while (rs.next()) {
@@ -37,15 +41,17 @@ public class DAO_NV {
                 v.add(rs.getString(3));
                 v.add(rs.getString(4));
                 v.add(rs.getString(5));
-                
-
                 v.add(rs.getString(6));
                 model.addRow(v);
+               
             }
             tblNV.setModel(model);
         } catch (Exception e) {
         }
     }
+
+   
+     
      public static void Insert(QLNV n) {
         try {
             String sql = "insert into nhanvien(manv,tennv,ngaysinh,diachi,sdt,trangthai ) \n"
@@ -104,7 +110,7 @@ public class DAO_NV {
         String sql = "";
 
         sql = "select * from nhanvien\n"
-                    + "where manv = N'" + n.getTim()+ "'";
+                    + "where tennv like N'%" + n.getTim()+ "%'";
         ResultSet rs = KetNoi.Select(sql);
            DefaultTableModel model = (DefaultTableModel) tblNV.getModel();
         Vector v = null;
@@ -123,7 +129,11 @@ public class DAO_NV {
             }
             tblNV.setModel(model);
         }
- 
+  public String nextid()
+  {
+     return "NV0"+String.valueOf(this.dsnv.size()+1);
+  }
+  
     }
         
     

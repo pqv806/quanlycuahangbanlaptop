@@ -12,6 +12,7 @@ import QLLT.from.nhanvien;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,12 +22,18 @@ import javax.swing.JOptionPane;
 public class themNV extends javax.swing.JInternalFrame {
     Ketnoi.KetNoi cn= new KetNoi();
     QLNV n= new QLNV();
-    
+    DAO_NV qlnv=new DAO_NV();
+    long count;
     /**
      * Creates new form themNV
      */
     public themNV() {
         initComponents();
+        laysodong();
+        String ma="NV"+String.valueOf(count+1);
+        
+        txtmaNV.setText(ma);
+        
         
     }
 
@@ -67,6 +74,8 @@ public class themNV extends javax.swing.JInternalFrame {
         });
 
         jLabel7.setText("địa chỉ");
+
+        txtmaNV.setEditable(false);
 
         jLabel8.setText("SDT");
 
@@ -183,7 +192,10 @@ public class themNV extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         themDL();
+        
         DAO_NV.Insert(n);
+        JOptionPane.showMessageDialog(this, "đã thêm");
+        dispose();
         
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -228,5 +240,16 @@ public class themNV extends javax.swing.JInternalFrame {
         n.setTennv(txttenNV.getText().trim());
         n.setTrangthai(txttrangthai1.getText().trim());
         
+    }
+     public void laysodong() {
+        try {
+             String sql = "SELECT COUNT(*) FROM dbo.nhanvien";
+            ResultSet rs=KetNoi.Select(sql);
+            while (rs.next()) {
+              count=rs.getLong(1);
+            }
+            
+        } catch (Exception e) {
+        }
     }
 }
