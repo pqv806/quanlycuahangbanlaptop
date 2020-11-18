@@ -5,6 +5,9 @@
  */
 package QLLT.from.fromcon;
 
+import Ketnoi.KetNoi;
+import QLLT.DAO.DAO_TK;
+import QLLT.classs.QLTK;
 import QLLT.from.taikhoan;
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -16,7 +19,8 @@ import javax.swing.JOptionPane;
  * @author vinh
  */
 public class themTK extends javax.swing.JInternalFrame {
-    Connection cn;
+    Ketnoi.KetNoi cn= new KetNoi();
+    QLTK n= new QLTK();
     /**
      * Creates new form themTK
      */
@@ -131,35 +135,10 @@ public class themTK extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try {
-     //       cn = helper.hepper.ketnoi("qllaptop4");
-            String sql = "INSERT INTO dbo.taikhoan\n"
-            + "        (  tentaikhoan, matkhau, manv, maquyen )\n"
-            + "VALUES  ( ?,?,?,?\n"
-            + "          )";
-            try (PreparedStatement pst = cn.prepareStatement(sql)) {
-                pst.setString(1, txttk.getText().trim());
-                pst.setString(2, txtmk.getText().trim());
-                pst.setString(3, txtmnv.getText().trim());
-                pst.setString(4, txtq.getText().trim());
-
-             
-                int ck = pst.executeUpdate();
-
-                pst.close();
-
-                if (ck > 0) {
-
-                    JOptionPane.showMessageDialog(this, "đã lưu");
-                    this.clear();
-                    dispose();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e);
-            }
-        } catch (HeadlessException e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
+      themDL();
+        DAO_TK.Insert(n);
+        JOptionPane.showMessageDialog(this, "đã thêm");
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -186,4 +165,13 @@ public class themTK extends javax.swing.JInternalFrame {
         txtq.setText("");
         txttk.setText("");
      }
+     public void themDL()
+    {
+        n.setManv(txtmnv.getText().trim());
+        n.setMaquyen(txtq.getText().trim());
+        n.setTentk(txttk.getText().trim());
+        n.setMk(txtmk.getText().trim());
+       
+        
+    }
 }

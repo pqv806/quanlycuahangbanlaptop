@@ -22,7 +22,6 @@ import javax.swing.JOptionPane;
 public class themNV extends javax.swing.JInternalFrame {
     Ketnoi.KetNoi cn= new KetNoi();
     QLNV n= new QLNV();
-    DAO_NV qlnv=new DAO_NV();
     long count;
     /**
      * Creates new form themNV

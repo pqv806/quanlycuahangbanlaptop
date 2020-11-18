@@ -7,13 +7,10 @@ package QLLT.DAO;
 
 import Ketnoi.KetNoi;
 import QLLT.classs.QLNV;
-import java.sql.PreparedStatement;
+import QLLT.classs.QLTK;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Vector;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,16 +18,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author vinh
  */
-
-public class DAO_NV {
-  
-
-     public static void dolentable(JTable tblNV, long trang) {
+public class DAO_TK {
+    
+     public static void dolentable(JTable tbltk, long trang) {
         try {
             String sql = "SELECT TOP 5 *\n"
-                    + "FROM dbo.nhanvien \n"
-                    + "WHERE manv NOT IN (SELECT TOP " + (trang * 5 - 5) + " manv FROM dbo.nhanvien)";
-            DefaultTableModel model = (DefaultTableModel) tblNV.getModel();
+                    + "FROM dbo.taikhoan \n"
+                    + "WHERE manv NOT IN (SELECT TOP " + (trang * 5 - 5) + " manv FROM dbo.taikhoan)";
+            DefaultTableModel model = (DefaultTableModel) tbltk.getModel();
             ResultSet rs = KetNoi.Select(sql);
             Vector v = null;
             model.setRowCount(0);
@@ -40,27 +35,24 @@ public class DAO_NV {
                 v.add(rs.getString(2));
                 v.add(rs.getString(3));
                 v.add(rs.getString(4));
-                v.add(rs.getString(5));
-                v.add(rs.getString(6));
+               
                 model.addRow(v);
                
             }
-            tblNV.setModel(model);
+            tbltk.setModel(model);
         } catch (Exception e) {
         }
     }
 
    
      
-     public static void Insert(QLNV n) {
+     public static void Insert(QLTK n) {
         try {
-            String sql = "insert into nhanvien(manv,tennv,ngaysinh,diachi,sdt,trangthai ) \n"
-                    + "values(N'" + n.getManv()+ "'"
-                    + ",N'" + n.getTennv()+ "'"
-                    + ",'" + n.getNgaysinh()+ "'"
-                    + ",N'" + n.getDiachi()+ "'"
-                    + ",'" + n.getSdt()+ "'"
-                    + ",N'" + n.getTrangthai()+ "')";
+            String sql = "insert into taikhoan(tentaikhoan,matkhau,manv,maquyen) \n"
+                    + "values(N'" + n.getTentk()+ "'"
+                    + ",N'" + n.getMk()+ "'"
+                    + ",'" + n.getManv()+ "'"
+                    + ",N'" + n.getMaquyen()+ "')";
 
             if (Ketnoi.KetNoi.Update(sql) > 0) {
                 System.out.println("Thêm mới thành công");
@@ -71,9 +63,9 @@ public class DAO_NV {
         } catch (Exception e) {
         }
     }
-     public static void Delete(QLNV n) {
+     public static void Delete(QLTK n) {
         try {
-            String sql = "delete from nhanvien\n"
+            String sql = "delete from taikhoan\n"
                     + "where manv = N'" + n.getManv()+ "'";
 
             if (Ketnoi.KetNoi.Update(sql) > 0) {
@@ -86,16 +78,15 @@ public class DAO_NV {
         }
     }
 
-    public static void update(QLNV n) {
+    public static void update(QLTK n) {
         try {
-            String sql = "update nhanvien\n"
-                    + "set tennv = N'"+n.getTennv()+"'"
-                    + ",ngaysinh = '"+n.getNgaysinh()+"'"
+            String sql = "update taikhoan\n"
+                    + "set tentaikhoan = N'"+n.getTentk()+"'"
+                    + ",matkhau = '"+n.getMk()+"'"
                  
-                    + ",diachi=N'"+n.getDiachi()+"'"
+                    + ",maquyen=N'"+n.getMaquyen()+"'"
                   
-                    + ",sdt =N'"+n.getSdt()+"'"
-                    + ",trangthai=N'"+n.getTrangthai()+"'"
+                    
                     + "where manv = '"+n.getManv()+"'";
             if (Ketnoi.KetNoi.Update(sql) > 0) {
                 System.out.println("Cập nhật thành công");
@@ -106,13 +97,13 @@ public class DAO_NV {
         } catch (Exception e) {
         }
     }
-  public static  void TimKiemKhachHang(QLNV n,JTable tblNV) throws SQLException {
+  public static  void TimKiemnhanvien(QLTK n,JTable tbltk) throws SQLException {
         String sql = "";
 
-        sql = "select * from nhanvien\n"
-                    + "where tennv like N'%" + n.getTim()+ "%'";
+        sql = "select * from taikhoan\n"
+                    + "where tentaikhoan like N'%" + n.getTim()+ "%'";
         ResultSet rs = KetNoi.Select(sql);
-           DefaultTableModel model = (DefaultTableModel) tblNV.getModel();
+           DefaultTableModel model = (DefaultTableModel) tbltk.getModel();
         Vector v = null;
             model.setRowCount(0);
             while (rs.next()) {
@@ -121,19 +112,9 @@ public class DAO_NV {
                 v.add(rs.getString(2));
                 v.add(rs.getString(3));
                 v.add(rs.getString(4));
-                v.add(rs.getString(5));
-                
-
-                v.add(rs.getString(6));
+            
                 model.addRow(v);
             }
-            tblNV.setModel(model);
+            tbltk.setModel(model);
         }
- 
-  
-    }
-        
-    
-   
-    
-
+}

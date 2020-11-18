@@ -37,7 +37,7 @@ public class trangchinh extends javax.swing.JFrame {
         listItem.add(new danhmuc("khách hàng", jpnkhachhang, jlpkhachhang));
         listItem.add(new danhmuc("NCC", jpnNCC, jlpNCC));
         listItem.add(new danhmuc("tài khoản", jpnTK, jlpTK));
-        listItem.add(new danhmuc("quyền", jpnquyen, jlpquyen));
+  
         listItem.add(new danhmuc("thống kê", jpnthongke, jlpthongke));
            listItem.add(new danhmuc("bảo hành", jpnbaohanh, jlpbaohanh));
         
@@ -80,8 +80,6 @@ public class trangchinh extends javax.swing.JFrame {
         jlpNCC = new javax.swing.JLabel();
         jpnTK = new javax.swing.JPanel();
         jlpTK = new javax.swing.JLabel();
-        jpnquyen = new javax.swing.JPanel();
-        jlpquyen = new javax.swing.JLabel();
         jpnthongke = new javax.swing.JPanel();
         jlpthongke = new javax.swing.JLabel();
         jpnbaohanh = new javax.swing.JPanel();
@@ -368,25 +366,6 @@ public class trangchinh extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jpnquyen.setBackground(new java.awt.Color(0, 153, 51));
-
-        jlpquyen.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlpquyen.setForeground(new java.awt.Color(255, 255, 255));
-        jlpquyen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlpquyen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Clien list.png"))); // NOI18N
-        jlpquyen.setText("Phân Quyền");
-
-        javax.swing.GroupLayout jpnquyenLayout = new javax.swing.GroupLayout(jpnquyen);
-        jpnquyen.setLayout(jpnquyenLayout);
-        jpnquyenLayout.setHorizontalGroup(
-            jpnquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlpquyen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jpnquyenLayout.setVerticalGroup(
-            jpnquyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlpquyen, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-        );
-
         jpnthongke.setBackground(new java.awt.Color(0, 153, 51));
 
         jlpthongke.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -475,7 +454,6 @@ public class trangchinh extends javax.swing.JFrame {
                     .addComponent(jpnnhanvien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnkhachhang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnTK, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpnquyen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnthongke, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnbaohanh, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpnbaohanh1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -506,14 +484,12 @@ public class trangchinh extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpnTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnquyen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpnthongke, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpnbaohanh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jpnbaohanh1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
+                .addContainerGap())
         );
 
         jScrollPane1.setViewportView(jpnmenu);
@@ -570,7 +546,6 @@ public class trangchinh extends javax.swing.JFrame {
     private javax.swing.JLabel jlpnhanvien;
     private javax.swing.JLabel jlpnhaphang;
     private javax.swing.JLabel jlpphieunhap;
-    private javax.swing.JLabel jlpquyen;
     private javax.swing.JLabel jlpsanpham;
     private javax.swing.JLabel jlpthongke;
     private javax.swing.JPanel jpnNCC;
@@ -586,7 +561,6 @@ public class trangchinh extends javax.swing.JFrame {
     private javax.swing.JPanel jpnnhaphang;
     private javax.swing.JPanel jpnnhom5;
     private javax.swing.JPanel jpnphieunhap;
-    private javax.swing.JPanel jpnquyen;
     private javax.swing.JPanel jpnroot;
     private javax.swing.JPanel jpnsanpham;
     private javax.swing.JPanel jpnthongke;

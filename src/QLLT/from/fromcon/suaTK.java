@@ -5,6 +5,9 @@
  */
 package QLLT.from.fromcon;
 
+import Ketnoi.KetNoi;
+import QLLT.DAO.DAO_TK;
+import QLLT.classs.QLTK;
 import QLLT.from.taikhoan;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,16 +18,19 @@ import javax.swing.JOptionPane;
  * @author vinh
  */
 public class suaTK extends javax.swing.JInternalFrame {
- Connection cn;
+
+    Ketnoi.KetNoi cn = new KetNoi();
+    QLTK n = new QLTK();
+
     /**
      * Creates new form suaTK
      */
     public suaTK() {
         initComponents();
         this.txttk.setText(taikhoan.ten);
-         this.txtmk.setText(taikhoan.mk);
-          this.txtmnv.setText(taikhoan.manv);
-           this.txtq.setText(taikhoan.mq);
+        this.txtmk.setText(taikhoan.mk);
+        this.txtmnv.setText(taikhoan.manv);
+        this.txtq.setText(taikhoan.mq);
     }
 
     /**
@@ -52,6 +58,7 @@ public class suaTK extends javax.swing.JInternalFrame {
         txttk.setEditable(false);
         txttk.setBorder(javax.swing.BorderFactory.createTitledBorder("tên tài khoản"));
 
+        txtmnv.setEditable(false);
         txtmnv.setBorder(javax.swing.BorderFactory.createTitledBorder("mã nhân viên"));
 
         txtmk.setBorder(javax.swing.BorderFactory.createTitledBorder("mật khẩu"));
@@ -134,27 +141,10 @@ public class suaTK extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-//         try {
-//            cn = helper.hepper.ketnoi("qllaptop4");
-//            String sql = "UPDATE dbo.taikhoan SET matkhau=?,manv=?,maquyen=?\n" +
-//"WHERE tentaikhoan LIKE ?";
-//            PreparedStatement pst = cn.prepareStatement(sql);
-//
-//            pst.setString(4, txttk.getText().trim());
-//            pst.setString(1, txtmk.getText().trim());
-//            pst.setString(3, txtq.getText().trim());
-//            pst.setString(2, txtmnv.getText().trim());
-//            pst.executeUpdate();
-//            JOptionPane.showMessageDialog(this, "đã sửa");
-//               
-//           
-//            dispose();
-//            pst.close();
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, e);
-//        }
+        themDL();
+        DAO_TK.update(n);
+        JOptionPane.showMessageDialog(this, "đã sửa");
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -180,5 +170,13 @@ public class suaTK extends javax.swing.JInternalFrame {
         txtmnv.setText("");
         txtq.setText("");
         txttk.setText("");
+    }
+
+    public void themDL() {
+        n.setManv(txtmnv.getText().trim());
+        n.setMaquyen(txtq.getText().trim());
+        n.setTentk(txttk.getText().trim());
+        n.setMk(txtmk.getText().trim());
+
     }
 }

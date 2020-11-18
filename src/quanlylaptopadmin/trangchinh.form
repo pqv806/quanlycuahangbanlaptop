@@ -91,7 +91,6 @@
                               <Component id="jpnnhanvien" alignment="0" max="32767" attributes="0"/>
                               <Component id="jpnkhachhang" alignment="0" max="32767" attributes="0"/>
                               <Component id="jpnTK" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jpnquyen" alignment="0" max="32767" attributes="0"/>
                               <Component id="jpnthongke" alignment="0" max="32767" attributes="0"/>
                               <Component id="jpnbaohanh" alignment="0" max="32767" attributes="0"/>
                               <Component id="jpnbaohanh1" alignment="1" max="32767" attributes="0"/>
@@ -125,14 +124,12 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jpnTK" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jpnquyen" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jpnthongke" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jpnbaohanh" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jpnbaohanh1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -616,43 +613,6 @@
                           <Image iconType="3" name="/icon/icons8_key_30px.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="t&#xe0;i kho&#x1ea3;n"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Container class="javax.swing.JPanel" name="jpnquyen">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="99" red="0" type="rgb"/>
-                    </Property>
-                  </Properties>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jlpquyen" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jlpquyen" alignment="0" pref="58" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jlpquyen">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Arial" size="18" style="1"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/icon/Clien list.png"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Ph&#xe2;n Quy&#x1ec1;n"/>
                       </Properties>
                     </Component>
                   </SubComponents>
