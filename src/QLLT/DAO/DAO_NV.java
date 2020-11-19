@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author vinh
+ * @author vinh abc
  */
 
 public class DAO_NV {
