@@ -6,7 +6,6 @@
 package QLLT.DAO;
 
 import Ketnoi.KetNoi;
-import Ketnoi.MD5;
 import QLLT.classs.QLNV;
 import QLLT.classs.QLTK;
 import java.sql.ResultSet;

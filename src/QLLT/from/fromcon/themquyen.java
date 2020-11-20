@@ -7,11 +7,13 @@ package QLLT.from.fromcon;
 
 import Ketnoi.KetNoi;
 import QLLT.DAO.DAO_Quyen;
+import QLLT.DAO.nextid;
 import QLLT.classs.QLquyen;
 import QLLT.from.quyen;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,11 +23,18 @@ import javax.swing.JOptionPane;
 public class themquyen extends javax.swing.JInternalFrame {
     Ketnoi.KetNoi cn= new KetNoi();
     QLquyen n=new QLquyen();
+    nextid id=new nextid();
+    String ma;
     /**
      * Creates new form themquyen
      */
     public themquyen() {
         initComponents();
+       id.layid();
+     
+         txtq.setText(id.maphanquyen());
+        
+        
     }
 
     /**
@@ -158,4 +167,21 @@ public class themquyen extends javax.swing.JInternalFrame {
         n.setTen(txttk.getText());
         n.setChitietq(txtchitiet.getText());
     }
+//   public void layid()
+//    {
+//         try {
+//            String sql = "SELECT NEXT VALUE FOR manext;";
+//          
+//            ResultSet rs = KetNoi.Select(sql);
+//     
+//        
+//            while (rs.next()) {
+//                ma=rs.getString(1);  
+//            }
+//     
+//        } catch (Exception e) {
+//        }
+//        
+//        
+//    }
 }

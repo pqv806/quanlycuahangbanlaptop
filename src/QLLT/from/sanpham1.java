@@ -654,6 +654,7 @@ public class sanpham1 extends javax.swing.JPanel {
         System.out.println("kết nối thành công");
        // jButton8.setEnabled(false);
         //loaddatatablephieunhap();
+       
     }//GEN-LAST:event_jPanel3ComponentShown
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
