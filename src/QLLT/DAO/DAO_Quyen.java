@@ -42,6 +42,7 @@ public class DAO_Quyen {
             tblquyen.setModel(model);
         } catch (Exception e) {
         }
+       
     }
 
    
@@ -60,7 +61,7 @@ public class DAO_Quyen {
             }
 
         } catch (Exception ex) {
-          }
+        }
     }
      public static void Delete(QLquyen n) {
         try {
@@ -76,6 +77,7 @@ public class DAO_Quyen {
 
         } catch (Exception e) {
         }
+        
     }
 
     public static void update(QLquyen n) {
@@ -96,6 +98,7 @@ public class DAO_Quyen {
 
         } catch (Exception e) {
         }
+        
     }
   public static  void TimKienquyen(QLquyen n,JTable tblquyen) throws SQLException {
         String sql = "";

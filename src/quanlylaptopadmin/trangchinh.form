@@ -605,7 +605,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/icon/icons8_support_30px.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="b&#x1ea3;o h&#xe0;nh"/>
+                        <Property name="text" type="java.lang.String" value="&#x110;&#x1ed5;i Tr&#x1ea3;"/>
                       </Properties>
                     </Component>
                   </SubComponents>

@@ -105,7 +105,7 @@ public class chuyenmanhinh {
                             node = new phieunhap();
                             break;
                              case "nhân viên":
-                            node = new QLLT.from.nhanvien();
+                        node = new QLLT.from.nhanvien();
                             break;
                              case "khách hàng":
                             node = new khachhang();

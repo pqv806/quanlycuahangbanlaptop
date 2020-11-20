@@ -340,7 +340,7 @@ public class trangchinh extends javax.swing.JFrame {
         jlpbaohanh.setForeground(new java.awt.Color(255, 255, 255));
         jlpbaohanh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlpbaohanh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_support_30px.png"))); // NOI18N
-        jlpbaohanh.setText("bảo hành");
+        jlpbaohanh.setText("Đổi Trả");
 
         javax.swing.GroupLayout jpnbaohanhLayout = new javax.swing.GroupLayout(jpnbaohanh);
         jpnbaohanh.setLayout(jpnbaohanhLayout);

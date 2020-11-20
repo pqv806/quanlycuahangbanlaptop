@@ -5,6 +5,10 @@
  */
 package QLLT.from.fromcon;
 
+import Ketnoi.KetNoi;
+import QLLT.DAO.DAO_NCC;
+import QLLT.DAO.nextid;
+import QLLT.classs.QLNCC;
 import QLLT.from.nhacungcap;
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -16,12 +20,16 @@ import javax.swing.JOptionPane;
  * @author vinh
  */
 public class themNCC extends javax.swing.JInternalFrame {
-   Connection cn;
+ Ketnoi.KetNoi cn= new KetNoi();
+    QLNCC n= new QLNCC();
+    nextid id=new nextid();
     /**
      * Creates new form themNCC
      */
     public themNCC() {
         initComponents();
+        id.layid();
+        txtmancc.setText(id.mancc());
     }
 
     /**
@@ -45,6 +53,7 @@ public class themNCC extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("thêm NCC");
 
+        txtmancc.setEditable(false);
         txtmancc.setBorder(javax.swing.BorderFactory.createTitledBorder("mã NCC"));
         txtmancc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,37 +185,10 @@ public class themNCC extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try {
-        //    cn = helper.hepper.ketnoi("qllaptop4");
-            String sql = "INSERT INTO dbo.nhacungcap\n"
-                    + "        ( mancc, tenncc, diachi, sdt, fax  )\n"
-                    + "VALUES  ( ?,?,?,?,?\n"
-                    + "          )\n"
-                    + "      ";
-            try (PreparedStatement pst = cn.prepareStatement(sql)) {
-                pst.setString(1, txtmancc.getText().trim());
-                pst.setString(2, txttenncc.getText().trim());
-                pst.setString(3, txtdiachi.getText().trim());
-                pst.setString(4, txtdienthoai.getText().trim());
-
-                pst.setString(5, txtfax.getText().trim());
-               
-                int ck = pst.executeUpdate();
-
-                pst.close();
-
-                if (ck > 0) {
-
-                    JOptionPane.showMessageDialog(this, "đã lưu");
-                    this.clear();
-                       dispose();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e);
-            }
-        } catch (HeadlessException e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
+       laydl();
+        DAO_NCC.Insert(n);
+        dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -240,5 +222,13 @@ public class themNCC extends javax.swing.JInternalFrame {
         txtmancc.setText("");
         txttenncc.setText("");
                 
+    }
+    public  void laydl()
+    {
+        n.setDiachi(txtdiachi.getText());
+        n.setFax(txtfax.getText());
+        n.setMancc(txtmancc.getText());
+        n.setSdt(txtdienthoai.getText());
+        n.setTenncc(txttenncc.getText());
     }
 }

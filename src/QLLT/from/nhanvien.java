@@ -51,7 +51,9 @@ Ketnoi.KetNoi cn = new KetNoi();
          lblsotrang.setText("1/"+sotrang);
         jButton3.setEnabled(false);
         jButton1.setEnabled(false);
-       
+     
+          
+        
        
 
     }
@@ -321,10 +323,10 @@ Ketnoi.KetNoi cn = new KetNoi();
        else
        {
            try {
-           DAO_NV.TimKiemKhachHang(n, tblnhanvien);
-       } catch (SQLException ex) {
-           Logger.getLogger(nhanvien.class.getName()).log(Level.SEVERE, null, ex);
-       }
+               DAO_NV.TimKiemKhachHang(n, tblnhanvien);
+           } catch (SQLException ex) {
+               Logger.getLogger(nhanvien.class.getName()).log(Level.SEVERE, null, ex);
+           }
        }
        
        

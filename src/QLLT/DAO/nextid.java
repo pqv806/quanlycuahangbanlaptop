@@ -52,4 +52,9 @@ String ma;
         return "Q" + String.valueOf(this.ma);
     }
     
+     public String mancc()
+    {
+        return "NCC" + String.valueOf(this.ma);
+    }
+    
 }

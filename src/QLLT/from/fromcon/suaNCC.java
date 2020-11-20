@@ -5,6 +5,8 @@
  */
 package QLLT.from.fromcon;
 
+import QLLT.DAO.DAO_NCC;
+import QLLT.classs.QLNCC;
 import QLLT.from.nhacungcap;
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -16,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author vinh
  */
 public class suaNCC extends javax.swing.JInternalFrame {
-   Connection cn;
+    QLNCC n= new QLNCC();
     /**
      * Creates new form suaNCC
      */
@@ -182,30 +184,9 @@ public class suaNCC extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtdienthoaiActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-//         try {
-//                cn = helper.hepper.ketnoi("qllaptop4");
-//                String sql = "UPDATE dbo.nhacungcap\n" +
-//"SET tenncc=?,diachi=?,sdt=?,fax=?\n" +
-//"WHERE mancc LIKE ?";
-//                PreparedStatement pst = cn.prepareStatement(sql);
-//
-//                pst.setString(1, txttenncc.getText().trim());
-//                pst.setString(2, txtdiachi.getText().trim());
-//                pst.setString(3, txtdienthoai.getText().trim());
-//              
-//                pst.setString(4, txtfax.getText().trim());
-//                pst.setString(5, txtmancc.getText().trim());
-//             
-//JOptionPane.showMessageDialog(this, "đã sửa");
-//   dispose();
-//                pst.executeUpdate();
-//                pst.close();
-//            
-//              
-//            } catch (Exception e) {
-//                JOptionPane.showMessageDialog(this, e);
-//            }
+       laydl();
+        DAO_NCC.update(n);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -239,5 +220,13 @@ public class suaNCC extends javax.swing.JInternalFrame {
         txtmancc.setText("");
         txttenncc.setText("");
 
+    }
+     public  void laydl()
+    {
+        n.setDiachi(txtdiachi.getText());
+        n.setFax(txtfax.getText());
+        n.setMancc(txtmancc.getText());
+        n.setSdt(txtdienthoai.getText());
+        n.setTenncc(txttenncc.getText());
     }
 }

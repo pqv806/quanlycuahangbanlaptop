@@ -9,7 +9,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,7 +23,7 @@ public class KetNoi {
     private static String name = "sa";
     private static String password = "Anh123456";
     public static Connection cn ;
-    
+    public  static Statement stm;
      public KetNoi() {
         try {
 
@@ -34,20 +37,23 @@ public class KetNoi {
     }
       public static ResultSet Select(String sql) {
         try {
-            Statement stm = cn.createStatement();
+             stm = cn.createStatement();
             //Thực thi truy vấn 
             ResultSet rs = stm.executeQuery(sql);
             return rs;
+            
         } catch (Exception e) {
             System.out.println("lỗi kết nối csdl");
             System.out.println(e);
             return null;
         }
+        
+       
     }
 
     public static int  Update(String sql) {
         try {
-            Statement stm = cn.createStatement();
+             stm = cn.createStatement();
             return stm.executeUpdate(sql);
         } catch (Exception e) {
             System.out.println("Lỗi kết nối update");
@@ -64,5 +70,19 @@ public class KetNoi {
           e.printStackTrace();
             return -1;
         }
+    }
+       
+       
+        public static void closeConnect() {
+        try {
+            if (cn != null) {
+                cn.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            System.out.println("Success! Đóng kết nối ");
+        } catch (SQLException ex) {
+       }
     }
 }

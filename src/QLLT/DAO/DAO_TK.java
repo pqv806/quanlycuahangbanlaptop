@@ -44,6 +44,8 @@ public class DAO_TK {
             tbltk.setModel(model);
         } catch (Exception e) {
         }
+       
+        
     }
 
    
@@ -62,8 +64,9 @@ public class DAO_TK {
             }
 
         } catch (Exception ex) {
-          }
+          
     }
+     }
      public static void Delete(QLTK n) {
         try {
             String sql = "delete from taikhoan\n"
@@ -77,6 +80,7 @@ public class DAO_TK {
 
         } catch (Exception e) {
         }
+       
     }
 
     public static void update(QLTK n) {
@@ -97,6 +101,7 @@ public class DAO_TK {
 
         } catch (Exception e) {
         }
+      
     }
   public static  void TimKiemnhanvien(QLTK n,JTable tbltk) throws SQLException {
         String sql = "";

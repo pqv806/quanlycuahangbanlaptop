@@ -6,6 +6,7 @@
 package QLLT.DAO;
 
 import Ketnoi.KetNoi;
+import static Ketnoi.KetNoi.cn;
 import QLLT.classs.QLNV;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +30,7 @@ public class DAO_NV {
 
      public static void dolentable(JTable tblNV, long trang) {
         try {
+          
             String sql = "SELECT TOP 5 *\n"
                     + "FROM dbo.nhanvien \n"
                     + "WHERE manv NOT IN (SELECT TOP " + (trang * 5 - 5) + " manv FROM dbo.nhanvien)";
@@ -43,12 +47,13 @@ public class DAO_NV {
                 v.add(rs.getString(5));
                 v.add(rs.getString(6));
                 model.addRow(v);
-               
+
             }
             tblNV.setModel(model);
         } catch (Exception e) {
         }
-    }
+       
+     }
 
    
      
@@ -70,6 +75,8 @@ public class DAO_NV {
 
         } catch (Exception e) {
         }
+       
+        
     }
      public static void Delete(QLNV n) {
         try {
@@ -84,6 +91,7 @@ public class DAO_NV {
 
         } catch (Exception e) {
         }
+        
     }
 
     public static void update(QLNV n) {
@@ -105,6 +113,7 @@ public class DAO_NV {
 
         } catch (Exception e) {
         }
+        
     }
   public static  void TimKiemKhachHang(QLNV n,JTable tblNV) throws SQLException {
         String sql = "";
@@ -121,9 +130,7 @@ public class DAO_NV {
                 v.add(rs.getString(2));
                 v.add(rs.getString(3));
                 v.add(rs.getString(4));
-                v.add(rs.getString(5));
-                
-
+                v.add(rs.getString(5));              
                 v.add(rs.getString(6));
                 model.addRow(v);
             }
