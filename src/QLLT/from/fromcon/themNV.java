@@ -7,6 +7,7 @@ package QLLT.from.fromcon;
 
 import Ketnoi.KetNoi;
 import QLLT.DAO.DAO_NV;
+import QLLT.DAO.nextid;
 import QLLT.classs.QLNV;
 import QLLT.from.nhanvien;
 import java.awt.HeadlessException;
@@ -22,16 +23,17 @@ import javax.swing.JOptionPane;
 public class themNV extends javax.swing.JInternalFrame {
     Ketnoi.KetNoi cn= new KetNoi();
     QLNV n= new QLNV();
-    long count;
+    nextid id= new nextid();
+   
     /**
      * Creates new form themNV
      */
     public themNV() {
         initComponents();
-        laysodong();
-        String ma="NV"+String.valueOf(count+1);
+       id.layid();
+      
         
-        txtmaNV.setText(ma);
+        txtmaNV.setText(id.manv());
         
         
     }
@@ -240,15 +242,5 @@ public class themNV extends javax.swing.JInternalFrame {
         n.setTrangthai(txttrangthai1.getText().trim());
         
     }
-     public void laysodong() {
-        try {
-             String sql = "SELECT COUNT(*) FROM dbo.nhanvien";
-            ResultSet rs=KetNoi.Select(sql);
-            while (rs.next()) {
-              count=rs.getLong(1);
-            }
-            
-        } catch (Exception e) {
-        }
-    }
+     
 }
