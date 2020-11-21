@@ -6,6 +6,8 @@
 package QLLT.from.fromcon;
 
 import Ketnoi.KetNoi;
+import QLLT.DAO.DAo_KH;
+import QLLT.classs.QLKH;
 import QLLT.from.khachhang;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,6 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class suaKH extends javax.swing.JInternalFrame {
     Ketnoi.KetNoi cn= new KetNoi();
+    QLKH n=new QLKH();
     /**
      * Creates new form suaKH
      */
@@ -177,29 +180,9 @@ public class suaKH extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-//       try {
-//             
-//                String sql = "UPDATE dbo.khachhang SET tenkh = ?,diachi = ?,SDT = ?,trangthai = ?\n" +
-//"WHERE makh = ?";
-//                PreparedStatement pst = cn.prepareStatement(sql);
-//
-//                pst.setString(1, txttenKH.getText().trim());
-//                pst.setString(2, txtdiachi.getText().trim());
-//                pst.setString(3, txtSDT.getText().trim());
-//              
-//                pst.setString(4, txttrangthai.getText().trim());
-//                pst.setString(5, txtmaKH.getText().trim());
-//         JOptionPane.showMessageDialog(this, "đã sửa");
-//         this.clear();
-//   dispose();
-//                pst.executeUpdate();
-//                pst.close();
-//            
-//              
-//            } catch (Exception e) {
-//                JOptionPane.showMessageDialog(this, e);
-//            }
+        laydl();
+        DAo_KH.update(n);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -226,5 +209,13 @@ public class suaKH extends javax.swing.JInternalFrame {
         txtdiachi.setText("");
         txttrangthai.setText("");
        
+    }
+    public void laydl()
+    {
+        n.setDiachi(txtdiachi.getText());
+        n.setMakh(txtmaKH.getText());
+        n.setSdt(txtSDT.getText());
+        n.setTenkh(txttenKH.getText());
+        n.setTrangthai(txttrangthai.getText());
     }
 }

@@ -5,6 +5,9 @@
  */
 package QLLT.from.fromcon;
 
+import QLLT.DAO.DAo_KH;
+import QLLT.DAO.nextid;
+import QLLT.classs.QLKH;
 import QLLT.from.khachhang;
 import QLLT.from.sanpham;
 import java.awt.HeadlessException;
@@ -18,13 +21,17 @@ import javax.swing.JOptionPane;
  */
 public class themkh1 extends javax.swing.JInternalFrame {
 
-    Connection cn;
+    QLKH n=new QLKH();
+    nextid id=new nextid();
 
     /**
      * Creates new form themkh1
      */
     public themkh1() {
         initComponents();
+        id.layid();
+        txtmaKH.setText(id.maKH());
+        
     }
 
     /**
@@ -86,6 +93,8 @@ public class themkh1 extends javax.swing.JInternalFrame {
         });
 
         jLabel7.setText("địa chỉ");
+
+        txtmaKH.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,36 +170,10 @@ public class themkh1 extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try {
-     //       cn = helper.hepper.ketnoi("qllaptop4");
-            String sql = "INSERT INTO dbo.khachhang\n"
-                    + "        ( makh, tenkh, diachi, sdt, trangthai )\n"
-                    + "VALUES  ( ?,?,?,?,?\n"
-                    + "          )";
-            try (PreparedStatement pst = cn.prepareStatement(sql)) {
-                pst.setString(1, txtmaKH.getText().trim());
-                pst.setString(2, txttenKH.getText().trim());
-                pst.setString(3, txtdiachi.getText().trim());
-                pst.setString(4, txtSDT.getText().trim());
-
-                pst.setString(5, txttrangthai.getText().trim());
-
-                int ck = pst.executeUpdate();
-
-                pst.close();
-
-                if (ck > 0) {
-
-                    JOptionPane.showMessageDialog(this, "đã lưu");
-  this.clear();
-  dispose();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e);
-            }
-        } catch (HeadlessException e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
+       laydl();
+        DAo_KH.Insert(n);
+       
+        dispose();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -232,5 +215,13 @@ khachhang kh = new khachhang();
         txtdiachi.setText("");
         txttrangthai.setText("");
        
+    }
+      public void laydl()
+    {
+        n.setDiachi(txtdiachi.getText());
+        n.setMakh(txtmaKH.getText());
+        n.setSdt(txtSDT.getText());
+        n.setTenkh(txttenKH.getText());
+        n.setTrangthai(txttrangthai.getText());
     }
 }

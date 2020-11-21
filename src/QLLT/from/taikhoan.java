@@ -739,7 +739,7 @@ public class taikhoan extends javax.swing.JPanel {
 
     public void laysodong() {
         try {
-            String sql = "SELECT COUNT(*) FROM dbo.nhanvien";
+            String sql = "SELECT COUNT(*) FROM dbo.taikhoan";
             ResultSet rs = KetNoi.Select(sql);
             while (rs.next()) {
                 count = rs.getLong(1);

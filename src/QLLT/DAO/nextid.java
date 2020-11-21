@@ -56,5 +56,9 @@ String ma;
     {
         return "NCC" + String.valueOf(this.ma);
     }
+      public String maKH()
+    {
+        return "MaKH" + String.valueOf(this.ma);
+    }
     
 }

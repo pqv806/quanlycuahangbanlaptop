@@ -33,7 +33,7 @@ public class suaNV extends javax.swing.JInternalFrame {
         this.txtngaysinh.setText(nhanvien.ngayinh);
         this.txtsdt.setText(nhanvien.sdt);
         this.txttenNV.setText(nhanvien.ten);
-        this.txttrangthai1.setText(nhanvien.trangthai);
+        this.cbo.setSelectedItem(nhanvien.trangthai);
     }
 
     /**
@@ -47,7 +47,6 @@ public class suaNV extends javax.swing.JInternalFrame {
 
         jLabel9 = new javax.swing.JLabel();
         txttenNV = new javax.swing.JTextField();
-        txttrangthai1 = new javax.swing.JTextField();
         txtngaysinh = new javax.swing.JTextField();
         txtdiachi = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -60,6 +59,7 @@ public class suaNV extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         txtmaNV = new javax.swing.JTextField();
+        cbo = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setTitle("sửa nhân viên");
@@ -102,6 +102,8 @@ public class suaNV extends javax.swing.JInternalFrame {
 
         txtmaNV.setEditable(false);
 
+        cbo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "hiện", "ẩn" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,9 +121,12 @@ public class suaNV extends javax.swing.JInternalFrame {
                             .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(91, 91, 91)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel8))
-                        .addContainerGap(245, Short.MAX_VALUE))
+                        .addContainerGap(149, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -143,8 +148,7 @@ public class suaNV extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtngaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txttrangthai1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtngaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -162,15 +166,15 @@ public class suaNV extends javax.swing.JInternalFrame {
                     .addComponent(txttenNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(txtsdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel9)
-                        .addComponent(txttrangthai1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
                         .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,6 +207,7 @@ public class suaNV extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -217,7 +222,6 @@ public class suaNV extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtngaysinh;
     private javax.swing.JTextField txtsdt;
     private javax.swing.JTextField txttenNV;
-    private javax.swing.JTextField txttrangthai1;
     // End of variables declaration//GEN-END:variables
 
     private void clear() {
@@ -225,7 +229,7 @@ public class suaNV extends javax.swing.JInternalFrame {
         txttenNV.setText("");
         txtsdt.setText("");
         txtdiachi.setText("");
-        txttrangthai1.setText("");
+        cbo.setSelectedItem("hiện");
     }
     public  void laydl()
     {
@@ -234,6 +238,6 @@ public class suaNV extends javax.swing.JInternalFrame {
         n.setNgaysinh(txtngaysinh.getText().trim());
         n.setSdt(txtsdt.getText().trim());
         n.setTennv(txttenNV.getText().trim());
-        n.setTrangthai(txttrangthai1.getText().trim());
+        n.setTrangthai(cbo.getSelectedItem().toString());
     }
 }

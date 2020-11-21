@@ -5,13 +5,19 @@
  */
 package QLLT.from;
 
+import Ketnoi.KetNoi;
+import QLLT.DAO.DAo_KH;
+import QLLT.classs.QLKH;
 import QLLT.from.fromcon.suaKH;
 import QLLT.from.fromcon.themkh1;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,8 +27,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class khachhang extends javax.swing.JPanel {
 
-    Connection cn;
-    DefaultTableModel model;
+Ketnoi.KetNoi cn= new KetNoi();
+    QLKH n= new QLKH();
     public static String makh,ten,diachi,sdt,trangthai;
 
     /**
@@ -30,15 +36,10 @@ public class khachhang extends javax.swing.JPanel {
      */
     public khachhang() {
         initComponents();
-        String heder[] = {"Mã KH", "tên KH", "địa chỉ", "SDT", "trạng thái",};
-        String data[][] = null;
-        model = new DefaultTableModel(data, heder);
-        table.setModel(model);
-       // cn = helper.hepper.ketnoi("qllaptop4");
-        System.out.println("kết nối thành công");
+        DAo_KH.dolentable(tblkh, 1);
         jButton1.setEnabled(false);
         jButton3.setEnabled(false);
-        loaddatatable();
+
     }
 
     /**
@@ -52,34 +53,34 @@ public class khachhang extends javax.swing.JPanel {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        tblkh = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         bltthem = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txttim = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
         jDesktopPane1.setBackground(new java.awt.Color(240, 240, 240));
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        tblkh.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "makh", "tenkh", "địa chỉ", "sdt", "trang thai"
             }
         ));
-        table.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblkh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableMouseClicked(evt);
+                tblkhMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(table);
+        jScrollPane1.setViewportView(tblkh);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Edit.png"))); // NOI18N
         jButton3.setText("sửa");
@@ -105,21 +106,34 @@ public class khachhang extends javax.swing.JPanel {
             }
         });
 
-        jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder("tìm kiếm"));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txttim.setBorder(javax.swing.BorderFactory.createTitledBorder("tìm kiếm"));
+        txttim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txttimActionPerformed(evt);
+            }
+        });
+        txttim.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txttimKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txttimKeyReleased(evt);
             }
         });
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_replay_30px.png"))); // NOI18N
         jButton7.setText("làm mới");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(bltthem, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(txttim, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
@@ -131,7 +145,7 @@ public class khachhang extends javax.swing.JPanel {
                 .addGap(43, 43, 43)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton7))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -153,7 +167,7 @@ public class khachhang extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
@@ -164,32 +178,9 @@ public class khachhang extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try {
-
-//            cn = helper.hepper.ketnoi("qllaptop4");
-
-            String sql = "DELETE dbo.khachhang \n"
-                    + "WHERE makh LIKE ?";
-
-            PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setString(1, table.getValueAt(table.getSelectedRow(), 0).toString());
-
-            int hoi = JOptionPane.showConfirmDialog(this, "xóa khách hàng");
-            if (hoi == JOptionPane.YES_OPTION) {
-
-                pst.executeUpdate();
-
-                JOptionPane.showMessageDialog(this, "xóa thành công");
-                model.setRowCount(0);
-                loaddatatable();
-
-            } else {
-                JOptionPane.showMessageDialog(this, "chưa xóa");
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "lỗi xóa sp");
-        }
+        laydl();
+        DAo_KH.Delete(n);
+         DAo_KH.dolentable(tblkh, 1);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bltthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bltthemActionPerformed
@@ -200,9 +191,9 @@ public class khachhang extends javax.swing.JPanel {
 
     }//GEN-LAST:event_bltthemActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txttimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttimActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txttimActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -211,19 +202,39 @@ public class khachhang extends javax.swing.JPanel {
         skh.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+    private void tblkhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblkhMouseClicked
         // TODO add your handling code here:
-          int row = table.getSelectedRow();
+          int row = tblkh.getSelectedRow();
 
-        makh=table.getValueAt(row, 0).toString();
-        ten=table.getValueAt(row, 1).toString();
-        diachi=table.getValueAt(row, 2).toString();
-        sdt=table.getValueAt(row, 3).toString();
-        trangthai=table.getValueAt(row, 4).toString();
+        makh=tblkh.getValueAt(row, 0).toString();
+        ten=tblkh.getValueAt(row, 1).toString();
+        diachi=tblkh.getValueAt(row, 2).toString();
+        sdt=tblkh.getValueAt(row, 3).toString();
+        trangthai=tblkh.getValueAt(row, 4).toString();
           jButton1.setEnabled(true);
         jButton3.setEnabled(true);
         
-    }//GEN-LAST:event_tableMouseClicked
+    }//GEN-LAST:event_tblkhMouseClicked
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        txttim.setText("");
+        DAo_KH.dolentable(tblkh, 1);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void txttimKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttimKeyPressed
+
+    private void txttimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimKeyReleased
+        // TODO add your handling code here:
+  laydl();
+    try {
+        DAo_KH.TimKiemKH(n, tblkh);
+    } catch (SQLException ex) {
+        Logger.getLogger(khachhang.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }//GEN-LAST:event_txttimKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -233,35 +244,12 @@ public class khachhang extends javax.swing.JPanel {
     private javax.swing.JButton jButton7;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable table;
+    private javax.swing.JTable tblkh;
+    private javax.swing.JTextField txttim;
     // End of variables declaration//GEN-END:variables
 
-    private void loaddatatable() {
-        try {
-            String sql = "SELECT * FROM dbo.khachhang";
-            Statement stm = cn.createStatement();
-            //khai báo re sun sét nhận dữ liệu khi thực thi truy vấn select
-            ResultSet rs = stm.executeQuery(sql);
-            // duyệt rs đổ dữ liệu table
-            while (rs.next()) {
-                Vector sp = new Vector();
-                sp.add(rs.getString(1));
-                sp.add(rs.getString(2));
-                sp.add(rs.getString(3));
-                sp.add(rs.getString(4));
-                sp.add(rs.getString(5));
-
-                model.addRow(sp);
-            }
-            table.setModel(model);
-            cn.close();
-            rs.close();
-            stm.close();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-
-        }
-    }
+    private void laydl() {
+        n.setMakh(makh);
+        n.setTim(txttim.getText());
+    }        
 }
