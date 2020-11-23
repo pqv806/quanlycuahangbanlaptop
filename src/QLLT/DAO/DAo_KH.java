@@ -109,7 +109,12 @@ public class DAo_KH {
         String sql = "";
 
         sql = "select * from khachhang\n"
-                    + "where tenkh like N'%" + n.getTim()+ "%'";
+                    + "where tenkh like N'%" + n.getTim()+ "%'"
+                + "or tenkh like N'%" + n.getTim()+ "%'"
+                + "or makh like N'%" + n.getTim()+ "%'"
+                + "or sdt like N'%" + n.getTim()+ "%'"
+                + "or diachi like N'%" + n.getTim()+ "%'"
+                + "or trangthai like N'%" + n.getTim()+ "%'";
         ResultSet rs = KetNoi.Select(sql);
            DefaultTableModel model = (DefaultTableModel) tblkh.getModel();
         Vector v = null;

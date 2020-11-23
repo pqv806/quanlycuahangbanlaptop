@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  * @author vinh
  */
 public class KetNoi {
-     private static String url = "jdbc:sqlserver://localhost:1433;databaseName=qllaptop10";
+     private static String url = "jdbc:sqlserver://localhost:1433;databaseName=qllaptop4";
     private static String name = "sa";
     private static String password = "Anh123456";
     public static Connection cn ;
