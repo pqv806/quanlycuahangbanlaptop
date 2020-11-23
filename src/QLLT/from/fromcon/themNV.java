@@ -105,6 +105,11 @@ public class themNV extends javax.swing.JInternalFrame {
         jLabel9.setText("Trạng Thái");
 
         cbo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "hiện", "ẩn" }));
+        cbo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,6 +214,10 @@ public class themNV extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.clear();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
