@@ -8,6 +8,7 @@ package quanlylaptopadmin;
 import QLLT.classs.danhmuc;
 import QLLT.classs.chuyenmanhinh;
 import QLLT.from.login;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -24,6 +25,7 @@ public class trangchinh extends javax.swing.JFrame {
     public trangchinh() {
         initComponents();
         setLocationRelativeTo(null);
+
         chuyenmanhinh cmh = new chuyenmanhinh(jpnview);
         cmh.setview(jpnnhom5, jlbnhom5);
         List<danhmuc> listItem = new ArrayList<>();
@@ -82,7 +84,10 @@ public class trangchinh extends javax.swing.JFrame {
         jlpKM = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("bán laptop gaming");
+        setTitle("Cửa Hàng Bán LAPTOP");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
+        setType(java.awt.Window.Type.POPUP);
         getContentPane().setLayout(new java.awt.CardLayout());
 
         jpnview.setPreferredSize(new java.awt.Dimension(900, 0));
@@ -377,18 +382,17 @@ public class trangchinh extends javax.swing.JFrame {
             .addGroup(jpnmenuLayout.createSequentialGroup()
                 .addGroup(jpnmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jpnKM, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addGroup(jpnmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jpnthongke, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(jpnNCC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(jpnkhachhang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(jpnnhanvien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(jpnhoadon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(jpnnhaphang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(jpnbanhang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(jpnnhom5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(jpnbaohanh, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(jpnsanpham, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(jpnTK, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
+                    .addComponent(jpnthongke, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(jpnNCC, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(jpnkhachhang, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(jpnnhanvien, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(jpnhoadon, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(jpnnhaphang, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(jpnbanhang, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(jpnnhom5, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(jpnbaohanh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(jpnsanpham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(jpnTK, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                 .addContainerGap(158, Short.MAX_VALUE))
         );
         jpnmenuLayout.setVerticalGroup(
@@ -430,7 +434,7 @@ public class trangchinh extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnview, javax.swing.GroupLayout.DEFAULT_SIZE, 1052, Short.MAX_VALUE))
+                .addComponent(jpnview, javax.swing.GroupLayout.DEFAULT_SIZE, 1051, Short.MAX_VALUE))
         );
         jpnrootLayout.setVerticalGroup(
             jpnrootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,7 +450,7 @@ public class trangchinh extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void jLabel1MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
         int hoi = JOptionPane.showConfirmDialog(this, "bạn có muốn đăng xuất");
 
@@ -471,9 +475,6 @@ public class trangchinh extends javax.swing.JFrame {
     private javax.swing.JLabel jlpTK;
     private javax.swing.JLabel jlpbanhang;
     private javax.swing.JLabel jlpbaohanh;
-    private javax.swing.JLabel jlpbaohanh1;
-    private javax.swing.JLabel jlpbaohanh2;
-    private javax.swing.JLabel jlpbaohanh3;
     private javax.swing.JLabel jlphoadon;
     private javax.swing.JLabel jlpkhachhang;
     private javax.swing.JLabel jlpnhanvien;
@@ -485,9 +486,6 @@ public class trangchinh extends javax.swing.JFrame {
     private javax.swing.JPanel jpnTK;
     private javax.swing.JPanel jpnbanhang;
     private javax.swing.JPanel jpnbaohanh;
-    private javax.swing.JPanel jpnbaohanh1;
-    private javax.swing.JPanel jpnbaohanh2;
-    private javax.swing.JPanel jpnbaohanh3;
     private javax.swing.JPanel jpnhoadon;
     private javax.swing.JPanel jpnkhachhang;
     private javax.swing.JPanel jpnmenu;
