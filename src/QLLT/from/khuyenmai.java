@@ -5,17 +5,22 @@
  */
 package QLLT.from;
 
+import Ketnoi.KetNoi;
+import QLLT.DAO.DAO_KM;
+
 /**
  *
  * @author vinh
  */
 public class khuyenmai extends javax.swing.JPanel {
-
+Ketnoi.KetNoi cn=new KetNoi();
     /**
      * Creates new form khuyenmai
      */
     public khuyenmai() {
         initComponents();
+   DAO_KM.dolentable(tblkm, 1);
+        
     }
 
     /**
@@ -28,9 +33,9 @@ public class khuyenmai extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblkm = new javax.swing.JTable();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblkm.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -41,7 +46,7 @@ public class khuyenmai extends javax.swing.JPanel {
                 "mã KM", "tên KM", "điều kiện", "phần trăm", "ngaybd", "ngaykt", "ghi chu"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblkm);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -64,6 +69,6 @@ public class khuyenmai extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblkm;
     // End of variables declaration//GEN-END:variables
 }

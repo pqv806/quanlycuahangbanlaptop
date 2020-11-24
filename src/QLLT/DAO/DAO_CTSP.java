@@ -35,10 +35,10 @@ public class DAO_CTSP {
                 v.add(rs.getString(3));
                 v.add(rs.getString(4));
                 v.add(rs.getString(5));
-                 v.add(rs.getString(6));
-                  v.add(rs.getString(7));
-                   v.add(rs.getString(8));
-                    v.add(rs.getString(9));
+                v.add(rs.getString(6));
+                v.add(rs.getString(7));
+                v.add(rs.getString(8));
+                v.add(rs.getString(9));
 
                 model.addRow(v);
 

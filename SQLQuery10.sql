@@ -1,6 +1,6 @@
-﻿CREATE DATABASE qllaptop4
+﻿CREATE DATABASE qllaptop10
 GO
-USE qllaptop4
+USE qllaptop10
 GO
 CREATE TABLE phanquyen
     (
@@ -42,17 +42,32 @@ CREATE TABLE khachhang
       CONSTRAINT pk_khachhang PRIMARY KEY ( makh )
     )
 GO
+CREATE TABLE khuyenmai
+    (
+      makhuyenmai NVARCHAR(15) NOT NULL ,
+      tenkn NVARCHAR(15) NOT NULL ,
+      dieukien FLOAT NOT NULL ,
+      phantramkhuyenmai FLOAT ,
+      ngayBD DATE NOT NULL ,
+	  ngayKT DATE NOT NULL ,
+      ghichu NVARCHAR(50) ,
+       CONSTRAINT pk_khuyenmai PRIMARY KEY ( makhuyenmai ) 
+      
+    )
+	GO
+    
 CREATE TABLE hoadon
     (
-      mahd INT IDENTITY(1, 1)
-               NOT NULL ,
+      mahd NVARCHAR(15) NOT NULL ,
       manv NVARCHAR(15) NOT NULL ,
       makh NVARCHAR(15) NOT NULL ,
-      ngaylap DATE NOT NULL ,
+      ngaylap DATE NOT NULL,
+	  makhuyenmai NVARCHAR(15) NULL,
       tongtien FLOAT NOT NULL ,
       CONSTRAINT pk_hoadon PRIMARY KEY ( mahd ) ,
       CONSTRAINT fk_hoadon_nhanvien FOREIGN KEY ( manv ) REFERENCES nhanvien ( manv ) ,
-      CONSTRAINT fk_hoadon_khachhang FOREIGN KEY ( makh ) REFERENCES khachhang ( makh )
+      CONSTRAINT fk_hoadon_khachhang FOREIGN KEY ( makh ) REFERENCES khachhang ( makh ),
+	   CONSTRAINT fk_hoadon_khuyenmai FOREIGN KEY ( makhuyenmai) REFERENCES khuyenmai ( makhuyenmai )
     )
 GO
 CREATE TABLE nhacungcap
@@ -67,8 +82,7 @@ CREATE TABLE nhacungcap
 GO
 CREATE TABLE phieunhap
     (
-      mapn INT IDENTITY(1, 1)
-               NOT NULL ,
+      mapn NVARCHAR(15),
       mancc NVARCHAR(15) NOT NULL ,
       manv NVARCHAR(15) NOT NULL ,
       ngaynhap DATETIME NOT NULL ,
@@ -91,7 +105,8 @@ CREATE TABLE sanpham
       masp NVARCHAR(15) NOT NULL ,
       tensp NVARCHAR(30) NOT NULL ,
       malsp NVARCHAR(15) NOT NULL ,
-      dongia FLOAT NOT NULL ,
+      giaban FLOAT NOT NULL ,
+	  gianhap FLOAT NOT NULL ,
       soluong INT NOT NULL ,
       hinhanh NVARCHAR(50) NOT NULL ,
       mota NVARCHAR(50) NOT NULL ,
@@ -101,7 +116,7 @@ CREATE TABLE sanpham
 GO
 CREATE TABLE hoadonchitiet
     (
-      mahd INT NOT NULL ,
+      mahd NVARCHAR(15) NOT NULL ,
       masp NVARCHAR(15) NOT NULL ,
       soluong INT NOT NULL ,
       dongia FLOAT NOT NULL ,
@@ -112,7 +127,7 @@ CREATE TABLE hoadonchitiet
 GO
 CREATE TABLE chitietphieunhap
     (
-      mapn INT NOT NULL ,
+      mapn NVARCHAR(15) NOT NULL ,
       masp NVARCHAR(15) NOT NULL ,
       soluong INT NOT NULL ,
       dongia FLOAT NOT NULL ,
@@ -121,18 +136,46 @@ CREATE TABLE chitietphieunhap
       CONSTRAINT fk_chitietphieunhap_phieunhap FOREIGN KEY ( mapn ) REFERENCES phieunhap ( mapn )
     )
 GO
-CREATE TABLE baohanh
+
+    CREATE TABLE trahang1
     (
-      mabh NVARCHAR(15) NOT NULL ,
+      matrahang NVARCHAR(15) NOT NULL ,
       masp NVARCHAR(15) NOT NULL ,
+	   mahd NVARCHAR(15) NOT NULL ,
       makh NVARCHAR(15) NOT NULL ,
-      ngaybh DATE NOT NULL ,
-      hetbh DATE NOT NULL ,
+      phuongthuctra NVARCHAR(20) ,
+      ngay DATE NOT NULL ,
+	  lydodoitra NVARCHAR(50),
       ghichu NVARCHAR(50) ,
-      CONSTRAINT pk_baohanh PRIMARY KEY ( mabh ) ,
-      CONSTRAINT fk_baohanh_khachhang FOREIGN KEY ( makh ) REFERENCES khachhang ( makh ) ,
-      CONSTRAINT fk_baohanh_sanpham FOREIGN KEY ( masp ) REFERENCES sanpham ( masp )
+      CONSTRAINT trahang PRIMARY KEY ( matrahang ) ,
+      CONSTRAINT fk_trahang_khachhang FOREIGN KEY ( makh ) REFERENCES khachhang ( makh ) ,
+      CONSTRAINT fk_trahang_sanpham FOREIGN KEY ( masp ) REFERENCES sanpham ( masp ),
+	        CONSTRAINT fk_trahang_hoadon FOREIGN KEY ( mahd ) REFERENCES dbo.hoadon ( mahd )
+
     )
+	GO
+     CREATE TABLE chitietsanpham
+    (
+      masp NVARCHAR(15) NOT NULL ,
+      ram NVARCHAR(10),
+	  bonho NVARCHAR(10),
+	  camera NVARCHAR(20),
+	  manhinh NVARCHAR(20),
+	  pin NVARCHAR(20),
+	  cpu NVARCHAR(20),
+	  vo NVARCHAR(20),
+	  khac NVARCHAR(100),
+	  CONSTRAINT pk_chitietsanpham PRIMARY KEY (  masp ) ,
+      CONSTRAINT fk_chitietsanpham_sanpham FOREIGN KEY ( masp ) REFERENCES sanpham ( masp ) 
+	  )
+	
+CREATE SEQUENCE manext
+ START WITH 50
+  INCREMENT BY 1;
+ 
+  
+
+  SELECT NEXT VALUE FOR manext;
 
 INSERT INTO dbo.nhanvien
         ( manv ,
@@ -141,6 +184,7 @@ INSERT INTO dbo.nhanvien
           diachi ,
           sdt ,
           trangthai
+
         )
 VALUES  ( N'nv01', -- manv - nvarchar(15)
           N'phạm quang vinh', -- tennv - nvarchar(30)
@@ -178,32 +222,26 @@ VALUES  ( N'ml01', -- malsp - nvarchar(15)
           N'MSI ', -- tenlsp - nvarchar(30)
           N'các sản phẩm của MSI ' -- mota - nvarchar(50)
           )
-INSERT  INTO dbo.sanpham
-        ( masp, tensp, malsp, dongia, soluong, hinhanh, mota )
-VALUES  ( N'sp01', -- masp - nvarchar(15)
-          N'MSI Alpha A3DDK 212VN', -- tensp - nvarchar(30)
-          N'ml03', -- malsp - nvarchar(15)
-          199, -- dongia - float
-          5, -- soluong - int
-          N'msi.jpg', -- hinhanh - nvarchar(50)
-          N'AMD Ryzen 7 3750H 2.3GHz up to 4.0GHz 4MB'  -- mota - nvarchar(50)
-          ),
-        ( N'sp02', -- masp - nvarchar(15)
-          N'ASUS TUF FX505DT', -- tensp - nvarchar(30)
-          N'ml02', -- malsp - nvarchar(15)
-          200, -- dongia - float
-          6, -- soluong - int
-          N'ASUS TUF FX505DT.jpg', -- hinhanh - nvarchar(50)
-          N'AMD Ryzen 7 3750H 2.3GHz up to 4.0GHz 4MB'  -- mota - nvarchar(50)
-          ),
-        ( N'sp03', -- masp - nvarchar(15)
-          N'Acer Aspire 7 A715', -- tensp - nvarchar(30)
-          N'ml01', -- malsp - nvarchar(15)
-          179, -- dongia - float
-          2, -- soluong - int
-          N'Acer Aspire 7 A715 .jpg', -- hinhanh - nvarchar(50)
-          N'AMD Ryzen 7 3750H 2.3GHz up to 4.0GHz 4MB'  -- mota - nvarchar(50)
-          )
+
+		  INSERT INTO dbo.sanpham
+		          ( masp ,
+		            tensp ,
+		            malsp ,
+		            giaban ,
+		            gianhap ,
+		            soluong ,
+		            hinhanh ,
+		            mota
+		          )
+		  VALUES  ( N'sp01' , -- masp - nvarchar(15)
+		            N'laptop' , -- tensp - nvarchar(30)
+		            N'ml01' , -- malsp - nvarchar(15)
+		            12 , -- giaban - float
+		            11 , -- gianhap - float
+		            0 , -- soluong - int
+		            N'msi.jpg' , -- hinhanh - nvarchar(50)
+		            N'AMD Ryzen 7 3750H'  -- mota - nvarchar(50)
+		          )
 
 INSERT  INTO dbo.phanquyen
         ( maquyen, tenquyen, chitietquyen )
