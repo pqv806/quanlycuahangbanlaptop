@@ -30,13 +30,24 @@ public class khachhang extends javax.swing.JPanel {
 Ketnoi.KetNoi cn= new KetNoi();
     QLKH n= new QLKH();
     public static String makh,ten,diachi,sdt,trangthai;
-
+ long count,sotrang,trang=1;
     /**
      * Creates new form khachhang
      */
     public khachhang() {
         initComponents();
+        laysodong();
+        if(count % 5 ==0 )
+        {
+            sotrang = count/5;
+        }
+        else
+        {
+            sotrang=count/5 + 1;
+        }
         DAo_KH.dolentable(tblkh, 1);
+         lbltrang.setText("1");
+         lblsotrang.setText("1/"+sotrang);
         jButton1.setEnabled(false);
         jButton3.setEnabled(false);
 
@@ -319,7 +330,7 @@ Ketnoi.KetNoi cn= new KetNoi();
         // TODO add your handling code here:
         if (trang > 1) {
             trang--;
-            DAO_TK.dolentable(tbltk, trang);
+           DAo_KH.dolentable(tblkh, trang);
             lblsotrang.setText(trang + "/" + sotrang);
             lbltrang.setText("" + trang);
         }
@@ -329,7 +340,7 @@ Ketnoi.KetNoi cn= new KetNoi();
         // TODO add your handling code here:
         trang = 1;
 
-        DAO_TK.dolentable(tbltk, trang);
+     DAo_KH.dolentable(tblkh, trang);
         lblsotrang.setText(trang + "/" + sotrang);
         lbltrang.setText("" + trang);
     }//GEN-LAST:event_nextvetkActionPerformed
@@ -338,7 +349,7 @@ Ketnoi.KetNoi cn= new KetNoi();
         // TODO add your handling code here:
         if (trang < sotrang) {
             trang++;
-            DAO_TK.dolentable(tbltk, trang);
+        DAo_KH.dolentable(tblkh, trang);
             lblsotrang.setText(trang + "/" + sotrang);
             lbltrang.setText("" + trang);
         }
@@ -348,7 +359,7 @@ Ketnoi.KetNoi cn= new KetNoi();
         // TODO add your handling code here:
         trang = sotrang;
 
-        DAO_TK.dolentable(tbltk, trang);
+      DAo_KH.dolentable(tblkh, trang);
         lblsotrang.setText(trang + "/" + sotrang);
         lbltrang.setText("" + trang);
     }//GEN-LAST:event_nexttientkActionPerformed
@@ -375,4 +386,16 @@ Ketnoi.KetNoi cn= new KetNoi();
         n.setMakh(makh);
         n.setTim(txttim.getText());
     }        
+
+    private void laysodong() {
+         try {
+             String sql = "SELECT COUNT(*) FROM dbo.khachhang";
+            ResultSet rs=KetNoi.Select(sql);
+            while (rs.next()) {
+              count=rs.getLong(1);
+            }
+            
+        } catch (Exception e) {
+        }
+    }
 }
