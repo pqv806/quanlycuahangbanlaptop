@@ -187,6 +187,7 @@ public class themNCC extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
        laydl();
         DAO_NCC.Insert(n);
+        
         dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed

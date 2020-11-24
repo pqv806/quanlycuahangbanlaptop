@@ -11,13 +11,13 @@ import QLLT.from.baohanh;
 import QLLT.from.hoadon;
 import QLLT.from.khachhang;
 import QLLT.from.khuyenmai;
-import QLLT.from.loaisanpham;
+
 import QLLT.from.nhacungcap;
 import QLLT.from.nhaphang;
-import QLLT.from.phieunhap;
-import QLLT.from.quyen;
-import QLLT.from.sanpham;
-import QLLT.from.sanpham;
+//import QLLT.from.phieunhap;
+//import QLLT.from.quyen;
+//import QLLT.from.sanpham;
+//import QLLT.from.sanpham;
 import QLLT.from.sanpham1;
 import QLLT.from.taikhoan;
 import QLLT.from.thongke;
@@ -97,13 +97,13 @@ public class chuyenmanhinh {
                             node = new sanpham1();
                             break;
                              case "loại sản phẩm":
-                            node = new loaisanpham();
+                     
                             break;
                              case "hóa đơn":
                             node = new hoadon();
                             break;
                              case "phiếu nhập":
-                            node = new phieunhap();
+//                            node = new phieunhap();
                             break;
                              case "nhân viên":
                         node = new QLLT.from.nhanvien();
@@ -118,7 +118,7 @@ public class chuyenmanhinh {
                             node = new taikhoan();
                             break;
                              case "quyền":
-                            node = new quyen();
+//                            node = new quyen();
                             break;
                              case "thống kê":
                             node = new thongke();

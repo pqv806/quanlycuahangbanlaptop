@@ -8,7 +8,7 @@ package QLLT.from.fromcon;
 import Ketnoi.KetNoi;
 import QLLT.DAO.DAO_Quyen;
 import QLLT.classs.QLquyen;
-import QLLT.from.quyen;
+//import QLLT.from.quyen;
 import QLLT.from.taikhoan;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
