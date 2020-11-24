@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class DAO_QLSP {
      public static void dolentable(JTable tblsp, long trang) {
         try {
-            String sql = "SELECT TOP 5 *\n"
+            String sql = "SELECT TOP 10 *\n"
                     + "FROM dbo.sanpham \n"
                     + "WHERE masp NOT IN (SELECT TOP " + (trang * 5 - 5) + " masp FROM dbo.sanpham)";
             DefaultTableModel model = (DefaultTableModel) tblsp.getModel();

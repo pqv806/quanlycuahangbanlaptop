@@ -75,17 +75,17 @@ public class themsp extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         txtpin = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtcpu = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtram = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtvo = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtbonho = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtcamera = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtkhac = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         txtmanhinh = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
@@ -291,16 +291,16 @@ public class themsp extends javax.swing.JInternalFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtkhac, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addComponent(jLabel10)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtcpu, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addComponent(jLabel12)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtvo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -321,15 +321,15 @@ public class themsp extends javax.swing.JInternalFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtcpu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtvo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtkhac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(19, 94, Short.MAX_VALUE)
@@ -460,15 +460,14 @@ public class themsp extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel lblhinh;
     private javax.swing.JTextField txtanh;
     private javax.swing.JTextField txtbonho;
     private javax.swing.JTextField txtcamera;
+    private javax.swing.JTextField txtcpu;
     private javax.swing.JTextField txtgiaban;
     private javax.swing.JTextField txtgianhap;
+    private javax.swing.JTextField txtkhac;
     private javax.swing.JTextField txtmaloai;
     private javax.swing.JTextField txtmanhinh;
     private javax.swing.JTextField txtmasp;
@@ -476,6 +475,7 @@ public class themsp extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtram;
     private javax.swing.JTextField txttensp;
     private javax.swing.JTextArea txttrangthai;
+    private javax.swing.JTextField txtvo;
     // End of variables declaration//GEN-END:variables
 
     private void laydl() {
@@ -486,7 +486,14 @@ public class themsp extends javax.swing.JInternalFrame {
         n.setGiaban(Float.valueOf(txtgiaban.getText()));
         n.setGianhap(Float.valueOf(txtgianhap.getText()));
         n.setHinhanh(txtanh.getText());
-        m.setBonho(txtbonho.getText());
+       m.setBonho(txtbonho.getText());
         m.setMasp(txtmasp.getText());
+        m.setRam(txtram.getText());
+        m.setManhinh(txtmanhinh.getText());
+        m.setPin(txtpin.getText());
+        m.setVo(txtvo.getText());
+        m.setCpu(txtcpu.getText());
+        m.setKhac(txtkhac.getText());
+        m.setCamera(txtcamera.getText());
     }
 }
