@@ -137,7 +137,7 @@ CREATE TABLE chitietphieunhap
     )
 GO
 
-    CREATE TABLE trahang1
+    CREATE TABLE trahang1			
     (
       matrahang NVARCHAR(15) NOT NULL ,
       masp NVARCHAR(15) NOT NULL ,
