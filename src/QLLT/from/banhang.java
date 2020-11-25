@@ -5,6 +5,9 @@
  */
 package QLLT.from;
 
+import Ketnoi.KetNoi;
+import QLLT.DAO.DAO_BanHang;
+import QLLT.classs.piceFormatter;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.sql.Connection;
@@ -29,24 +32,22 @@ import javax.swing.table.DefaultTableModel;
  */
 public class banhang extends javax.swing.JPanel {
 
-    Connection cn;
+    Ketnoi.KetNoi cn = new KetNoi();
     DefaultTableModel model;
     DefaultTableModel model1;
     int index;
     String manv = null;
     String makh = null;
     String ngay = null;
-    String thanhtien = null;
+    Float thanhtien;
+    Float gia,tongtien,tt;
 
     /**
      * Creates new form banhang
      */
     public banhang() {
         initComponents();
-        hienthitentable();
-        hienthitentable1();
-        //cn = helper.hepper.ketnoi("qllaptop4");
-        System.out.println("kết nối thành công");
+        DAO_BanHang.dolentable(tblsp, 1);
         ngay();
         dongho();
         loaddatacbk();
@@ -54,6 +55,7 @@ public class banhang extends javax.swing.JPanel {
         jButton5.setEnabled(false);
 
         loaddatatable();
+       
 
     }
 
@@ -69,7 +71,7 @@ public class banhang extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        tblsp = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         txtlsp = new javax.swing.JTextField();
         txtmasp = new javax.swing.JTextField();
@@ -94,7 +96,7 @@ public class banhang extends javax.swing.JPanel {
         ngaynhap = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table1 = new javax.swing.JTable();
+        tblgiohang = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txttongtien = new javax.swing.JTextField();
@@ -105,23 +107,23 @@ public class banhang extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        tblsp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "mã sp", "tên sp", "mã loại", "giá bán", "số lượng", "hình ảnh"
             }
         ));
-        table.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblsp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableMouseClicked(evt);
+                tblspMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(table);
+        jScrollPane1.setViewportView(tblsp);
 
         txtlsp.setBorder(javax.swing.BorderFactory.createTitledBorder("loại sản phẩm"));
 
@@ -191,9 +193,9 @@ public class banhang extends javax.swing.JPanel {
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(txtsoluong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(bltthem)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_replay_30px.png"))); // NOI18N
@@ -225,9 +227,9 @@ public class banhang extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap(67, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(65, 65, 65)
                         .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -235,11 +237,12 @@ public class banhang extends javax.swing.JPanel {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton7)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,9 +251,9 @@ public class banhang extends javax.swing.JPanel {
                     .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
+                .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -262,6 +265,7 @@ public class banhang extends javax.swing.JPanel {
         jTextField3.setToolTipText("");
         jTextField3.setBorder(javax.swing.BorderFactory.createTitledBorder("mã hóa đơn"));
 
+        txttongtien1.setText("0");
         txttongtien1.setToolTipText("");
         txttongtien1.setBorder(javax.swing.BorderFactory.createTitledBorder("tổng tiền"));
         txttongtien1.addActionListener(new java.awt.event.ActionListener() {
@@ -360,18 +364,15 @@ public class banhang extends javax.swing.JPanel {
                 .addGap(65, 65, 65))
         );
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
+        tblgiohang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "mã sp", "tên sp", "số lượng", "đơn giá", "thành tiền"
             }
         ));
-        jScrollPane2.setViewportView(table1);
+        jScrollPane2.setViewportView(tblgiohang);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Delete.png"))); // NOI18N
         jButton1.setText("xóa");
@@ -397,9 +398,6 @@ public class banhang extends javax.swing.JPanel {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 357, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(207, 207, 207)
@@ -410,6 +408,7 @@ public class banhang extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(txttongtien, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 829, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,11 +477,11 @@ public class banhang extends javax.swing.JPanel {
         add(jPanel1, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+    private void tblspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblspMouseClicked
         // TODO add your handling code here:
-        int row = table.getSelectedRow();
+        int row = tblsp.getSelectedRow();
         hienthi(row);
-    }//GEN-LAST:event_tableMouseClicked
+    }//GEN-LAST:event_tblspMouseClicked
 
     private void txttimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttimActionPerformed
         // TODO add your handling code here:
@@ -490,20 +489,25 @@ public class banhang extends javax.swing.JPanel {
 
     private void bltthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bltthemActionPerformed
         // TODO add your handling code here:
-         tinhtien();
+        tinhtien();
         String data1 = txtmasp.getText();
         String data2 = txttensp.getText();;
-        String data3 = txtdongia.getText();;
-        String data4 = txtsoluong.getText();
-        String data5 = thanhtien;;
-
-        Object[] row = {data1, data2, data3, data4, data5};
-
-        DefaultTableModel model = (DefaultTableModel) table1.getModel();
-
+        String data4 = txtdongia.getText();;
+        String data3 = txtsoluong.getText();
+        String data5 = piceFormatter.format(thanhtien);
+        String gia = txtdongia.getText();
+        String sl = txtsoluong.getText();
+        Object[] row = {data1, data2, data3, data4,data5};
+        DefaultTableModel model = (DefaultTableModel) tblgiohang.getModel();
         model.addRow(row);
+           
+         model.addRow(new String[]{"", "", "", "", ""});
+    
+       model.addRow( new String[]{"", "", "", "Tổng tiền", piceFormatter.format(tt)});
+        
+        
+      
         jButton5.setEnabled(true);
-       
 
 
     }//GEN-LAST:event_bltthemActionPerformed
@@ -511,32 +515,32 @@ public class banhang extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         loaddatatable1();
-          jButton5.setEnabled(false);
+        jButton5.setEnabled(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cboKHItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboKHItemStateChanged
         // TODO add your handling code here:
-        try {
-
-            int index = cboKH.getSelectedIndex();
-            if (index >= 0) {
-                String sql = "SELECT makh FROM dbo.khachhang\n"
-                        + "WHERE tenkh LIKE ?";
-                PreparedStatement pst = cn.prepareStatement(sql);
-                pst.setString(1, cboKH.getSelectedItem().toString());
-                ResultSet rs = pst.executeQuery();
-
-                while (rs.next()) {
-
-                    makh = rs.getString(1);
-                }
-                rs.close();
-                pst.close();
-
-            }
-        } catch (Exception e) {
-            System.out.println("lỗi load table");
-        }
+//        try {
+//
+//            int index = cboKH.getSelectedIndex();
+//            if (index >= 0) {
+//                String sql = "SELECT makh FROM dbo.khachhang\n"
+//                        + "WHERE tenkh LIKE ?";
+//                PreparedStatement pst = cn.prepareStatement(sql);
+//                pst.setString(1, cboKH.getSelectedItem().toString());
+//                ResultSet rs = pst.executeQuery();
+//
+//                while (rs.next()) {
+//
+//                    makh = rs.getString(1);
+//                }
+//                rs.close();
+//                pst.close();
+//
+//            }
+//        } catch (Exception e) {
+//            System.out.println("lỗi load table");
+//        }
     }//GEN-LAST:event_cboKHItemStateChanged
 
     private void txttongtien1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttongtien1ActionPerformed
@@ -546,102 +550,102 @@ public class banhang extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        try {
-
-//            cn = helper.hepper.ketnoi("qllaptop4");
-            String sql = "INSERT INTO dbo.hoadon\n"
-                    + "        (  manv, makh, ngaylap, tongtien )\n"
-                    + "VALUES  ( ?,?,?,?\n"
-                    + "          )\n"
-                    + "      ";
-            try (PreparedStatement pst = cn.prepareStatement(sql)) {
-
-                pst.setString(1, manv);
-                pst.setString(2, makh);
-                pst.setString(3, ngaynhap.getText());
-                pst.setString(4, txttongtien.getText().trim());
-
-                int ck = pst.executeUpdate();
-
-                pst.close();
-
-                if (ck > 0) {
-
-                    JOptionPane.showMessageDialog(this, "thanh toán thành công");
-                    loaddatatable1();
-
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } catch (HeadlessException e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
+//        try {
+//
+////            cn = helper.hepper.ketnoi("qllaptop4");
+//            String sql = "INSERT INTO dbo.hoadon\n"
+//                    + "        (  manv, makh, ngaylap, tongtien )\n"
+//                    + "VALUES  ( ?,?,?,?\n"
+//                    + "          )\n"
+//                    + "      ";
+//            try (PreparedStatement pst = cn.prepareStatement(sql)) {
+//
+//                pst.setString(1, manv);
+//                pst.setString(2, makh);
+//                pst.setString(3, ngaynhap.getText());
+//                pst.setString(4, txttongtien.getText().trim());
+//
+//                int ck = pst.executeUpdate();
+//
+//                pst.close();
+//
+//                if (ck > 0) {
+//
+//                    JOptionPane.showMessageDialog(this, "thanh toán thành công");
+//                    loaddatatable1();
+//
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        } catch (HeadlessException e) {
+//            JOptionPane.showMessageDialog(this, e);
+//        }
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void cboNVItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboNVItemStateChanged
         // TODO add your handling code here:
-        try {
-
-            int index = cboNV.getSelectedIndex();
-            if (index >= 0) {
-                String sql = "SELECT manv FROM dbo.nhanvien \n"
-                        + "WHERE tennv LIKE ?";
-                PreparedStatement pst = cn.prepareStatement(sql);
-                pst.setString(1, cboNV.getSelectedItem().toString());
-                ResultSet rs = pst.executeQuery();
-
-                while (rs.next()) {
-
-                    manv = rs.getString(1);
-                }
-                rs.close();
-                pst.close();
-
-            }
-        } catch (Exception e) {
-            System.out.println("lỗi load table");
-        }
+//        try {
+//
+//            int index = cboNV.getSelectedIndex();
+//            if (index >= 0) {
+//                String sql = "SELECT manv FROM dbo.nhanvien \n"
+//                        + "WHERE tennv LIKE ?";
+//                PreparedStatement pst = cn.prepareStatement(sql);
+//                pst.setString(1, cboNV.getSelectedItem().toString());
+//                ResultSet rs = pst.executeQuery();
+//
+//                while (rs.next()) {
+//
+//                    manv = rs.getString(1);
+//                }
+//                rs.close();
+//                pst.close();
+//
+//            }
+//        } catch (Exception e) {
+//            System.out.println("lỗi load table");
+//        }
     }//GEN-LAST:event_cboNVItemStateChanged
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         loaddatatable1();
         JOptionPane.showMessageDialog(this, "chưa thanh toán");
-          jButton5.setEnabled(false);
+        jButton5.setEnabled(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
-        try {
-            String sql = "SELECT * FROM dbo.sanpham\n"
-                    + "      WHERE masp LIKE ?";
-            PreparedStatement ptsm = cn.prepareStatement(sql);
-            ptsm.setString(1, txttim.getText());
-            ResultSet rs = ptsm.executeQuery();
-
-            model.setRowCount(0);
-            while (rs.next()) {
-
-                Vector sp = new Vector();
-                sp.add(rs.getString(1));
-                sp.add(rs.getString(2));
-                sp.add(rs.getString(3));
-                sp.add(rs.getString(4));
-                sp.add(rs.getString(5));
-                sp.add(rs.getString(6));
-
-                model.addRow(sp);
-
-            }
-
-            table.setModel(model);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Lỗi tìm kiếm");
-        }
+//        try {
+//            String sql = "SELECT * FROM dbo.sanpham\n"
+//                    + "      WHERE masp LIKE ?";
+//            PreparedStatement ptsm = cn.prepareStatement(sql);
+//            ptsm.setString(1, txttim.getText());
+//            ResultSet rs = ptsm.executeQuery();
+//
+//            model.setRowCount(0);
+//            while (rs.next()) {
+//
+//                Vector sp = new Vector();
+//                sp.add(rs.getString(1));
+//                sp.add(rs.getString(2));
+//                sp.add(rs.getString(3));
+//                sp.add(rs.getString(4));
+//                sp.add(rs.getString(5));
+//                sp.add(rs.getString(6));
+//
+//                model.addRow(sp);
+//
+//            }
+//
+//            tblsp.setModel(model);
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Lỗi tìm kiếm");
+//        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -676,8 +680,8 @@ public class banhang extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblhinh;
     private javax.swing.JTextField ngaynhap;
-    private javax.swing.JTable table;
-    private javax.swing.JTable table1;
+    private javax.swing.JTable tblgiohang;
+    private javax.swing.JTable tblsp;
     private javax.swing.JTextField txtdongia;
     private javax.swing.JLabel txtgio;
     private javax.swing.JTextField txtlsp;
@@ -689,47 +693,8 @@ public class banhang extends javax.swing.JPanel {
     private javax.swing.JTextField txttongtien1;
     // End of variables declaration//GEN-END:variables
 
-    public void hienthitentable() {
-        String heder[] = {"Mã SP", "tên SP", "mã loại", "Đơn giá", "số lượng", "hình"};
-        String data[][] = null;
-        model = new DefaultTableModel(data, heder);
-        table.setModel(model);
-    }
-
-    public void hienthitentable1() {
-        String heder[] = {"Mã SP", "tên SP", "Đơn giá", "số lượng", "thành tiền"};
-        String data[][] = null;
-        model1 = new DefaultTableModel(data, heder);
-        table1.setModel(model1);
-    }
-
     private void loaddatatable() {
-        try {
-            String sql = "SELECT * FROM dbo.sanpham";
-            Statement stm = cn.createStatement();
-            //khai báo re sun sét nhận dữ liệu khi thực thi truy vấn select
-            ResultSet rs = stm.executeQuery(sql);
-            // duyệt rs đổ dữ liệu table
-            while (rs.next()) {
-                Vector sp = new Vector();
-                sp.add(rs.getString(1));
-                sp.add(rs.getString(2));
-                sp.add(rs.getString(3));
-                sp.add(rs.getString(4));
-                sp.add(rs.getString(5));
-                sp.add(rs.getString(6));
 
-                model.addRow(sp);
-            }
-            table.setModel(model);
-
-            rs.close();
-            stm.close();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-
-        }
     }
 
     private void loaddatatable1() {
@@ -749,12 +714,12 @@ public class banhang extends javax.swing.JPanel {
         if (row < 0) {
             return;
         }
-        txtmasp.setText(table.getValueAt(row, 0).toString());
-        txttensp.setText(table.getValueAt(row, 1).toString());
-        txtlsp.setText(table.getValueAt(row, 2).toString());
-        txtdongia.setText(table.getValueAt(row, 3).toString());
+        txtmasp.setText(tblsp.getValueAt(row, 0).toString());
+        txttensp.setText(tblsp.getValueAt(row, 1).toString());
+        txtlsp.setText(tblsp.getValueAt(row, 2).toString());
+        txtdongia.setText(tblsp.getValueAt(row, 3).toString());
 
-        hinh(table.getValueAt(row, 5).toString());
+        hinh(tblsp.getValueAt(row, 5).toString());
 
     }
 
@@ -789,39 +754,64 @@ public class banhang extends javax.swing.JPanel {
     }
 
     public void tinhtien() {
-        Double a = Double.parseDouble(txtdongia.getText());
-        Double b = Double.parseDouble(txtsoluong.getText());
-        Double c = Double.parseDouble(txttongtien.getText());
-        thanhtien = (Double.toString(a * b));
-        txttongtien.setText(Double.toString(a * b + c));
-        txttongtien1.setText(Double.toString(a * b + c));
-
+        laygiatien();
+        float sl=Float.parseFloat(txtsoluong.getText());
+        thanhtien=sl*gia;
+        float c=Float.parseFloat(txttongtien1.getText());
+        
+        txttongtien1.setText(Float.toString(thanhtien+c));
+         tt=Float.parseFloat(txttongtien1.getText());
+         txttongtien.setText(piceFormatter.format(tt));
+     
+        
     }
 
+//         Float b = Float.parseFloat(txtsoluong.getText());
+//        Float c = Float.parseFloat(txttongtien.getText());
+//        thanhtien = (Float.toString(a * b));
+//      
+//        txttongtien.setText(Float.toString(a * b + c));
+//        txttongtien1.setText(Float.toString(a * b + c));
     private void loaddatacbk() {
-        try {
-            String sql = "SELECT tenkh FROM dbo.khachhang";
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-
-            while (rs.next()) {
-                cboKH.addItem(rs.getString(1));
-
-            }
-
-        } catch (Exception e) {
-            System.out.println("lỗi load data");
-        }
+//        try {
+//            String sql = "SELECT tenkh FROM dbo.khachhang";
+//            Statement st = cn.createStatement();
+//            ResultSet rs = st.executeQuery(sql);
+//
+//            while (rs.next()) {
+//                cboKH.addItem(rs.getString(1));
+//
+//            }
+//
+//        } catch (Exception e) {
+//            System.out.println("lỗi load data");
+//        }
     }
 
     private void loaddatacbk1() {
+//        try {
+//            String sql = "SELECT tennv FROM dbo.nhanvien";
+//            Statement st = cn.createStatement();
+//            ResultSet rs = st.executeQuery(sql);
+//
+//            while (rs.next()) {
+//                cboNV.addItem(rs.getString(1));
+//
+//            }
+//
+//        } catch (Exception e) {
+//            System.out.println("lỗi load data");
+//        }
+    }
+
+    private void laygiatien() {
         try {
-            String sql = "SELECT tennv FROM dbo.nhanvien";
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            String sql = "SELECT * from sanpham\n"
+                    + "where masp = N'" + txtmasp.getText() + "'";
+            ResultSet rs = KetNoi.Select(sql);
 
             while (rs.next()) {
-                cboNV.addItem(rs.getString(1));
+                gia = rs.getFloat(4);
 
             }
 
