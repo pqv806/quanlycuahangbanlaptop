@@ -150,25 +150,27 @@ public class sualoaisp extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-//        try {
-//            cn = helper.hepper.ketnoi("qllaptop4");
-//            String sql = "UPDATE dbo.loaisanpham SET tenlsp =?,mota=?\n"
-//                    + "WHERE malsp =?";
-//            PreparedStatement pst = cn.prepareStatement(sql);
-//
-//            pst.setString(1, txttenloai.getText().trim());
-//            pst.setString(2, txtmota.getText().trim());
-//            pst.setString(3, txtml.getText().trim());
-//
-//            JOptionPane.showMessageDialog(this, "đã sửa");
-//            dispose();
-//            pst.executeUpdate();
-//            pst.close();
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, e);
-//        }
+//         TODO add your handling code here:
+        try {
+            if(check()){
+//                  cn = helper.hepper.ketnoi("qllaptop4");
+            String sql = "UPDATE dbo.loaisanpham SET tenlsp =?,mota=?\n"
+                    + "WHERE malsp =?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+
+            pst.setString(1, txttenloai.getText().trim());
+            pst.setString(2, txtmota.getText().trim());
+            pst.setString(3, txtml.getText().trim());
+
+            JOptionPane.showMessageDialog(this, "đã sửa");
+            dispose();
+            pst.executeUpdate();
+            pst.close();
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -201,5 +203,13 @@ public class sualoaisp extends javax.swing.JInternalFrame {
         txtml.setText("");
         txtmota.setText("");
         txttenloai.setText("");
+    }
+    
+    private boolean check(){
+        if(txtml.getText().equals("") || txtmota.getText().equals("") || txttenloai.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Nhập đầy đủ thông tin");
+            return false;
+        }
+        return true;
     }
 }

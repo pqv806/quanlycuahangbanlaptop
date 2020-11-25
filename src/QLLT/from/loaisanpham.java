@@ -5,6 +5,7 @@
  */
 package QLLT.from;
 
+import Ketnoi.KetNoi;
 import QLLT.from.fromcon.sualoaisp;
 import QLLT.from.fromcon.themloaisp;
 import java.sql.Connection;
@@ -20,7 +21,8 @@ import javax.swing.table.DefaultTableModel;
  * @author vinh
  */
 public class loaisanpham extends javax.swing.JPanel {
-Connection cn;
+    Connection cn;
+
     DefaultTableModel model;
       public static String maloai,ten,mota;
     /**
@@ -32,11 +34,10 @@ Connection cn;
         String data[][] = null;
         model = new DefaultTableModel(data, heder);
         table.setModel(model);
-//        cn = helper.hepper.ketnoi("qllaptop4");
+
         System.out.println("kết nối thành công");
-          jButton1.setEnabled(false);
-        jButton3.setEnabled(false);
-        loaddatatable();
+
+//        loaddatatable();
     }
 
     /**
@@ -51,7 +52,7 @@ Connection cn;
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
         txttim = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -78,11 +79,11 @@ Connection cn;
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Add.png"))); // NOI18N
-        jButton2.setText("thêm");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Add.png"))); // NOI18N
+        btnThem.setText("thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnThemActionPerformed(evt);
             }
         });
 
@@ -126,7 +127,7 @@ Connection cn;
 
         jDesktopPane1.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnThem, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txttim, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -150,7 +151,7 @@ Connection cn;
                         .addGap(18, 18, 18)
                         .addComponent(jButton7))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(btnThem)
                         .addGap(64, 64, 64)
                         .addComponent(jButton1)
                         .addGap(77, 77, 77)
@@ -164,7 +165,7 @@ Connection cn;
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnThem))
                 .addGap(20, 20, 20)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,12 +179,12 @@ Connection cn;
         add(jDesktopPane1, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        themloaisp tlsp=new themloaisp();
-        jDesktopPane1.add(tlsp);
-        tlsp.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+//        themloaisp tlsp=new themloaisp();
+//        jDesktopPane1.add(tlsp);
+//        tlsp.setVisible(true);
+    }//GEN-LAST:event_btnThemActionPerformed
 
     private void txttimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttimActionPerformed
         // TODO add your handling code here:
@@ -278,8 +279,8 @@ Connection cn;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnThem;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;

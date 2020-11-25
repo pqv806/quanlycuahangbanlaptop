@@ -147,8 +147,8 @@ public class themloaisp extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-
-      try {
+        if(check()){
+             try {
       //      cn = helper.hepper.ketnoi("qllaptop4");
           String sql = "INSERT INTO dbo.loaisanpham\n" +
 "        ( malsp, tenlsp, mota )\n" +
@@ -175,6 +175,8 @@ public class themloaisp extends javax.swing.JInternalFrame {
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(this, e);
         }
+        }
+     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -207,5 +209,12 @@ public class themloaisp extends javax.swing.JInternalFrame {
         txtml.setText("");
         txtmota.setText("");
         txttenloai.setText("");
+    }
+    private boolean check(){
+        if(txtml.getText().equals("") || txtmota.getText().equals("") || txttenloai.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Nhập đầy đủ thông tin");
+            return false;
+        }
+        return true;
     }
 }
