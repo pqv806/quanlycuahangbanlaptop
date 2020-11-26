@@ -498,12 +498,14 @@ public class banhang extends javax.swing.JPanel {
         String gia = txtdongia.getText();
         String sl = txtsoluong.getText();
         Object[] row = {data1, data2, data3, data4,data5};
-        DefaultTableModel model = (DefaultTableModel) tblgiohang.getModel();
-        model.addRow(row);
+        model1 = (DefaultTableModel) tblgiohang.getModel(); // do cái này ở đầu dòng khai báo : Defautable model1 = (DefaultTableModel) tblgiohang.getModel();
+        model1.addRow(row);
+        
+        for (int i = 0; i < 10; i++) {
+            
+        }
            
-         model.addRow(new String[]{"", "", "", "", ""});
-    
-       model.addRow( new String[]{"", "", "", "Tổng tiền", piceFormatter.format(tt)});
+        
         
         
       
@@ -581,6 +583,14 @@ public class banhang extends javax.swing.JPanel {
 //        } catch (HeadlessException e) {
 //            JOptionPane.showMessageDialog(this, e);
 //        }
+        String a,b,c,d ;
+        for (int i = 0; i < model1.getRowCount(); i++) {
+            a = tblgiohang.getValueAt(i, 0).toString();
+            b = tblgiohang.getValueAt(i, 1).toString();
+            c = tblgiohang.getValueAt(i, 2).toString();
+            d = tblgiohang.getValueAt(i, 3).toString();
+            System.out.println(a + "  |  " + b + "  |  " + c + "  |  " + d);
+        }
 
     }//GEN-LAST:event_jButton5ActionPerformed
 

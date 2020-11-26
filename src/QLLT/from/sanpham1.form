@@ -21,7 +21,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" pref="710" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -50,7 +50,10 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jDesktopPanesp" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jDesktopPanesp" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -69,8 +72,9 @@
                           <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                   <Component id="lblhinh" min="-2" pref="305" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="txttensp" min="-2" pref="120" max="-2" attributes="0"/>
@@ -80,30 +84,26 @@
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="txtbonho" min="-2" pref="120" max="-2" attributes="0"/>
-                                              <Component id="txtram" min="-2" pref="120" max="-2" attributes="0"/>
-                                              <Component id="txtcam" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                              <Component id="txtram" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
                                           </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="txtmanhinh" min="-2" pref="120" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="txtcam" min="-2" pref="120" max="-2" attributes="0"/>
+                                              </Group>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                                                  <Component id="txtcpu" min="-2" pref="120" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Component id="txtpin" min="-2" pref="120" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                                                  <Component id="txtcpu" min="-2" pref="120" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" attributes="0">
-                                                          <Component id="txtkhac" min="-2" pref="120" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                                                          <Component id="txtvo" min="-2" pref="120" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Component id="txtmanhinh" min="-2" pref="120" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
                                           </Group>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="txtvo" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="txtkhac" min="-2" pref="120" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -128,9 +128,9 @@
                                               <Component id="jButton1" min="-2" pref="93" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                                      <Component id="jButton2" min="-2" pref="112" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -147,54 +147,41 @@
                               <Component id="jButton1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton7" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jButton2" max="32767" attributes="0"/>
+                              <Component id="jButton7" max="32767" attributes="0"/>
                               <Component id="txttim" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="276" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="txttensp" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtmasp" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                          <Component id="txtram" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="txtbonho" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                          <Component id="txtcam" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                          <Component id="txtcpu" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtpin" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtmanhinh" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtvo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtkhac" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                      </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtram" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtcpu" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtpin" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtbonho" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtmanhinh" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtcam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtvo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtkhac" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="lblhinh" min="-2" pref="259" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="lblhinh" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace pref="33" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -265,14 +252,14 @@
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="8" rowCount="0">
-                            <Column editable="true" title="masp" type="java.lang.Object"/>
-                            <Column editable="true" title="t&#xea;n sp" type="java.lang.Object"/>
-                            <Column editable="true" title="m&#xe3; lo&#x1ea1;i" type="java.lang.Object"/>
-                            <Column editable="true" title="gi&#xe1; b&#xe1;n" type="java.lang.Object"/>
-                            <Column editable="true" title="gi&#xe1; nh&#x1ead;p" type="java.lang.Object"/>
-                            <Column editable="true" title="s&#x1ed1; l&#x1b0;&#x1ee3;ng" type="java.lang.Object"/>
-                            <Column editable="true" title="h&#xec;nh &#x1ea3;nh" type="java.lang.Object"/>
-                            <Column editable="true" title="m&#xf4; t&#x1ea3;" type="java.lang.Object"/>
+                            <Column editable="true" title="M&#xe3; S&#x1ea3;n Ph&#x1ea9;m" type="java.lang.Object"/>
+                            <Column editable="true" title="T&#xea;n S&#x1ea3;n Ph&#x1ea9;m" type="java.lang.Object"/>
+                            <Column editable="true" title="M&#xe3; Lo&#x1ea1;i" type="java.lang.Object"/>
+                            <Column editable="true" title="Gi&#xe1; B&#xe1;n" type="java.lang.Object"/>
+                            <Column editable="true" title="Gi&#xe1; Nh&#x1ead;p" type="java.lang.Object"/>
+                            <Column editable="true" title="S&#x1ed1; L&#x1b0;&#x1a1;ng" type="java.lang.Object"/>
+                            <Column editable="true" title="H&#xec;nh &#x1ea2;nh" type="java.lang.Object"/>
+                            <Column editable="true" title="M&#xf4; T&#x1ea3;" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -351,7 +338,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton2">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="xem chi ti&#x1ebf;t sp"/>
+                    <Property name="text" type="java.lang.String" value="Xem Chi Ti&#x1ebf;t"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
@@ -371,7 +358,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="camera"/>
+                        <TitledBorder title="Camera"/>
                       </Border>
                     </Property>
                   </Properties>
@@ -380,7 +367,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="cpu"/>
+                        <TitledBorder title="CPU"/>
                       </Border>
                     </Property>
                   </Properties>
@@ -389,7 +376,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="v&#x1ecf;"/>
+                        <TitledBorder title="V&#x1ecf;"/>
                       </Border>
                     </Property>
                   </Properties>
@@ -398,7 +385,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="m&#xe0;n h&#xec;nh"/>
+                        <TitledBorder title="M&#xe0;n H&#xec;nh"/>
                       </Border>
                     </Property>
                   </Properties>
@@ -407,16 +394,19 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="ram"/>
+                        <TitledBorder title="Ram"/>
                       </Border>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtramActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtbonho">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="b&#x1ed9; nh&#x1edb;"/>
+                        <TitledBorder title="B&#x1ed9; nh&#x1edb;"/>
                       </Border>
                     </Property>
                   </Properties>
@@ -425,7 +415,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="pin"/>
+                        <TitledBorder title="Pin"/>
                       </Border>
                     </Property>
                   </Properties>
@@ -434,7 +424,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="kh&#xe1;c"/>
+                        <TitledBorder title="Kh&#xe1;c"/>
                       </Border>
                     </Property>
                   </Properties>
@@ -483,7 +473,7 @@
                           <Component id="jButton11" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" pref="483" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" pref="405" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -619,7 +609,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" pref="295" max="-2" attributes="0"/>
-                      <EmptySpace pref="342" max="32767" attributes="0"/>
+                      <EmptySpace pref="264" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
