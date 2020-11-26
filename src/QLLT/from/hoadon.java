@@ -5,6 +5,8 @@
  */
 package QLLT.from;
 
+import Ketnoi.KetNoi;
+import QLLT.DAO.DAO_QLHD;
 import QLLT.from.fromcon.hoadonchitiet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,21 +21,17 @@ import javax.swing.table.DefaultTableModel;
  * @author vinh
  */
 public class hoadon extends javax.swing.JPanel {
-Connection cn;
+Ketnoi.KetNoi cn=new KetNoi();
     DefaultTableModel model;
+    String a;
     /**
      * Creates new form hoadon
      */
     public hoadon() {
         initComponents();
-         String heder[] = {"Mã HD", "MÃ NV","MÃ KH","Ngày lập","tổng tiền"};
-        String data[][] = null;
-        model = new DefaultTableModel(data, heder);
-        table.setModel(model);
-        // cn = helper.hepper.ketnoi("qllaptop4");
-        System.out.println("kết nối thành công");
-        jButton8.setEnabled(false);
-        loaddatatable();
+        DAO_QLHD.dolentable(tblhd, 1);
+        
+   
     }
 
     /**
@@ -47,41 +45,32 @@ Connection cn;
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
-        jButton8 = new javax.swing.JButton();
+        tblhd = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         txttim = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblhdct = new javax.swing.JTable();
 
         setLayout(new java.awt.CardLayout());
 
         jDesktopPane1.setBackground(new java.awt.Color(240, 240, 240));
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        tblhd.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã Hóa Đơn", "Mã Nhân Viên", "Mã Khách Hàng", "Ngày lập", "Mã Khuyến Mãi", "Tổng Tiền"
             }
         ));
-        table.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblhd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableMouseClicked(evt);
+                tblhdMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(table);
-
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Report.png"))); // NOI18N
-        jButton8.setText("xem chi tiết hóa đơn");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setViewportView(tblhd);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search.png"))); // NOI18N
         jButton2.setText("tìm kiếm");
@@ -106,19 +95,42 @@ Connection cn;
             }
         });
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Chi Tiết Hóa Đơn"));
+
+        tblhdct.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "mã hóa đơn", "mã sản phẩm", "số lượng", "đơn giá"
+            }
+        ));
+        jScrollPane2.setViewportView(tblhdct);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jButton8, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txttim, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addGap(9, 9, 9))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,9 +138,13 @@ Connection cn;
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton8)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1)
+                .addGap(9, 9, 9))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,11 +153,12 @@ Connection cn;
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                .addGap(143, 143, 143))
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         add(jDesktopPane1, "card2");
@@ -150,34 +167,34 @@ Connection cn;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
-        try {
-            String sql = "SELECT * FROM dbo.hoadon\n" +
-"WHERE mahd LIKE ?";
-            PreparedStatement ptsm = cn.prepareStatement(sql);
-            ptsm.setString(1, txttim.getText());
-            ResultSet rs = ptsm.executeQuery();
-
-            model.setRowCount(0);
-            while (rs.next()) {
-
-                Vector sp = new Vector();
-                sp.add(rs.getString(1));
-                sp.add(rs.getString(2));
-                sp.add(rs.getString(3));
-                sp.add(rs.getString(4));
-                sp.add(rs.getString(5));
-             
-
-                model.addRow(sp);
-
-            }
-
-            table.setModel(model);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Lỗi tìm kiếm");
-            e.printStackTrace();
-        }
+//        try {
+//            String sql = "SELECT * FROM dbo.hoadon\n" +
+//"WHERE mahd LIKE ?";
+//            PreparedStatement ptsm = cn.prepareStatement(sql);
+//            ptsm.setString(1, txttim.getText());
+//            ResultSet rs = ptsm.executeQuery();
+//
+//            model.setRowCount(0);
+//            while (rs.next()) {
+//
+//                Vector sp = new Vector();
+//                sp.add(rs.getString(1));
+//                sp.add(rs.getString(2));
+//                sp.add(rs.getString(3));
+//                sp.add(rs.getString(4));
+//                sp.add(rs.getString(5));
+//             
+//
+//                model.addRow(sp);
+//
+//            }
+//
+//            tblhd.setModel(model);
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Lỗi tìm kiếm");
+//            e.printStackTrace();
+//        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txttimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttimActionPerformed
@@ -188,59 +205,48 @@ Connection cn;
         // TODO add your handling code here:
         model.setRowCount(0);
         txttim.setText("");
-        loaddatatable();
+//        loaddatatable();
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void tblhdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblhdMouseClicked
         // TODO add your handling code here:
-        hoadonchitiet hd= new hoadonchitiet();
-        jDesktopPane1.add(hd);
-        hd.setVisible(true);
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
-        // TODO add your handling code here:
-        jButton8.setEnabled(true);
-    }//GEN-LAST:event_tableMouseClicked
+        int row=tblhd.getSelectedRow();
+       a=tblhd.getValueAt(row, 0).toString();
+       laydl();
+    }//GEN-LAST:event_tblhdMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable table;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblhd;
+    private javax.swing.JTable tblhdct;
     private javax.swing.JTextField txttim;
     // End of variables declaration//GEN-END:variables
-
-    private void loaddatatable() {
-         try {
-            String sql = "SELECT * FROM dbo.hoadon";
-            Statement stm = cn.createStatement();
-            //khai báo re sun sét nhận dữ liệu khi thực thi truy vấn select
-            ResultSet rs = stm.executeQuery(sql);
-            // duyệt rs đổ dữ liệu table
+private void laydl() {
+        try {
+            String sql = "SELECT * from hoadonchitiet\n"
+                    + "where mahd = N'" + a + "'";
+            ResultSet rs = KetNoi.Select(sql);
+              model = (DefaultTableModel) tblhdct.getModel(); 
+            model.setRowCount(0);
             while (rs.next()) {
                 Vector sp = new Vector();
                 sp.add(rs.getString(1));
                 sp.add(rs.getString(2));
                 sp.add(rs.getString(3));
                 sp.add(rs.getString(4));
-                sp.add(rs.getString(5));
-              
-               
-              
+ 
                 model.addRow(sp);
+                
             }
-            table.setModel(model);
-     
-            rs.close();
-            stm.close();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-
+            System.out.println("lỗi load data");
         }
     }
 }
