@@ -47,7 +47,7 @@ public class themkh1 extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -66,11 +66,11 @@ public class themkh1 extends javax.swing.JInternalFrame {
 
         jLabel2.setText("tên KH");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Add.png"))); // NOI18N
-        jButton1.setText("thêm");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Add.png"))); // NOI18N
+        btnThem.setText("thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnThemActionPerformed(evt);
             }
         });
 
@@ -126,7 +126,7 @@ public class themkh1 extends javax.swing.JInternalFrame {
                                 .addGap(102, 102, 102)
                                 .addComponent(jLabel3))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(btnThem)
                                 .addGap(38, 38, 38)
                                 .addComponent(jButton2)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +159,7 @@ public class themkh1 extends javax.swing.JInternalFrame {
                     .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnThem)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
                 .addGap(46, 46, 46))
@@ -168,14 +168,20 @@ public class themkh1 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-       laydl();
+        try {
+            if(check()){
+                laydl();
         DAo_KH.Insert(n);
        
         dispose();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Thêm thất bại");
+        }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnThemActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -192,7 +198,7 @@ khachhang kh = new khachhang();
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnThem;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -223,5 +229,18 @@ khachhang kh = new khachhang();
         n.setSdt(txtSDT.getText());
         n.setTenkh(txttenKH.getText());
         n.setTrangthai(txttrangthai.getText());
+    }
+      private boolean check(){
+        if(txtSDT.getText().equals("") || txtdiachi.getText().equals("") || txtmaKH.getText().equals("") 
+                || txttenKH.getText().equals("") || txttrangthai.getText().equals("") ){
+            JOptionPane.showMessageDialog(this, "Nhập đầy đủ thông tin");
+            return false;
+        }
+        String mauPhone = "((84)|(0))\\d{9}";
+        if(!txtSDT.getText().matches(mauPhone)){
+            JOptionPane.showMessageDialog(this, "số điện thoại không hợp lệ");
+            return false;
+        }
+        return true;
     }
 }

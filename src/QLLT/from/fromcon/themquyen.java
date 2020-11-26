@@ -128,10 +128,16 @@ public class themquyen extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       themDL();
+        try {
+            if(check()){
+                 themDL();
         DAO_Quyen.Insert(n);
         JOptionPane.showMessageDialog(this, "đã thêm");
         dispose();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Thêm thất bại");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -184,4 +190,11 @@ public class themquyen extends javax.swing.JInternalFrame {
 //        
 //        
 //    }
+    private boolean check(){
+        if(txtchitiet.getText().equals("") || txtq.getText().equals("") || txttk.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Nhập đầy đủ thông tin");
+            return false;
+        }
+        return true;
+    }
 }

@@ -18,7 +18,9 @@ import javax.swing.JOptionPane;
  * @author vinh
  */
 public class suaNCC extends javax.swing.JInternalFrame {
-    QLNCC n= new QLNCC();
+
+    QLNCC n = new QLNCC();
+
     /**
      * Creates new form suaNCC
      */
@@ -29,7 +31,7 @@ public class suaNCC extends javax.swing.JInternalFrame {
         this.txtfax.setText(nhacungcap.fax);
         this.txtmancc.setText(nhacungcap.mancc);
         this.txttenncc.setText(nhacungcap.ten);
-        
+
     }
 
     /**
@@ -184,9 +186,15 @@ public class suaNCC extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtdienthoaiActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       laydl();
-        DAO_NCC.update(n);
-        dispose();
+        try {
+             if (check()) {
+            laydl();
+            DAO_NCC.update(n);
+            dispose();
+        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Sửa thất bại");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -214,19 +222,38 @@ public class suaNCC extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void clear() {
-         txtdiachi.setText("");
+        txtdiachi.setText("");
         txtdienthoai.setText("");
         txtfax.setText("");
         txtmancc.setText("");
         txttenncc.setText("");
 
     }
-     public  void laydl()
-    {
+
+    public void laydl() {
         n.setDiachi(txtdiachi.getText());
         n.setFax(txtfax.getText());
         n.setMancc(txtmancc.getText());
         n.setSdt(txtdienthoai.getText());
         n.setTenncc(txttenncc.getText());
     }
+
+    private boolean check() {
+        if (txtdiachi.getText().equals("") || txtdienthoai.getText().equals("") || txtfax.getText().equals("")
+                || txtmancc.getText().equals("") || txttenncc.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Nhập đầy đủ thông tin");
+            return false;
+        }
+        String mauPhone = "((84)|(0))\\d{9}";
+        if (!txtdienthoai.getText().matches(mauPhone)) {
+            JOptionPane.showMessageDialog(this, "số điện thoại không hợp lệ");
+            return false;
+        }
+        if (!txtfax.getText().matches(mauPhone)) {
+            JOptionPane.showMessageDialog(this, "số fax không hợp lệ");
+            return false;
+        }
+        return true;
+    }
+
 }

@@ -168,10 +168,16 @@ public class themTK extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        themDL();
+        try {
+              if(check()){
+            themDL();
         DAO_TK.Insert(n);
         JOptionPane.showMessageDialog(this, "đã thêm");
         dispose();
+        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Thêm thất bại");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -209,5 +215,16 @@ public class themTK extends javax.swing.JInternalFrame {
         
     }
      
-     
+     private boolean check()
+    {
+        if(txtmk.getText().equals("") || txtmnv.getText().equals("") || txtq.getText().equals("") || txttk.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Nhập đầy đủ thông tin" );
+            return false;
+        }
+        if(txtmk.getText().length() < 6){
+            JOptionPane.showMessageDialog(this, "Mật khẩu phải ít nhất 6 kí tự");
+            return false;
+        }
+        return true;
+    }
 }

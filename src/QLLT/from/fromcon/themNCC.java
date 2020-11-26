@@ -185,11 +185,17 @@ public class themNCC extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       laydl();
+        try {
+             if(check()){
+           laydl();
         DAO_NCC.Insert(n);
         
         dispose();
         
+      }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Thêm thất bại");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -231,5 +237,22 @@ public class themNCC extends javax.swing.JInternalFrame {
         n.setMancc(txtmancc.getText());
         n.setSdt(txtdienthoai.getText());
         n.setTenncc(txttenncc.getText());
+    }
+    private boolean check() {
+        if (txtdiachi.getText().equals("") || txtdienthoai.getText().equals("") || txtfax.getText().equals("")
+                || txtmancc.getText().equals("") || txttenncc.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Nhập đầy đủ thông tin");
+            return false;
+        }
+        String mauPhone = "((84)|(0))\\d{9}";
+        if (!txtdienthoai.getText().matches(mauPhone)) {
+            JOptionPane.showMessageDialog(this, "số điện thoại không hợp lệ");
+            return false;
+        }
+        if (!txtfax.getText().matches(mauPhone)) {
+            JOptionPane.showMessageDialog(this, "số fax không hợp lệ");
+            return false;
+        }
+        return true;
     }
 }

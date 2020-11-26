@@ -130,10 +130,16 @@ public class suaquyen extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        themDL();
+        try {
+            if(check()){
+                 themDL();
         DAO_Quyen.update(n);
         JOptionPane.showMessageDialog(this, "đã sửa");
         dispose();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Sửa thất bại");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -158,6 +164,13 @@ public class suaquyen extends javax.swing.JInternalFrame {
         n.setMaq(txtq.getText());
         n.setTen(txttk.getText());
         n.setChitietq(txtchitiet.getText());
+    }
+    private boolean check(){
+        if(txtchitiet.getText().equals("") || txtq.getText().equals("") || txttk.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Nhập đầy đủ thông tin");
+            return false;
+        }
+        return true;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

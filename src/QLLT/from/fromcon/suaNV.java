@@ -12,6 +12,8 @@ import QLLT.from.nhanvien;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,7 +24,7 @@ public class suaNV extends javax.swing.JInternalFrame {
 
      Ketnoi.KetNoi cn= new KetNoi();
      QLNV n= new QLNV();
-
+     SimpleDateFormat fomat = new SimpleDateFormat("yyyy-MM-dd");
     /**
      * Creates new form suaNV
      */
@@ -186,10 +188,16 @@ public class suaNV extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            laydl();
+          try {
+             if(check()){
+                laydl();
             DAO_NV.update(n);
             JOptionPane.showMessageDialog(this, "đã sửa");
             dispose();
+           }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Sửa thất bại");
+        }
             
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -239,5 +247,30 @@ public class suaNV extends javax.swing.JInternalFrame {
         n.setSdt(txtsdt.getText().trim());
         n.setTennv(txttenNV.getText().trim());
         n.setTrangthai(cbo.getSelectedItem().toString());
+    }
+     private boolean check() {
+        if (txtdiachi.getText().equals("") || txtmaNV.getText().equals("")
+                || txtsdt.getText().equals("") || txttenNV.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Nhập đầy đủ thông tin");
+            return false;
+        }
+        String mauPhone = "((84)|(0))\\d{9}";
+        if (!txtsdt.getText().matches(mauPhone)) {
+            JOptionPane.showMessageDialog(this, "số điện thoại không hợp lệ");
+            return false;
+        }
+         try {
+             fomat.setLenient(false);
+             Date date = fomat.parse(txtngaysinh.getText().toString());
+             if(date.equals("")){
+                 JOptionPane.showMessageDialog(this,"Nhập đầy đủ thông tin");
+                 return false;
+             }
+         } catch (Exception e) {
+             JOptionPane.showMessageDialog(this, "Lỗi định dạng ngày");
+         }
+         
+         
+        return true;
     }
 }

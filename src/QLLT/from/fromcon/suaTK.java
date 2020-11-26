@@ -141,10 +141,16 @@ public class suaTK extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        themDL();
+        try {
+            if(check()){
+            themDL();
         DAO_TK.update(n);
         JOptionPane.showMessageDialog(this, "đã sửa");
         dispose();
+        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Sửa thất bại");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -178,5 +184,17 @@ public class suaTK extends javax.swing.JInternalFrame {
         n.setTentk(txttk.getText().trim());
         n.setMk(txtmk.getText().trim());
 
+    }
+    private boolean check()
+    {
+        if(txtmk.getText().equals("") || txtmnv.getText().equals("") || txtq.getText().equals("") || txttk.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Nhập đầy đủ thông tin" );
+            return false;
+        }
+        if(txtmk.getText().length() < 6){
+            JOptionPane.showMessageDialog(this, "Mật khẩu phải ít nhất 6 kí tự");
+            return false;
+        }
+        return true;
     }
 }
