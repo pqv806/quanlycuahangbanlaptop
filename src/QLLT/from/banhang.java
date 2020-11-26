@@ -15,6 +15,10 @@ import QLLT.classs.QLHDCT;
 import QLLT.classs.piceFormatter;
 import java.awt.HeadlessException;
 import java.awt.Image;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -113,6 +117,7 @@ public class banhang extends javax.swing.JPanel {
         txttongtien = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1030, 709));
         setLayout(new java.awt.CardLayout());
@@ -242,7 +247,7 @@ public class banhang extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 13, Short.MAX_VALUE)
+                        .addGap(0, 5, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -470,6 +475,13 @@ public class banhang extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setText("in");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -481,13 +493,15 @@ public class banhang extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
+                        .addGap(79, 79, 79)
+                        .addComponent(jButton2)
+                        .addGap(39, 39, 39)
                         .addComponent(jButton4)
                         .addGap(18, 18, 18)
                         .addComponent(jButton5)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
@@ -501,7 +515,8 @@ public class banhang extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
                 .addGap(94, 94, 94))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -582,8 +597,9 @@ try {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
   laydl();
         DAO_QLHD.Insert(n);
-         String masp,soluong,dongia ;
          float gia1 = 0;
+         String masp,soluong,dongia ;
+        
         for (int i = 0; i < model1.getRowCount(); i++) {
            
             masp = tblgiohang.getValueAt(i, 0).toString();
@@ -662,12 +678,46 @@ try {
         // TODO add your handling code here:
     }//GEN-LAST:event_txttongtienActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         String masp,soluong,dongia ;
+            try {
+            Writer b = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("In.txt")));
+            String tenkh = cboKH.getSelectedItem().toString();
+            String tennv =  cboNV.getSelectedItem().toString();
+            String ngaylap = txtngaylap.getText();
+            String tensp = txttensp.getText();
+            String thanhtien = txttongtien.getText();
+              for (int i = 0; i < model1.getRowCount(); i++) {
+           
+            masp = tblgiohang.getValueAt(i, 0).toString();
+            soluong = tblgiohang.getValueAt(i, 2).toString();
+            dongia= tblgiohang.getValueAt(i, 4).toString();
+
+            b.write("\t\t\t\t\t cửa hàng Labtop \n");
+            b.write("\t\t\t------------------------------------------------------------\r\n\r\n");
+            b.write("\t\t\t\t Chào mừng quý khách: " + cboKH.getSelectedItem().toString() + "\r\n\r\n");
+            b.write("\t\t\t\t\t HÓA ĐƠN BÁN HÀNG\r\n\r\n");
+            b.write("\tmã sản phẩm\tSố lượng\tđơn giá\t\tTên sản phẩm\tThành tiền\r\n");
+            b.write("\t\t\t-------------------------------------------------------------\r\n\r\n");
+            b.write("\t" + masp + "\t\t" + soluong + "\t\t" + dongia + "\t" + tensp + "\t\t" + thanhtien + "\r\n");
+
+            b.write("\n\t\t\t---------------------CÁM ƠN QUÝ KHÁCH!----------------------\n");
+            b.close();
+            Runtime r = Runtime.getRuntime();
+            r.exec("notepad In.txt");
+                } } catch (Exception e) {
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bltthem;
     private javax.swing.JComboBox<String> cboKH;
     private javax.swing.JComboBox<String> cboNV;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
