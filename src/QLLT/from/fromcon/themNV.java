@@ -80,6 +80,12 @@ public class themNV extends javax.swing.JInternalFrame {
 
         txtmaNV.setEditable(false);
 
+        txtngaysinh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtngaysinhActionPerformed(evt);
+            }
+        });
+
         jLabel8.setText("SDT");
 
         jLabel1.setText("mã NV");
@@ -226,6 +232,10 @@ public class themNV extends javax.swing.JInternalFrame {
     private void cboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboActionPerformed
+
+    private void txtngaysinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtngaysinhActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtngaysinhActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

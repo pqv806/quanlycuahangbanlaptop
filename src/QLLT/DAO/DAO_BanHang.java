@@ -6,8 +6,11 @@
 package QLLT.DAO;
 
 import Ketnoi.KetNoi;
+import QLLT.classs.QLSP;
+
 import QLLT.classs.piceFormatter;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -43,5 +46,6 @@ public class DAO_BanHang {
         }
 
     }
+   
     
 }

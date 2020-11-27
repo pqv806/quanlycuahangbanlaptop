@@ -94,4 +94,25 @@ public class DAO_QLHD {
             }
             tblhd.setModel(model);
         }
+   public static  void TimKiemsp(QLHD n,JTable tblsp) throws SQLException {
+        String sql = "";
+
+        sql = "select * from sanpham\n"
+                    + "where tensp like N'%" + n.getTim()+ "%'";
+        ResultSet rs = KetNoi.Select(sql);
+           DefaultTableModel model = (DefaultTableModel) tblsp.getModel();
+        Vector v = null;
+            model.setRowCount(0);
+            while (rs.next()) {
+                v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(6));              
+                v.add(rs.getString(7));
+                model.addRow(v);
+            }
+            tblsp.setModel(model);
+        }
 }

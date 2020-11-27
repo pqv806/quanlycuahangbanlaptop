@@ -22,6 +22,7 @@ import java.io.Writer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -32,6 +33,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -240,6 +243,11 @@ public class banhang extends javax.swing.JPanel {
         txttim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txttimActionPerformed(evt);
+            }
+        });
+        txttim.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txttimKeyReleased(evt);
             }
         });
 
@@ -683,7 +691,7 @@ try {
         // TODO add your handling code here:
         model.setRowCount(0);
         txttim.setText("");
-        loaddatatable();
+        DAO_BanHang.dolentable(tblsp, 1);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void txtmaspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmaspActionPerformed
@@ -735,6 +743,17 @@ try {
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txttimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimKeyReleased
+        // TODO add your handling code here:
+        laydl();
+          try {
+              DAO_QLHD.TimKiemsp(n, tblsp);
+          } catch (SQLException ex) {
+              Logger.getLogger(banhang.class.getName()).log(Level.SEVERE, null, ex);
+          }
+         
+    }//GEN-LAST:event_txttimKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -902,6 +921,7 @@ try {
         n.setMakhuyenmai(txtkhuyenmai.getText());
         n.setNgaylap(txtngaylap.getText());
         n.setTongtien(Float.valueOf(txttongtien1.getText()));
+        n.setTim(txttim.getText());
      
 
 }
