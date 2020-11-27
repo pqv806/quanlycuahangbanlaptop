@@ -23,8 +23,8 @@ public class DAO_QLHD {
         try {
           
             String sql = "SELECT  *\n"
-                    + "FROM dbo.hoadon \n"
-                    + "WHERE mahd NOT IN (SELECT TOP " + (trang * 5 - 5) + " mahd FROM dbo.hoadon)";
+                    + "FROM dbo.hoadon ";
+                 
             DefaultTableModel model = (DefaultTableModel) tblhd.getModel();
             ResultSet rs = KetNoi.Select(sql);
             Vector v = null;

@@ -30,7 +30,9 @@ Ketnoi.KetNoi cn=new KetNoi();
     public hoadon() {
         initComponents();
         DAO_QLHD.dolentable(tblhd, 1);
-        
+            
+
+
    
     }
 
@@ -46,7 +48,6 @@ Ketnoi.KetNoi cn=new KetNoi();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblhd = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
         txttim = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -71,14 +72,6 @@ Ketnoi.KetNoi cn=new KetNoi();
             }
         });
         jScrollPane1.setViewportView(tblhd);
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search.png"))); // NOI18N
-        jButton2.setText("tìm kiếm");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         txttim.setBorder(javax.swing.BorderFactory.createTitledBorder("tìm kiếm"));
         txttim.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +115,6 @@ Ketnoi.KetNoi cn=new KetNoi();
         );
 
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txttim, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -132,10 +124,8 @@ Ketnoi.KetNoi cn=new KetNoi();
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(99, 99, 99)
                 .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -149,12 +139,11 @@ Ketnoi.KetNoi cn=new KetNoi();
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(33, 33, 33)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,39 +152,6 @@ Ketnoi.KetNoi cn=new KetNoi();
 
         add(jDesktopPane1, "card2");
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-
-//        try {
-//            String sql = "SELECT * FROM dbo.hoadon\n" +
-//"WHERE mahd LIKE ?";
-//            PreparedStatement ptsm = cn.prepareStatement(sql);
-//            ptsm.setString(1, txttim.getText());
-//            ResultSet rs = ptsm.executeQuery();
-//
-//            model.setRowCount(0);
-//            while (rs.next()) {
-//
-//                Vector sp = new Vector();
-//                sp.add(rs.getString(1));
-//                sp.add(rs.getString(2));
-//                sp.add(rs.getString(3));
-//                sp.add(rs.getString(4));
-//                sp.add(rs.getString(5));
-//             
-//
-//                model.addRow(sp);
-//
-//            }
-//
-//            tblhd.setModel(model);
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "Lỗi tìm kiếm");
-//            e.printStackTrace();
-//        }
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txttimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttimActionPerformed
         // TODO add your handling code here:
@@ -217,7 +173,6 @@ Ketnoi.KetNoi cn=new KetNoi();
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;
