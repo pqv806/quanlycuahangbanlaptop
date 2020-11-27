@@ -10,8 +10,9 @@ package QLLT.classs;
  * @author vinh
  */
 public class QLHDCT {
-    private String mahd,masp,sl,tensp,thanhtien;
+    private String mahd,masp,tensp,thanhtien;
     private Float dongia;
+      private Integer sl;
 
     public String getMahd() {
         return mahd;
@@ -27,14 +28,6 @@ public class QLHDCT {
 
     public void setMasp(String masp) {
         this.masp = masp;
-    }
-
-    public String getSl() {
-        return sl;
-    }
-
-    public void setSl(String sl) {
-        this.sl = sl;
     }
 
     public String getTensp() {
@@ -61,6 +54,15 @@ public class QLHDCT {
         this.dongia = dongia;
     }
 
+    public Integer getSl() {
+        return sl;
+    }
+
+    public void setSl(Integer sl) {
+        this.sl = sl;
+    }
+
+   
    
  
 

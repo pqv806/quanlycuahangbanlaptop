@@ -21,8 +21,7 @@ public class DAO_HDCT {
             String sql = "insert into hoadonchitiet(mahd, masp, soluong, dongia ) \n"
                     + "values(N'" + n.getMahd()+ "'"
                     + ",N'" + n.getMasp()+ "'"
-                    + ",'" + n.getSl()+ "'"
-                   
+                   + ",N'" + n.getSl()+ "'"
                     + ",N'" + n.getDongia()+ "')";
 
             if (Ketnoi.KetNoi.Update(sql) > 0) {

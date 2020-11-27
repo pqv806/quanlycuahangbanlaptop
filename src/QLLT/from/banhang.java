@@ -53,7 +53,9 @@ public class banhang extends javax.swing.JPanel {
     Float gia,tongtien,tt;
     QLHD n=new QLHD();
     QLHDCT m=new QLHDCT();
-     String masp,soluong,dongia,thanhtien1 ,tensp;
+    int soluongsp,soluong;
+     String masp,dongia,thanhtien1 ,tensp;
+     
     nextid id=new nextid();
    
 
@@ -70,6 +72,8 @@ public class banhang extends javax.swing.JPanel {
         loadNV();
         jButton5.setEnabled(false);
         txthoadon.setText(id.mahoadon());
+        
+    
 
        
 
@@ -596,15 +600,13 @@ try {
     }//GEN-LAST:event_txttongtien1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-  laydl();
+          laydl();
         DAO_QLHD.Insert(n);
          float gia1 = 0;
-         String masp,soluong,dongia ;
-        
         for (int i = 0; i < model1.getRowCount(); i++) {
            
             masp = tblgiohang.getValueAt(i, 0).toString();
-            soluong = tblgiohang.getValueAt(i, 2).toString();
+            soluong = Integer.valueOf(tblgiohang.getValueAt(i, 2).toString());
             dongia= tblgiohang.getValueAt(i, 4).toString();
             try {
             String sql = "SELECT * from sanpham\n"
@@ -613,6 +615,7 @@ try {
 
             while (rs.next()) {
                 gia1 = rs.getFloat(4);
+                soluongsp=rs.getInt(6);
             }
 
         } catch (Exception e) {
@@ -622,11 +625,27 @@ try {
             m.setMasp(masp);
             m.setSl(soluong);
             m.setDongia(gia1);
-            System.out.println(gia1);
+          
          DAO_HDCT.Insert(m);
+          
+         Integer a = Integer.valueOf(soluongsp-soluong);
+             try {
+            String sql = "update sanpham\n"
+                    + "set soluong = N'" + a + "'"
+                 
+                    + "where masp = '" + masp + "'";
+            if (Ketnoi.KetNoi.Update(sql) > 0) {
+                System.out.println("Cập nhật thành công");
+            } else {
+                System.out.println("Thất bại");
+            }
+
+        } catch (Exception e) {
+            System.out.println("lỗi load data");
+        }
            
         }
-        
+        DAO_BanHang.dolentable(tblsp, 1);
          loaddatatable1();
 
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -701,7 +720,7 @@ try {
            
             masp = tblgiohang.getValueAt(i, 0).toString();
              tensp = tblgiohang.getValueAt(i, 1).toString();
-            soluong = tblgiohang.getValueAt(i, 2).toString();
+            soluong = Integer.valueOf(tblgiohang.getValueAt(i, 2).toString());
             dongia= tblgiohang.getValueAt(i, 3).toString();
             thanhtien1= tblgiohang.getValueAt(i, 4).toString();
             b.write("\t" + masp + "\t\t" + tensp + "\t\t" + dongia + "\t" + soluong + "\t\t" + thanhtien1 + "\r\n");
@@ -863,6 +882,7 @@ try {
             ResultSet rs = KetNoi.Select(sql);
 
             while (rs.next()) {
+                
                 gia = rs.getFloat(4);
 
             }
@@ -871,6 +891,7 @@ try {
             System.out.println("lỗi load data");
         }
     }
+  
 
     public void laydl()
     {
