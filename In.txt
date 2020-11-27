@@ -1,13 +1,19 @@
-				 cửa hàng Labtop 
+					 cửa hàng Labtop 
 			------------------------------------------------------------
 
-				 Chào mừng quý khách: trịnh khánh ly
+				 Chào mừng quý khách: trần văn giang
 
 					 HÓA ĐƠN BÁN HÀNG
 
-	mã sản phẩm	Số lượng	đơn giá		Tên sản phẩm	Thành tiền
+	mã sản phẩm	Tên sản phẩm	đơn giá		Số lượng	Thành tiền
 			-------------------------------------------------------------
 
-	sp01		1		12.000.000 đ	laptop		12.000.000 đ
+	sp01		laptop		12.000.000 đ	1		12.000.000 đ
+	sp02		d		11.000.000 đ	1		11.000.000 đ
+	sp01		laptop		12.000.000 đ	1		12.000.000 đ
+
+							 Tổng tiền :35.000.000 đ
 
 			---------------------CÁM ƠN QUÝ KHÁCH!----------------------
+
+								 Ngày lập :2020-11-27

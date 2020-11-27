@@ -27,6 +27,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -52,9 +53,9 @@ public class banhang extends javax.swing.JPanel {
     Float gia,tongtien,tt;
     QLHD n=new QLHD();
     QLHDCT m=new QLHDCT();
-     
-    
+     String masp,soluong,dongia,thanhtien1 ,tensp;
     nextid id=new nextid();
+   
 
     /**
      * Creates new form banhang
@@ -538,20 +539,20 @@ public class banhang extends javax.swing.JPanel {
 
     private void bltthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bltthemActionPerformed
         // TODO add your handling code here:
+            
        tinhtien();
         String data1 = txtmasp.getText();
         String data2 = txttensp.getText();;
         String data4 = txtdongia.getText();;
         String data3 = txtsoluong.getText();
         String data5 = piceFormatter.format(thanhtien);
-       
-        Object[] row = {data1, data2, data3, data4,data5};
+           Object[] row = {data1, data2, data3, data4,data5};
         model1 = (DefaultTableModel) tblgiohang.getModel(); 
-        model1.addRow(row);
-
+        model1.addRow(row); 
+        
         jButton5.setEnabled(true);
-
-
+        
+        
     }//GEN-LAST:event_bltthemActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -680,33 +681,38 @@ try {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         String masp,soluong,dongia ;
+        
             try {
             Writer b = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("In.txt")));
             String tenkh = cboKH.getSelectedItem().toString();
             String tennv =  cboNV.getSelectedItem().toString();
             String ngaylap = txtngaylap.getText();
-            String tensp = txttensp.getText();
-            String thanhtien = txttongtien.getText();
-              for (int i = 0; i < model1.getRowCount(); i++) {
+            String tongtien =txttongtien.getText();
+            
            
-            masp = tblgiohang.getValueAt(i, 0).toString();
-            soluong = tblgiohang.getValueAt(i, 2).toString();
-            dongia= tblgiohang.getValueAt(i, 4).toString();
-
+ 
             b.write("\t\t\t\t\t cửa hàng Labtop \n");
             b.write("\t\t\t------------------------------------------------------------\r\n\r\n");
             b.write("\t\t\t\t Chào mừng quý khách: " + cboKH.getSelectedItem().toString() + "\r\n\r\n");
             b.write("\t\t\t\t\t HÓA ĐƠN BÁN HÀNG\r\n\r\n");
-            b.write("\tmã sản phẩm\tSố lượng\tđơn giá\t\tTên sản phẩm\tThành tiền\r\n");
+            b.write("\tmã sản phẩm\tTên sản phẩm\tđơn giá\t\tSố lượng\tThành tiền\r\n");
             b.write("\t\t\t-------------------------------------------------------------\r\n\r\n");
-            b.write("\t" + masp + "\t\t" + soluong + "\t\t" + dongia + "\t" + tensp + "\t\t" + thanhtien + "\r\n");
-
+             for (int i = 0; i < model1.getRowCount(); i++) {
+           
+            masp = tblgiohang.getValueAt(i, 0).toString();
+             tensp = tblgiohang.getValueAt(i, 1).toString();
+            soluong = tblgiohang.getValueAt(i, 2).toString();
+            dongia= tblgiohang.getValueAt(i, 3).toString();
+            thanhtien1= tblgiohang.getValueAt(i, 4).toString();
+            b.write("\t" + masp + "\t\t" + tensp + "\t\t" + dongia + "\t" + soluong + "\t\t" + thanhtien1 + "\r\n");
+             }
+             b.write("\n\t\t\t\t\t\t\t Tổng tiền :"+tongtien+"\n");
             b.write("\n\t\t\t---------------------CÁM ƠN QUÝ KHÁCH!----------------------\n");
+            b.write("\n\t\t\t\t\t\t\t\t Ngày lập :"+ngaylap+"\n");
             b.close();
             Runtime r = Runtime.getRuntime();
             r.exec("notepad In.txt");
-                } } catch (Exception e) {
+                 } catch (Exception e) {
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
