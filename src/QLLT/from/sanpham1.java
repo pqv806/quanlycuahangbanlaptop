@@ -37,7 +37,7 @@ import javax.swing.table.DefaultTableModel;
 public class sanpham1 extends javax.swing.JPanel {
 
     DefaultTableModel model;
-    public static String ma, maloai, ten, dongia, soluong, hinh,mota;
+    public static String ma, maloai, ten, giaban,gianhap, hinh,mota;
     Ketnoi.KetNoi cn=new KetNoi();
     QLSP n= new QLSP();
     
@@ -697,39 +697,28 @@ public class sanpham1 extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try {
-
-            //            cn = helper.hepper.ketnoi("qllaptop4");
-
-            String sql = "DELETE dbo.sanpham WHERE masp LIKE ?";
-
-            //    PreparedStatement pst = cn.prepareStatement(sql);
-            //  pst.setString(1, table.getValueAt(table.getSelectedRow(), 0).toString());
-            //
+                 laydl();
             int hoi = JOptionPane.showConfirmDialog(this, "xóa sản phẩm");
             if (hoi == JOptionPane.YES_OPTION) {
-
-                //  pst.executeUpdate();
-
-                JOptionPane.showMessageDialog(this, "xóa thành công");
-                model.setRowCount(0);
-                //      loaddatatable();
-
+               
+                DAO_QLSP.DeleteCTSP(n);
+                DAO_QLSP.Delete(n);
+                 JOptionPane.showMessageDialog(this, "xóa thành công");
+                DAO_QLSP.dolentable(tblsp, 1);
+                
             } else {
                 JOptionPane.showMessageDialog(this, "chưa xóa");
             }
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "lỗi xóa sp");
-        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
 
-        //        suasanpham ssp = new suasanpham();
-        //        jDesktopPane1.add(ssp);
-        //        ssp.setVisible(true);
+                suasanpham ssp = new suasanpham();
+                jDesktopPanesp.add(ssp);
+                ssp.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void bltthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bltthemActionPerformed
@@ -805,10 +794,10 @@ public class sanpham1 extends javax.swing.JPanel {
         ma = tblsp.getValueAt(row, 0).toString();
         maloai = tblsp.getValueAt(row, 2).toString();
         ten = tblsp.getValueAt(row, 1).toString();
-        dongia = tblsp.getValueAt(row, 3).toString();
-        soluong = tblsp.getValueAt(row, 4).toString();
-        hinh = tblsp.getValueAt(row, 5).toString();
-        mota = tblsp.getValueAt(row, 6).toString();
+        giaban = tblsp.getValueAt(row, 3).toString();
+        gianhap = tblsp.getValueAt(row, 4).toString();
+        hinh = tblsp.getValueAt(row, 6).toString();
+        mota = tblsp.getValueAt(row, 7).toString();
 
     }
      public void TTSP()
@@ -834,4 +823,8 @@ public class sanpham1 extends javax.swing.JPanel {
 
         }
     }
+     public void laydl()
+     {
+         n.setMasp(ma);
+     }
 }

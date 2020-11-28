@@ -49,7 +49,7 @@ String ma;
     }
     public String mahoadon()
     {
-        return "Q" + String.valueOf(this.ma);
+        return "HD" + String.valueOf(this.ma);
     }
     
      public String mancc()

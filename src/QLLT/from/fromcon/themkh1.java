@@ -9,7 +9,6 @@ import QLLT.DAO.DAo_KH;
 import QLLT.DAO.nextid;
 import QLLT.classs.QLKH;
 import QLLT.from.khachhang;
-import QLLT.from.sanpham;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

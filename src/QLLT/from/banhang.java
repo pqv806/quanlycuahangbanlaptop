@@ -13,6 +13,7 @@ import QLLT.DAO.nextid;
 import QLLT.classs.QLHD;
 import QLLT.classs.QLHDCT;
 import QLLT.classs.piceFormatter;
+import com.sun.org.apache.bcel.internal.generic.FLOAD;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.io.BufferedWriter;
@@ -45,7 +46,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class banhang extends javax.swing.JPanel {
 
-      Ketnoi.KetNoi cn = new KetNoi();
+    Ketnoi.KetNoi cn = new KetNoi();
     DefaultTableModel model;
     DefaultTableModel model1;
     int index;
@@ -53,20 +54,19 @@ public class banhang extends javax.swing.JPanel {
     String makh = null;
     String ngay = null;
     Float thanhtien;
-    Float gia,tongtien,tt;
-    QLHD n=new QLHD();
-    QLHDCT m=new QLHDCT();
-    int soluongsp,soluong;
-     String masp,dongia,thanhtien1 ,tensp;
-     
-    nextid id=new nextid();
-   
+    Float gia, tongtien, tt;
+    QLHD n = new QLHD();
+    QLHDCT m = new QLHDCT();
+    int soluongsp, soluong,soluongkho;
+    String masp, dongia, thanhtien1, tensp,xoathanhtien;
+
+    nextid id = new nextid();
 
     /**
      * Creates new form banhang
      */
     public banhang() {
-         initComponents();
+        initComponents();
         DAO_BanHang.dolentable(tblsp, 1);
         ngay();
         dongho();
@@ -75,10 +75,6 @@ public class banhang extends javax.swing.JPanel {
         loadNV();
         jButton5.setEnabled(false);
         txthoadon.setText(id.mahoadon());
-        
-    
-
-       
 
     }
 
@@ -125,7 +121,6 @@ public class banhang extends javax.swing.JPanel {
         txttongtien = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1030, 709));
         setLayout(new java.awt.CardLayout());
@@ -150,8 +145,10 @@ public class banhang extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblsp);
 
+        txtlsp.setEditable(false);
         txtlsp.setBorder(javax.swing.BorderFactory.createTitledBorder("Loại Sản Phẩm"));
 
+        txtmasp.setEditable(false);
         txtmasp.setBorder(javax.swing.BorderFactory.createTitledBorder("Mã Sản Phẩm"));
         txtmasp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,8 +156,10 @@ public class banhang extends javax.swing.JPanel {
             }
         });
 
+        txtdongia.setEditable(false);
         txtdongia.setBorder(javax.swing.BorderFactory.createTitledBorder("Giá Bán"));
 
+        txttensp.setEditable(false);
         txttensp.setBorder(javax.swing.BorderFactory.createTitledBorder("Tên Sản Phẩm"));
 
         lblhinh.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -416,6 +415,11 @@ public class banhang extends javax.swing.JPanel {
                 "Mã Sản Phẩm", "Tên Sản Phẩm", "Số Lượng", "Đơn Giá", "Thành Tiền"
             }
         ));
+        tblgiohang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblgiohangMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblgiohang);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Delete.png"))); // NOI18N
@@ -488,13 +492,6 @@ public class banhang extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("in");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -506,9 +503,7 @@ public class banhang extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jButton2)
-                        .addGap(39, 39, 39)
+                        .addGap(159, 159, 159)
                         .addComponent(jButton4)
                         .addGap(18, 18, 18)
                         .addComponent(jButton5)
@@ -528,12 +523,11 @@ public class banhang extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(94, 94, 94))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
         add(jPanel1, "card2");
@@ -551,26 +545,27 @@ public class banhang extends javax.swing.JPanel {
 
     private void bltthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bltthemActionPerformed
         // TODO add your handling code here:
-            
-       tinhtien();
+if(check())
+{
+        tinhtien();
         String data1 = txtmasp.getText();
         String data2 = txttensp.getText();;
         String data4 = txtdongia.getText();;
         String data3 = txtsoluong.getText();
         String data5 = piceFormatter.format(thanhtien);
-           Object[] row = {data1, data2, data3, data4,data5};
-        model1 = (DefaultTableModel) tblgiohang.getModel(); 
-        model1.addRow(row); 
-        
+        Object[] row = {data1, data2, data3, data4, data5};
+        model1 = (DefaultTableModel) tblgiohang.getModel();
+        model1.addRow(row);
+
         jButton5.setEnabled(true);
-        
-        
+
+}
     }//GEN-LAST:event_bltthemActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         model1.removeRow(tblgiohang.getSelectedRow());
-        
+
         if (tblgiohang.getRowCount() == 0) {
             jButton5.setEnabled(false);
         }
@@ -579,14 +574,13 @@ public class banhang extends javax.swing.JPanel {
 
     private void cboKHItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboKHItemStateChanged
         // TODO add your handling code here:
-try {
+        try {
 
             int index = cboKH.getSelectedIndex();
             if (index >= 0) {
                 String sql = "SELECT makh FROM dbo.khachhang\n"
                         + "WHERE tenkh LIKE N'" + cboKH.getSelectedItem().toString() + "'";
-              
-            
+
                 ResultSet rs = KetNoi.Select(sql);
 
                 while (rs.next()) {
@@ -594,8 +588,7 @@ try {
                     makh = rs.getString(1);
                 }
                 rs.close();
-           
-               
+
             }
         } catch (Exception e) {
             System.out.println("lỗi load table");
@@ -608,54 +601,62 @@ try {
     }//GEN-LAST:event_txttongtien1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-          laydl();
+        laydl();
         DAO_QLHD.Insert(n);
-         float gia1 = 0;
+        float gia1 = 0;
         for (int i = 0; i < model1.getRowCount(); i++) {
-           
+
             masp = tblgiohang.getValueAt(i, 0).toString();
             soluong = Integer.valueOf(tblgiohang.getValueAt(i, 2).toString());
-            dongia= tblgiohang.getValueAt(i, 4).toString();
+             tensp = tblgiohang.getValueAt(i, 1).toString();
+            dongia = tblgiohang.getValueAt(i, 4).toString();
             try {
-            String sql = "SELECT * from sanpham\n"
-                    + "where masp = N'" + masp + "'";
-            ResultSet rs = KetNoi.Select(sql);
+                String sql = "SELECT * from sanpham\n"
+                        + "where masp = N'" + masp + "'";
+                ResultSet rs = KetNoi.Select(sql);
 
-            while (rs.next()) {
-                gia1 = rs.getFloat(4);
-                soluongsp=rs.getInt(6);
+                while (rs.next()) {
+                    gia1 = rs.getFloat(4);
+                    soluongsp = rs.getInt(6);
+                }
+
+            } catch (Exception e) {
+                System.out.println("lỗi load data");
             }
-
-        } catch (Exception e) {
-            System.out.println("lỗi load data");
-        }
             m.setMahd(txthoadon.getText());
-            m.setMasp(masp);
+            m.setTensp(tensp);
             m.setSl(soluong);
             m.setDongia(gia1);
-          
-         DAO_HDCT.Insert(m);
-          
-         Integer a = Integer.valueOf(soluongsp-soluong);
-             try {
-            String sql = "update sanpham\n"
-                    + "set soluong = N'" + a + "'"
-                 
-                    + "where masp = '" + masp + "'";
-            if (Ketnoi.KetNoi.Update(sql) > 0) {
-                System.out.println("Cập nhật thành công");
-            } else {
-                System.out.println("Thất bại");
+
+            DAO_HDCT.Insert(m);
+
+            Integer a = Integer.valueOf(soluongsp - soluong);
+            try {
+                String sql = "update sanpham\n"
+                        + "set soluong = N'" + a + "'"
+                        + "where masp = '" + masp + "'";
+                if (Ketnoi.KetNoi.Update(sql) > 0) {
+                    System.out.println("Cập nhật thành công");
+                } else {
+                    System.out.println("Thất bại");
+                }
+
+            } catch (Exception e) {
+                System.out.println("lỗi load data");
             }
 
-        } catch (Exception e) {
-            System.out.println("lỗi load data");
-        }
-           
         }
         DAO_BanHang.dolentable(tblsp, 1);
-         loaddatatable1();
+      
+        int hoi = JOptionPane.showConfirmDialog(this, "In Hóa Đơn", "Bạn Có Muốn In Hóa Đơn", JOptionPane.YES_NO_OPTION);
+        if (hoi == JOptionPane.YES_OPTION) {
 
+            inHD();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "chưa in");
+        }
+          loaddatatable1();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void cboNVItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboNVItemStateChanged
@@ -665,8 +666,7 @@ try {
             if (index >= 0) {
                 String sql = "SELECT manv FROM dbo.nhanvien \n"
                         + "WHERE tennv LIKE N'" + cboNV.getSelectedItem().toString() + "'";
-                
-               
+
                 ResultSet rs = KetNoi.Select(sql);
 
                 while (rs.next()) {
@@ -706,54 +706,25 @@ try {
         // TODO add your handling code here:
     }//GEN-LAST:event_txttongtienActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        
-            try {
-            Writer b = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("In.txt")));
-            String tenkh = cboKH.getSelectedItem().toString();
-            String tennv =  cboNV.getSelectedItem().toString();
-            String ngaylap = txtngaylap.getText();
-            String tongtien =txttongtien.getText();
-            
-           
- 
-            b.write("\t\t\t\t\t cửa hàng Labtop \n");
-            b.write("\t\t\t------------------------------------------------------------\r\n\r\n");
-            b.write("\t\t\t\t Chào mừng quý khách: " + cboKH.getSelectedItem().toString() + "\r\n\r\n");
-            b.write("\t\t\t\t\t HÓA ĐƠN BÁN HÀNG\r\n\r\n");
-            b.write("\tmã sản phẩm\tTên sản phẩm\tđơn giá\t\tSố lượng\tThành tiền\r\n");
-            b.write("\t\t\t-------------------------------------------------------------\r\n\r\n");
-             for (int i = 0; i < model1.getRowCount(); i++) {
-           
-            masp = tblgiohang.getValueAt(i, 0).toString();
-             tensp = tblgiohang.getValueAt(i, 1).toString();
-            soluong = Integer.valueOf(tblgiohang.getValueAt(i, 2).toString());
-            dongia= tblgiohang.getValueAt(i, 3).toString();
-            thanhtien1= tblgiohang.getValueAt(i, 4).toString();
-            b.write("\t" + masp + "\t\t" + tensp + "\t\t" + dongia + "\t" + soluong + "\t\t" + thanhtien1 + "\r\n");
-             }
-             b.write("\n\t\t\t\t\t\t\t Tổng tiền :"+tongtien+"\n");
-            b.write("\n\t\t\t---------------------CÁM ƠN QUÝ KHÁCH!----------------------\n");
-            b.write("\n\t\t\t\t\t\t\t\t Ngày lập :"+ngaylap+"\n");
-            b.close();
-            Runtime r = Runtime.getRuntime();
-            r.exec("notepad In.txt");
-                 } catch (Exception e) {
-        }
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void txttimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimKeyReleased
         // TODO add your handling code here:
         laydl();
-          try {
-              DAO_QLHD.TimKiemsp(n, tblsp);
-          } catch (SQLException ex) {
-              Logger.getLogger(banhang.class.getName()).log(Level.SEVERE, null, ex);
-          }
-         
+        try {
+            DAO_QLHD.TimKiemsp(n, tblsp);
+        } catch (SQLException ex) {
+            Logger.getLogger(banhang.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_txttimKeyReleased
+
+    private void tblgiohangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblgiohangMouseClicked
+        // TODO add your handling code here:
+        
+        
+        int row=tblgiohang.getSelectedRow();
+         xoathanhtien=tblgiohang.getValueAt(row, 4).toString();
+        
+    }//GEN-LAST:event_tblgiohangMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -761,7 +732,6 @@ try {
     private javax.swing.JComboBox<String> cboKH;
     private javax.swing.JComboBox<String> cboNV;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
@@ -797,7 +767,8 @@ try {
     private void loaddatatable() {
 
     }
- private void loaddatatable1() {
+
+    private void loaddatatable1() {
         model1.setRowCount(0);
         txttongtien.setText("0");
         txttongtien1.setText("0");
@@ -818,7 +789,7 @@ try {
         txttensp.setText(tblsp.getValueAt(row, 1).toString());
         txtlsp.setText(tblsp.getValueAt(row, 2).toString());
         txtdongia.setText(tblsp.getValueAt(row, 3).toString());
-
+        soluongkho=Integer.valueOf(tblsp.getValueAt(row, 4).toString());
         hinh(tblsp.getValueAt(row, 5).toString());
 
     }
@@ -850,22 +821,20 @@ try {
 
     public void tinhtien() {
         laygiatien();
-        float sl=Float.parseFloat(txtsoluong.getText());
-        thanhtien=sl*gia;
-        float c=Float.parseFloat(txttongtien1.getText());
-        
-        txttongtien1.setText(Float.toString(thanhtien+c));
-         tt=Float.parseFloat(txttongtien1.getText());
-         txttongtien.setText(piceFormatter.format(tt));
-     
-        
-    }
+        float sl = Float.parseFloat(txtsoluong.getText());
+        thanhtien = sl * gia;
+        float c = Float.parseFloat(txttongtien1.getText());
 
+        txttongtien1.setText(Float.toString(thanhtien + c));
+        tt = Float.parseFloat(txttongtien1.getText());
+        txttongtien.setText(piceFormatter.format(tt));
+
+    }
 
     private void loadKH() {
         try {
             String sql = "SELECT tenkh FROM dbo.khachhang";
-            
+
             ResultSet rs = KetNoi.Select(sql);
 
             while (rs.next()) {
@@ -881,8 +850,8 @@ try {
     private void loadNV() {
         try {
             String sql = "SELECT tennv FROM dbo.nhanvien";
-            
-            ResultSet rs =KetNoi.Select(sql);
+
+            ResultSet rs = KetNoi.Select(sql);
 
             while (rs.next()) {
                 cboNV.addItem(rs.getString(1));
@@ -901,7 +870,7 @@ try {
             ResultSet rs = KetNoi.Select(sql);
 
             while (rs.next()) {
-                
+
                 gia = rs.getFloat(4);
 
             }
@@ -910,11 +879,9 @@ try {
             System.out.println("lỗi load data");
         }
     }
-  
 
-    public void laydl()
-    {
-        
+    public void laydl() {
+
         n.setMahd(txthoadon.getText());
         n.setMakh(makh);
         n.setManv(manv);
@@ -922,7 +889,50 @@ try {
         n.setNgaylap(txtngaylap.getText());
         n.setTongtien(Float.valueOf(txttongtien1.getText()));
         n.setTim(txttim.getText());
-     
 
-}
+    }
+
+    public void inHD() {
+        try {
+            Writer b = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("In.txt")));
+            String tenkh = cboKH.getSelectedItem().toString();
+            String tennv = cboNV.getSelectedItem().toString();
+            String ngaylap = txtngaylap.getText();
+            String tongtien = txttongtien.getText();
+
+            b.write("\t\t\t\t\t cửa hàng Labtop \n");
+            b.write("\t\t\t------------------------------------------------------------\r\n\r\n");
+            b.write("\t\t\t\t Chào mừng quý khách: " + cboKH.getSelectedItem().toString() + "\r\n\r\n");
+            b.write("\t\t\t\t\t HÓA ĐƠN BÁN HÀNG\r\n\r\n");
+            b.write("\tmã sản phẩm\tTên sản phẩm\tđơn giá\t\tSố lượng\tThành tiền\r\n");
+            b.write("\t\t\t-------------------------------------------------------------\r\n\r\n");
+            for (int i = 0; i < model1.getRowCount(); i++) {
+
+                masp = tblgiohang.getValueAt(i, 0).toString();
+                tensp = tblgiohang.getValueAt(i, 1).toString();
+                soluong = Integer.valueOf(tblgiohang.getValueAt(i, 2).toString());
+                dongia = tblgiohang.getValueAt(i, 3).toString();
+                thanhtien1 = tblgiohang.getValueAt(i, 4).toString();
+                b.write("\t" + masp + "\t\t" + tensp + "\t\t" + dongia + "\t" + soluong + "\t\t" + thanhtien1 + "\r\n");
+            }
+            b.write("\n\t\t\t\t\t\t\t Tổng tiền :" + tongtien + "\n");
+            b.write("\n\t\t\t---------------------CÁM ƠN QUÝ KHÁCH!----------------------\n");
+            b.write("\n\t\t\t\t\t\t\t\t Ngày lập :" + ngaylap + "\n");
+            b.close();
+            Runtime r = Runtime.getRuntime();
+            r.exec("notepad In.txt");
+        } catch (Exception e) {
+        }
+    }
+    public boolean check()
+    {
+     int soluongnhap=Integer.valueOf(txtsoluong.getText());
+     
+      if(soluongkho<soluongnhap)
+      {
+          JOptionPane.showMessageDialog(this, "số lượng sản phẩm trong kho không đủ ");
+         return false;
+      }
+         return true;
+    }
 }

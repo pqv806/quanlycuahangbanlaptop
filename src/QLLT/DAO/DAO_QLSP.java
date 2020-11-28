@@ -83,46 +83,42 @@ public class DAO_QLSP {
         }
 
     }
+        public static void DeleteCTSP(QLSP n) {
+        try {
+            String sql = "delete from chitietsanpham\n"
+                    + "where masp = N'" + n.getMasp()+ "'";
 
-//    public static void update(QLSP n) {
-//        try {
-//            String sql = "update taikhoan\n"
-//                    + "set tentaikhoan = N'" + n.getTentk() + "'"
-//                    + ",matkhau = '" + n.getMk() + "'"
-//                    + ",maquyen=N'" + n.getMaquyen() + "'"
-//                    + "where masp = '" + n.getManv() + "'";
-//            if (Ketnoi.KetNoi.Update(sql) > 0) {
-//                System.out.println("Cập nhật thành công");
-//            } else {
-//                System.out.println("Thất bại");
-//            }
-//
-//        } catch (Exception e) {
-//        }
-//
-//    }
+            if (Ketnoi.KetNoi.Update(sql) > 0) {
 
-    public static void TimKiemnhanvien(QLSP n, JTable tbltk) throws SQLException {
-        String sql = "";
+            } else {
+                System.out.println("Thất bại");
+            }
 
-        sql = "select * from taikhoan\n"
-                + "where tentaikhoan like N'%" + n.getTim() + "%'"
-                + "or matkhau like N'%" + n.getTim() + "%'"
-                + "or manv like N'%" + n.getTim() + "%'"
-                + "or maquyen like N'%" + n.getTim() + "%'";
-        ResultSet rs = KetNoi.Select(sql);
-        DefaultTableModel model = (DefaultTableModel) tbltk.getModel();
-        Vector v = null;
-        model.setRowCount(0);
-        while (rs.next()) {
-            v = new Vector();
-            v.add(rs.getString(1));
-            v.add(rs.getString(2));
-            v.add(rs.getString(3));
-            v.add(rs.getString(4));
-
-            model.addRow(v);
+        } catch (Exception e) {
         }
-        tbltk.setModel(model);
+
     }
+
+    public static void update(QLSP n) {
+        try {
+            String sql = "update sanpham\n"
+                    + "set tensp = N'" + n.getTensp()+ "'"
+                    + ",malsp = '" + n.getMaloai()+ "'"
+                    + ",giaban=N'" + n.getGiaban()+ "'"
+                    + ",gianhap=N'" + n.getGianhap()+ "'"
+                    + ",hinhanh=N'" + n.getHinhanh()+ "'"
+                      + ",mota=N'" + n.getMota()+ "'"
+                    + "where masp = '" + n.getMasp()+ "'";
+            if (Ketnoi.KetNoi.Update(sql) > 0) {
+                System.out.println("Cập nhật thành công");
+            } else {
+                System.out.println("Thất bại");
+            }
+
+        } catch (Exception e) {
+        }
+
+    }
+
+    
 }

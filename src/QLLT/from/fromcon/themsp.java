@@ -8,9 +8,11 @@ package QLLT.from.fromcon;
 import Ketnoi.KetNoi;
 import QLLT.DAO.DAO_CTSP;
 import QLLT.DAO.DAO_QLSP;
+import QLLT.DAO.nextid;
 import QLLT.classs.QLCTSP;
 import QLLT.classs.QLSP;
-import QLLT.from.sanpham;
+import QLLT.from.sanpham1;
+
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.io.File;
@@ -34,12 +36,15 @@ public class themsp extends javax.swing.JInternalFrame {
     QLSP n = new QLSP();
     QLCTSP m=new QLCTSP();
     Ketnoi.KetNoi cn = new KetNoi();
+    nextid id=new nextid();
 
     /**
      * Creates new form NewJInternalFrame
      */
     public themsp() {
         initComponents();
+        id.layid();
+        txtmasp.setText(id.masp());
     }
 
     /**
@@ -417,7 +422,7 @@ public class themsp extends javax.swing.JInternalFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        sanpham sp = new sanpham();
+        sanpham1 sp = new sanpham1();
         sp.setVisible(true);
         this.setVisible(false);
 
