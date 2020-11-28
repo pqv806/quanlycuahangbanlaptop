@@ -96,7 +96,7 @@ public class trangchinh extends javax.swing.JFrame {
         jpnview.setLayout(jpnviewLayout);
         jpnviewLayout.setHorizontalGroup(
             jpnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1052, Short.MAX_VALUE)
+            .addGap(0, 1051, Short.MAX_VALUE)
         );
         jpnviewLayout.setVerticalGroup(
             jpnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

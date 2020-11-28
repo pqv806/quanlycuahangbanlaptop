@@ -101,7 +101,12 @@ public class DAO_NCC {
         String sql = "";
 
         sql = "select * from nhacungcap\n"
-                + "where tenncc like N'%" + n.getTim() + "%'";
+                + "where tenncc like N'%" + n.getTim() + "%'"
+                + "or tenncc like N'%" + n.getTim() + "%'"
+                + "or mancc like N'%" + n.getTim() + "%'"
+                + "or diachi like N'%" + n.getTim() + "%'"
+                + "or sdt like N'%" + n.getTim() + "%'"
+                + "or fax like N'%" + n.getTim() + "%'";
         ResultSet rs = KetNoi.Select(sql);
         DefaultTableModel model = (DefaultTableModel) tblNCC.getModel();
         Vector v = null;

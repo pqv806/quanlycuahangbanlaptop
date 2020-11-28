@@ -119,7 +119,13 @@ public class DAO_NV {
         String sql = "";
 
         sql = "select * from nhanvien\n"
-                    + "where tennv like N'%" + n.getTim()+ "%'";
+                    + "where tennv like N'%" + n.getTim()+ "%'"
+                + "or tennv like N'%" + n.getTim()+ "%'"
+                + "or manv like N'%" + n.getTim()+ "%'"
+                + "or ngaysinh like N'%" + n.getTim()+ "%'"
+                + "or diachi like N'%" + n.getTim()+ "%'"
+                + "or sdt like N'%" + n.getTim()+ "%'"
+                + "or trangthai like N'%" + n.getTim()+ "%'";
         ResultSet rs = KetNoi.Select(sql);
            DefaultTableModel model = (DefaultTableModel) tblNV.getModel();
         Vector v = null;

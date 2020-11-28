@@ -98,7 +98,14 @@ public class DAO_QLHD {
         String sql = "";
 
         sql = "select * from sanpham\n"
-                    + "where tensp like N'%" + n.getTim()+ "%'";
+                    + "where tensp like N'%" + n.getTim()+ "%'"
+                + "or masp like N'%" + n.getTim()+ "%'"
+                + "or tensp like N'%" + n.getTim()+ "%'"
+                + "or malsp like N'%" + n.getTim()+ "%'"
+                + "or giaban like N'%" + n.getTim()+ "%'"
+                + "or soluong like N'%" + n.getTim()+ "%'"
+                + "or hinhanh like N'%" + n.getTim()+ "%'"
+                + "or mota like N'%\" + n.getTim()+ \"%'";
         ResultSet rs = KetNoi.Select(sql);
            DefaultTableModel model = (DefaultTableModel) tblsp.getModel();
         Vector v = null;
