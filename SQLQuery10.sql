@@ -61,7 +61,7 @@ CREATE TABLE hoadon
       mahd NVARCHAR(15) NOT NULL ,
       manv NVARCHAR(15) NOT NULL ,
       makh NVARCHAR(15) NOT NULL ,
-      ngaylap DATE NOT NULL,
+      ngaylap NVARCHAR(20) NOT NULL,
 	  makhuyenmai NVARCHAR(15) NULL,
       tongtien FLOAT NOT NULL ,
       CONSTRAINT pk_hoadon PRIMARY KEY ( mahd ) ,
@@ -117,11 +117,10 @@ GO
 CREATE TABLE hoadonchitiet
     (
       mahd NVARCHAR(15) NOT NULL ,
-      masp NVARCHAR(15) NOT NULL ,
+      tensp NVARCHAR(15) NOT NULL ,
       soluong INT NOT NULL ,
       dongia FLOAT NOT NULL ,
-      CONSTRAINT pk_hoadonchitiet PRIMARY KEY ( mahd, masp ) ,
-      CONSTRAINT fk_hoadonchitiet_sanpham FOREIGN KEY ( masp ) REFERENCES sanpham ( masp ) ,
+      CONSTRAINT pk_hoadonchitiet PRIMARY KEY ( mahd ) ,
       CONSTRAINT fk_hoadonchitiet_hoadon FOREIGN KEY ( mahd ) REFERENCES hoadon ( mahd )
     )
 GO
@@ -137,7 +136,7 @@ CREATE TABLE chitietphieunhap
     )
 GO
 
-    CREATE TABLE trahang1			
+    CREATE TABLE trahang1
     (
       matrahang NVARCHAR(15) NOT NULL ,
       masp NVARCHAR(15) NOT NULL ,
@@ -150,10 +149,11 @@ GO
       CONSTRAINT trahang PRIMARY KEY ( matrahang ) ,
       CONSTRAINT fk_trahang_khachhang FOREIGN KEY ( makh ) REFERENCES khachhang ( makh ) ,
       CONSTRAINT fk_trahang_sanpham FOREIGN KEY ( masp ) REFERENCES sanpham ( masp ),
-	        CONSTRAINT fk_trahang_hoadon FOREIGN KEY ( mahd ) REFERENCES dbo.hoadon ( mahd )
+	  CONSTRAINT fk_trahang_hoadon FOREIGN KEY ( mahd ) REFERENCES dbo.hoadon ( mahd )
 
     )
 	GO
+
      CREATE TABLE chitietsanpham
     (
       masp NVARCHAR(15) NOT NULL ,
