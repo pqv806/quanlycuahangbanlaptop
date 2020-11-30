@@ -46,6 +46,32 @@ public class DAO_BanHang {
         }
 
     }
+     public static void dolentablenhap(JTable tblsp, long trang) {
+        try {
+            String sql = "SELECT *\n"
+                    + "FROM dbo.sanpham \n"
+                    ;
+            DefaultTableModel model = (DefaultTableModel) tblsp.getModel();
+            ResultSet rs = KetNoi.Select(sql);
+            Vector v = null;
+            model.setRowCount(0);
+            while (rs.next()) {
+                v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(piceFormatter.format(rs.getFloat(5))); 
+                v.add(rs.getInt(6));
+                v.add(rs.getString(7));
+          
+                model.addRow(v);
+
+            }
+            tblsp.setModel(model);
+        } catch (Exception e) {
+        }
+
+    }
    
     
 }

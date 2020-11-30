@@ -5,6 +5,10 @@
  */
 package QLLT.from.fromcon;
 
+import Ketnoi.KetNoi;
+import QLLT.DAO.DAO_LSP;
+import QLLT.DAO.nextid;
+import QLLT.classs.QLLSP;
 import QLLT.from.loaisanpham;
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -17,13 +21,17 @@ import javax.swing.JOptionPane;
  */
 public class themloaisp extends javax.swing.JInternalFrame {
 
-    Connection cn;
-
+Ketnoi.KetNoi cn=new KetNoi();
+    nextid id=new nextid();
+    QLLSP n=new QLLSP();
     /**
      * Creates new form themloaisp
      */
     public themloaisp() {
         initComponents();
+        id.layid();
+        txtml.setText(id.maloai());
+        
     }
 
     /**
@@ -57,6 +65,8 @@ public class themloaisp extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setText("mô tả");
+
+        txtml.setEditable(false);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Add.png"))); // NOI18N
         jButton1.setText("thêm");
@@ -148,33 +158,9 @@ public class themloaisp extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if(check()){
-             try {
-      //      cn = helper.hepper.ketnoi("qllaptop4");
-          String sql = "INSERT INTO dbo.loaisanpham\n" +
-"        ( malsp, tenlsp, mota )\n" +
-"VALUES  ( ?,?,?\n" +
-"          )";
-            try (PreparedStatement pst = cn.prepareStatement(sql)) {
-                pst.setString(1, txtml.getText().trim());
-                pst.setString(2, txttenloai.getText().trim());
-                pst.setString(3, txtmota.getText().trim());
-               
-                int ck = pst.executeUpdate();
-
-                pst.close();
-
-                if (ck > 0) {
-
-                    JOptionPane.showMessageDialog(this, "đã lưu");
-                      this.clear();
-                         dispose();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e);
-            }
-        } catch (HeadlessException e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
+            laydl();
+             DAO_LSP.Insert(n);
+             dispose();
         }
      
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -216,5 +202,11 @@ public class themloaisp extends javax.swing.JInternalFrame {
             return false;
         }
         return true;
+    }
+    public void laydl()
+    {
+        n.setMalsp(txtml.getText());
+        n.setTenlsp(txttenloai.getText());
+        n.setMota(txtmota.getText());
     }
 }

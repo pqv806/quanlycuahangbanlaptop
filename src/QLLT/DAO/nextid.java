@@ -60,5 +60,9 @@ String ma;
     {
         return "MaKH" + String.valueOf(this.ma);
     }
+         public String maPN()
+    {
+        return "PN" + String.valueOf(this.ma);
+    }
     
 }

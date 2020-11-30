@@ -94,7 +94,8 @@ public class DAO_LSP {
         }
         
     }
-  public static  void TimKienquyen(QLLSP n,JTable tbllsp) throws SQLException {
+   
+  public static  void TimKienLSP(QLLSP n,JTable tbllsp) throws SQLException {
         String sql = "";
 
         sql = "select * from loaisanpham\n"

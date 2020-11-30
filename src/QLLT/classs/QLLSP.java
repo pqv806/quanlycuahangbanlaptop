@@ -12,18 +12,20 @@ package QLLT.classs;
 public class QLLSP {
     private String malsp,tenlsp,mota,tim;
 
+    public String getMalsp() {
+        return malsp;
+    }
 
-   
-        public String getTim() {
-        return tim;
+    public void setMalsp(String malsp) {
+        this.malsp = malsp;
     }
 
     public String getTenlsp() {
         return tenlsp;
     }
 
-    public String getMalsp() {
-        return malsp;
+    public void setTenlsp(String tenlsp) {
+        this.tenlsp = tenlsp;
     }
 
     public String getMota() {
@@ -34,13 +36,14 @@ public class QLLSP {
         this.mota = mota;
     }
 
-
-    public void setMalsp(String malsp) {
-        this.malsp = malsp;
+    public String getTim() {
+        return tim;
     }
 
-    public void setTenlsp(String tenlsp) {
-        this.tenlsp = tenlsp;
+    public void setTim(String tim) {
+        this.tim = tim;
     }
+
+   
     
 }

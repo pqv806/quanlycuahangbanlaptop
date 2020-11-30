@@ -5,7 +5,11 @@
  */
 package QLLT.from.fromcon;
 
+import Ketnoi.KetNoi;
+import QLLT.DAO.DAO_LSP;
+import QLLT.classs.QLLSP;
 import QLLT.from.loaisanpham;
+import QLLT.from.sanpham1;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -16,16 +20,17 @@ import javax.swing.JOptionPane;
  */
 public class sualoaisp extends javax.swing.JInternalFrame {
 
-    Connection cn;
+   Ketnoi.KetNoi cn=new KetNoi();
+    QLLSP n=new QLLSP();
 
     /**
      * Creates new form sualoaisp
      */
     public sualoaisp() {
         initComponents();
-        this.txtml.setText(loaisanpham.maloai);
-        this.txttenloai.setText(loaisanpham.ten);
-        this.txtmota.setText(loaisanpham.mota);
+        this.txtml.setText(sanpham1.maloai);
+        this.txttenloai.setText(sanpham1.ten);
+        this.txtmota.setText(sanpham1.mota);
     }
 
     /**
@@ -151,26 +156,12 @@ public class sualoaisp extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 //         TODO add your handling code here:
-        try {
-            if(check()){
-//                  cn = helper.hepper.ketnoi("qllaptop4");
-            String sql = "UPDATE dbo.loaisanpham SET tenlsp =?,mota=?\n"
-                    + "WHERE malsp =?";
-            PreparedStatement pst = cn.prepareStatement(sql);
-
-            pst.setString(1, txttenloai.getText().trim());
-            pst.setString(2, txtmota.getText().trim());
-            pst.setString(3, txtml.getText().trim());
-
-            JOptionPane.showMessageDialog(this, "đã sửa");
-            dispose();
-            pst.executeUpdate();
-            pst.close();
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
+       if(check())
+       {
+           laydl();
+           DAO_LSP.update(n);
+           dispose();
+       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -211,5 +202,11 @@ public class sualoaisp extends javax.swing.JInternalFrame {
             return false;
         }
         return true;
+    }
+     public void laydl()
+    {
+        n.setMalsp(txtml.getText());
+        n.setTenlsp(txttenloai.getText());
+        n.setMota(txtmota.getText());
     }
 }

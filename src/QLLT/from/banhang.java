@@ -658,10 +658,8 @@ if(check())
         if (hoi == JOptionPane.YES_OPTION) {
 
             inHD();
-
-        } else {
-            JOptionPane.showMessageDialog(this, "chưa in");
-        }
+}
+        
           loaddatatable1();
     }//GEN-LAST:event_jButton5ActionPerformed
 
