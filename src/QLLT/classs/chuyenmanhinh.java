@@ -10,7 +10,7 @@ import QLLT.from.banhang;
 import QLLT.from.baohanh;
 import QLLT.from.hoadon;
 import QLLT.from.khachhang;
-import QLLT.from.khuyenmai;
+
 
 import QLLT.from.nhacungcap;
 import QLLT.from.nhaphang;
@@ -126,9 +126,7 @@ public class chuyenmanhinh {
                              case "bảo hành":
                             node = new baohanh();
                             break;
-                             case "khuyến mãi":
-                            node = new khuyenmai();
-                            break;
+                            
                             default:
                                 break;
                

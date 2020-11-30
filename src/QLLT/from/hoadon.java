@@ -70,7 +70,7 @@ Ketnoi.KetNoi cn=new KetNoi();
 
             },
             new String [] {
-                "Mã Hóa Đơn", "Mã Nhân Viên", "Mã Khách Hàng", "Ngày lập", "Mã Khuyến Mãi", "Tổng Tiền"
+                "Mã Hóa Đơn", "Mã Nhân Viên", "Mã Khách Hàng", "Ngày lập", "Tổng Tiền"
             }
         ));
         tblhd.addMouseListener(new java.awt.event.MouseAdapter() {

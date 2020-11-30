@@ -43,14 +43,13 @@ public class nhaphang extends javax.swing.JPanel {
 
         hienthitentable();
         hienthitentable1();
-     //   cn = helper.hepper.ketnoi("qllaptop4");
-        System.out.println("kết nối thành công");
+     
         ngay();
         dongho();
         loaddatacbk();
         loaddatacbk1();
         jButton5.setEnabled(false);
-        loaddatatable();
+        
     }
 
     /**

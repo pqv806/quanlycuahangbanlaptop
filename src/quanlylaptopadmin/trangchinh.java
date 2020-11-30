@@ -40,7 +40,7 @@ public class trangchinh extends javax.swing.JFrame {
         listItem.add(new danhmuc("tài khoản", jpnTK, jlpTK));
         listItem.add(new danhmuc("thống kê", jpnthongke, jlpthongke));
         listItem.add(new danhmuc("bảo hành", jpnbaohanh, jlpbaohanh));
-         listItem.add(new danhmuc("khuyến mãi", jpnKM, jlpKM));
+      
         cmh.seteven(listItem);
     }
 
@@ -80,8 +80,6 @@ public class trangchinh extends javax.swing.JFrame {
         jlpthongke = new javax.swing.JLabel();
         jpnbaohanh = new javax.swing.JPanel();
         jlpbaohanh = new javax.swing.JLabel();
-        jpnKM = new javax.swing.JPanel();
-        jlpKM = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cửa Hàng Bán LAPTOP");
@@ -96,7 +94,7 @@ public class trangchinh extends javax.swing.JFrame {
         jpnview.setLayout(jpnviewLayout);
         jpnviewLayout.setHorizontalGroup(
             jpnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1051, Short.MAX_VALUE)
+            .addGap(0, 1052, Short.MAX_VALUE)
         );
         jpnviewLayout.setVerticalGroup(
             jpnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,40 +346,12 @@ public class trangchinh extends javax.swing.JFrame {
             .addComponent(jlpbaohanh, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jpnKM.setBackground(new java.awt.Color(0, 153, 51));
-        jpnKM.setPreferredSize(new java.awt.Dimension(150, 50));
-
-        jlpKM.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jlpKM.setForeground(new java.awt.Color(255, 255, 255));
-        jlpKM.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlpKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_gift_30px.png"))); // NOI18N
-        jlpKM.setText("Khuyến Mãi");
-
-        javax.swing.GroupLayout jpnKMLayout = new javax.swing.GroupLayout(jpnKM);
-        jpnKM.setLayout(jpnKMLayout);
-        jpnKMLayout.setHorizontalGroup(
-            jpnKMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
-            .addGroup(jpnKMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnKMLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jlpKM, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-        jpnKMLayout.setVerticalGroup(
-            jpnKMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-            .addGroup(jpnKMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jlpKM, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout jpnmenuLayout = new javax.swing.GroupLayout(jpnmenu);
         jpnmenu.setLayout(jpnmenuLayout);
         jpnmenuLayout.setHorizontalGroup(
             jpnmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnmenuLayout.createSequentialGroup()
                 .addGroup(jpnmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jpnKM, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(jpnthongke, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(jpnNCC, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(jpnkhachhang, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
@@ -419,9 +389,7 @@ public class trangchinh extends javax.swing.JFrame {
                 .addComponent(jpnthongke, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addComponent(jpnbaohanh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnKM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jpnmenu);
@@ -434,7 +402,7 @@ public class trangchinh extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnview, javax.swing.GroupLayout.DEFAULT_SIZE, 1051, Short.MAX_VALUE))
+                .addComponent(jpnview, javax.swing.GroupLayout.DEFAULT_SIZE, 1052, Short.MAX_VALUE))
         );
         jpnrootLayout.setVerticalGroup(
             jpnrootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -470,7 +438,6 @@ public class trangchinh extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jlbnhom5;
-    private javax.swing.JLabel jlpKM;
     private javax.swing.JLabel jlpNCC;
     private javax.swing.JLabel jlpTK;
     private javax.swing.JLabel jlpbanhang;
@@ -481,7 +448,6 @@ public class trangchinh extends javax.swing.JFrame {
     private javax.swing.JLabel jlpnhaphang;
     private javax.swing.JLabel jlpsanpham;
     private javax.swing.JLabel jlpthongke;
-    private javax.swing.JPanel jpnKM;
     private javax.swing.JPanel jpnNCC;
     private javax.swing.JPanel jpnTK;
     private javax.swing.JPanel jpnbanhang;

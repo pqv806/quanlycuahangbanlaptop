@@ -36,7 +36,7 @@ public class DAO_QLHD {
                 v.add(rs.getString(3));
                 v.add(rs.getString(4));
                 v.add(rs.getString(5));
-                v.add(rs.getString(6));
+               
                 model.addRow(v);
 
             }
@@ -50,12 +50,11 @@ public class DAO_QLHD {
      
      public static void Insert(QLHD n) {
         try {
-            String sql = "insert into hoadon(mahd,manv,makh,ngaylap,makhuyenmai,tongtien ) \n"
+            String sql = "insert into hoadon(mahd,manv,makh,ngaylap,tongtien ) \n"
                     + "values(N'" + n.getMahd()+ "'"
                     + ",N'" + n.getManv()+ "'"
                     + ",'" + n.getMakh()+ "'"
                     + ",N'" + n.getNgaylap()+ "'"
-                    + ",'" + n.getMakhuyenmai()+ "'"
                     + ",N'" + n.getTongtien()+ "')";
 
             if (Ketnoi.KetNoi.Update(sql) > 0) {
@@ -89,7 +88,7 @@ public class DAO_QLHD {
                 v.add(rs.getString(3));
                 v.add(rs.getString(4));
                 v.add(rs.getString(5));              
-                v.add(rs.getString(6));
+         
                 model.addRow(v);
             }
             tblhd.setModel(model);

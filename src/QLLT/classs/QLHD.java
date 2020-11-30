@@ -10,7 +10,7 @@ package QLLT.classs;
  * @author vinh
  */
 public class QLHD {
-    private String mahd,manv,makh,ngaylap,makhuyenmai,tim;
+    private String mahd,manv,makh,ngaylap,tim;
     private Float tongtien;
 
     public String getMahd() {
@@ -45,13 +45,7 @@ public class QLHD {
         this.ngaylap = ngaylap;
     }
 
-    public String getMakhuyenmai() {
-        return makhuyenmai;
-    }
-
-    public void setMakhuyenmai(String makhuyenmai) {
-        this.makhuyenmai = makhuyenmai;
-    }
+  
 
     public String getTim() {
         return tim;

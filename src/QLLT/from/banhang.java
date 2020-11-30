@@ -53,11 +53,13 @@ public class banhang extends javax.swing.JPanel {
     String manv = null;
     String makh = null;
     String ngay = null;
-    Float thanhtien;
-    Float gia, tongtien, tt;
+   
     QLHD n = new QLHD();
     QLHDCT m = new QLHDCT();
-    int soluongsp, soluong,soluongkho;
+  Float thanhtien;
+    Float gia,giatienxoa, tongtien, tt;
+   
+    int soluongsp, soluong,soluongkho,soluongtronggiohang;
     String masp, dongia, thanhtien1, tensp,xoathanhtien;
 
     nextid id = new nextid();
@@ -564,8 +566,12 @@ if(check())
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        model1.removeRow(tblgiohang.getSelectedRow());
-
+       model1.removeRow(tblgiohang.getSelectedRow());
+             Float thanhtiengiohang=soluongtronggiohang*giatienxoa;
+            Float b=Float.valueOf(txttongtien1.getText());
+             Float c=b-thanhtiengiohang;
+             txttongtien1.setText(String.valueOf(c));
+             txttongtien.setText(piceFormatter.format(c));
         if (tblgiohang.getRowCount() == 0) {
             jButton5.setEnabled(false);
         }
@@ -719,10 +725,24 @@ if(check())
 
     private void tblgiohangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblgiohangMouseClicked
         // TODO add your handling code here:
-        
-        
         int row=tblgiohang.getSelectedRow();
-         xoathanhtien=tblgiohang.getValueAt(row, 4).toString();
+       
+          String c=tblgiohang.getValueAt(row, 0).toString();
+          try {
+            String sql = "SELECT * from sanpham\n"
+                    + "where masp = N'" + c + "'";
+            ResultSet rs = KetNoi.Select(sql);
+
+            while (rs.next()) {
+
+                giatienxoa = rs.getFloat(4);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("lỗi load data");
+        }
+          soluongtronggiohang=Integer.valueOf(tblgiohang.getValueAt(row, 2).toString());
         
     }//GEN-LAST:event_tblgiohangMouseClicked
 
@@ -885,7 +905,7 @@ if(check())
         n.setMahd(txthoadon.getText());
         n.setMakh(makh);
         n.setManv(manv);
-        n.setMakhuyenmai(txtkhuyenmai.getText());
+       
         n.setNgaylap(txtngaylap.getText());
         n.setTongtien(Float.valueOf(txttongtien1.getText()));
         n.setTim(txttim.getText());
