@@ -11,7 +11,7 @@ import QLLT.DAO.DAO_QLPN;
 import QLLT.DAO.DAO_QLSP;
 import QLLT.classs.QLLSP;
 import QLLT.classs.QLSP;
-import QLLT.from.fromcon.chitietsp;
+
 import QLLT.from.fromcon.sualoaisp;
 import QLLT.from.fromcon.suasanpham;
 import QLLT.from.fromcon.themloaisp;
@@ -77,7 +77,6 @@ public class sanpham1 extends javax.swing.JPanel {
         tblsp = new javax.swing.JTable();
         jButton7 = new javax.swing.JButton();
         txtmasp = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
         lblhinh = new javax.swing.JLabel();
         txtcam = new javax.swing.JTextField();
         txtcpu = new javax.swing.JTextField();
@@ -169,13 +168,6 @@ public class sanpham1 extends javax.swing.JPanel {
 
         txtmasp.setBorder(javax.swing.BorderFactory.createTitledBorder("Mã Sản Phẩm"));
 
-        jButton2.setText("Xem Chi Tiết");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         lblhinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblhinh.setBorder(javax.swing.BorderFactory.createTitledBorder("Hình Ảnh"));
 
@@ -208,7 +200,6 @@ public class sanpham1 extends javax.swing.JPanel {
         jDesktopPanesp.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPanesp.setLayer(jButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPanesp.setLayer(txtmasp, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPanesp.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPanesp.setLayer(lblhinh, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPanesp.setLayer(txtcam, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPanesp.setLayer(txtcpu, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -270,9 +261,7 @@ public class sanpham1 extends javax.swing.JPanel {
                                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(27, 27, 27)
-                            .addComponent(jButton2)
-                            .addGap(221, 221, 221)))))
+                            .addGap(339, 339, 339)))))
         );
         jDesktopPanespLayout.setVerticalGroup(
             jDesktopPanespLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,7 +273,6 @@ public class sanpham1 extends javax.swing.JPanel {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jDesktopPanespLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -633,13 +621,6 @@ public class sanpham1 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtramActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        chitietsp ctsp=new chitietsp();
-        jDesktopPanesp.add(ctsp);
-        ctsp.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         txttim.setText("");
@@ -719,7 +700,6 @@ public class sanpham1 extends javax.swing.JPanel {
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton7;
     private javax.swing.JDesktopPane jDesktopPane1;

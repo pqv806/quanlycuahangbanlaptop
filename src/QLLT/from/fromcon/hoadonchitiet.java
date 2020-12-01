@@ -5,17 +5,26 @@
  */
 package QLLT.from.fromcon;
 
+import Ketnoi.KetNoi;
+import QLLT.classs.piceFormatter;
+import QLLT.from.hoadon;
+import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author vinh
  */
 public class hoadonchitiet extends javax.swing.JInternalFrame {
-
+    DefaultTableModel model;
     /**
      * Creates new form hoadonchitiet
      */
     public hoadonchitiet() {
         initComponents();
+        laydl();
+      
     }
 
     /**
@@ -27,31 +36,50 @@ public class hoadonchitiet extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblhdct = new javax.swing.JTable();
 
         setClosable(true);
         setTitle("hóa đơn chi tiết");
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("hóa đơn chi tiết đang được cập nhập vui lòng quay lại sau ");
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel2.setText("Hóa Đơn Chi Tiết");
+
+        tblhdct.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Mã HD", "Tên SP", "Số Lượng", "Đơn Giá"
+            }
+        ));
+        jScrollPane1.setViewportView(tblhdct);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(213, 213, 213)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -59,6 +87,31 @@ public class hoadonchitiet extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblhdct;
     // End of variables declaration//GEN-END:variables
+
+   private void laydl() {
+        try {
+            String sql = "SELECT * from hoadonchitiet\n"
+                    + "where mahd = N'" + hoadon.a + "'";
+            ResultSet rs = KetNoi.Select(sql);
+              model = (DefaultTableModel) tblhdct.getModel(); 
+            model.setRowCount(0);
+            while (rs.next()) {
+                Vector sp = new Vector();
+                sp.add(rs.getString(1));
+                sp.add(rs.getString(2));
+                sp.add(rs.getString(3));
+                sp.add(piceFormatter.format(rs.getFloat(4)));
+ 
+                model.addRow(sp);
+                
+            }
+
+        } catch (Exception e) {
+            System.out.println("lỗi load data");
+        }
+    }
 }
