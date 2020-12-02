@@ -632,6 +632,7 @@ if(check())
             m.setMahd(txthoadon.getText());
             m.setTensp(tensp);
             m.setSl(soluong);
+            m.setMasp(masp);
             m.setDongia(gia1);
 
             DAO_HDCT.Insert(m);

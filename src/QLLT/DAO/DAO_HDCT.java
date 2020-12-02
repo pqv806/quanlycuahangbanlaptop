@@ -18,8 +18,9 @@ import java.sql.SQLException;
 public class DAO_HDCT {
      public static void Insert(QLHDCT n) {
         try {
-            String sql = "insert into hoadonchitiet(mahd, tensp, soluong, dongia ) \n"
+            String sql = "insert into hoadonchitiet(mahd,masp, tensp, soluong, dongia ) \n"
                     + "values(N'" + n.getMahd()+ "'"
+                        + ",N'" + n.getMasp()+ "'"
                     + ",N'" + n.getTensp()+ "'"
                    + ",N'" + n.getSl()+ "'"
                     + ",N'" + n.getDongia()+ "')";

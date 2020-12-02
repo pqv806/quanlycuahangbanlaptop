@@ -30,7 +30,7 @@ public class hoadon extends javax.swing.JPanel {
 Ketnoi.KetNoi cn=new KetNoi();
     DefaultTableModel model;
     QLHD n=new QLHD();
-   public static  String a;
+   public static  String a,tennv,tenkh;
     /**
      * Creates new form hoadon
      */
@@ -196,6 +196,13 @@ Ketnoi.KetNoi cn=new KetNoi();
         // TODO add your handling code here:
         int row=tblhd.getSelectedRow();
        a=tblhd.getValueAt(row, 0).toString();
+       laydl();
+       txtmahd.setText(tblhd.getValueAt(row, 0).toString());
+       txtnv.setText(tennv);
+       txtkh.setText(tenkh);
+       txtngaylap.setText(tblhd.getValueAt(row, 3).toString());
+       txttongtien.setText(tblhd.getValueAt(row, 4).toString());
+       
    
     }//GEN-LAST:event_tblhdMouseClicked
 
@@ -240,5 +247,23 @@ Ketnoi.KetNoi cn=new KetNoi();
     private javax.swing.JTextField txttim;
     private javax.swing.JTextField txttongtien;
     // End of variables declaration//GEN-END:variables
+ 
+    private void laydl() {
+        try {
+            String sql = "SELECT tenkh,tennv from dbo.hoadon JOIN dbo.khachhang ON khachhang.makh = hoadon.makh JOIN dbo.nhanvien ON nhanvien.manv = hoadon.manv\n"
+                    + "where mahd = N'" + a + "'";
+            ResultSet rs = KetNoi.Select(sql);
 
+            while (rs.next()) {
+
+              tennv=rs.getNString(2);
+               tenkh=rs.getNString(1);
+              
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("lỗi load data");
+        }
+    }
 }
