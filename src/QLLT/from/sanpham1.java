@@ -11,6 +11,7 @@ import QLLT.DAO.DAO_QLPN;
 import QLLT.DAO.DAO_QLSP;
 import QLLT.classs.QLLSP;
 import QLLT.classs.QLSP;
+import QLLT.from.fromcon.chitietphieunhap;
 
 import QLLT.from.fromcon.sualoaisp;
 import QLLT.from.fromcon.suasanpham;
@@ -43,7 +44,7 @@ import javax.swing.table.DefaultTableModel;
 public class sanpham1 extends javax.swing.JPanel {
 
     DefaultTableModel model;
-    public static String ma, maloai, ten, giaban,gianhap, hinh,mota;
+    public static String ma, maloai, ten, giaban,gianhap, hinh,mota,mapn;
     Ketnoi.KetNoi cn=new KetNoi();
     QLSP n= new QLSP();
     QLLSP m=new QLLSP();
@@ -86,12 +87,6 @@ public class sanpham1 extends javax.swing.JPanel {
         txtbonho = new javax.swing.JTextField();
         txtpin = new javax.swing.JTextField();
         txtkhac = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblpn = new javax.swing.JTable();
-        txttim2 = new javax.swing.JTextField();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jButton15 = new javax.swing.JButton();
@@ -101,6 +96,13 @@ public class sanpham1 extends javax.swing.JPanel {
         tbllsp = new javax.swing.JTable();
         txttimkiem = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jDesktopPane2 = new javax.swing.JDesktopPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblpn = new javax.swing.JTable();
+        txttim2 = new javax.swing.JTextField();
+        jButton11 = new javax.swing.JButton();
+        txtctpn = new javax.swing.JButton();
 
         jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -316,84 +318,6 @@ public class sanpham1 extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Sản Phẩm", jPanel1);
 
-        jPanel3.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                jPanel3ComponentShown(evt);
-            }
-        });
-
-        tblpn.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Mã Phiếu Nhập", "Mã NCC", "MÃ NV", "Ngày Nhập", "Tổng Tiền"
-            }
-        ));
-        tblpn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblpnMouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(tblpn);
-
-        txttim2.setBorder(javax.swing.BorderFactory.createTitledBorder("tìm kiếm"));
-        txttim2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttim2ActionPerformed(evt);
-            }
-        });
-
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search.png"))); // NOI18N
-        jButton10.setText("tìm kiếm");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_replay_30px.png"))); // NOI18N
-        jButton11.setText("làm mới");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane3)
-                .addGap(9, 9, 9))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(txttim2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txttim2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
-                .addGap(184, 184, 184))
-        );
-
-        jTabbedPane1.addTab("Phiếu Nhập", jPanel3);
-
         jPanel4.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 jPanel4ComponentShown(evt);
@@ -520,6 +444,100 @@ public class sanpham1 extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Loại Sản Phẩm", jPanel4);
 
+        jPanel3.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel3ComponentShown(evt);
+            }
+        });
+
+        jDesktopPane2.setBackground(new java.awt.Color(240, 240, 240));
+
+        tblpn.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Mã Phiếu Nhập", "Mã NCC", "MÃ NV", "Ngày Nhập", "Tổng Tiền"
+            }
+        ));
+        tblpn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblpnMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tblpn);
+
+        txttim2.setBorder(javax.swing.BorderFactory.createTitledBorder("tìm kiếm"));
+        txttim2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttim2ActionPerformed(evt);
+            }
+        });
+
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_replay_30px.png"))); // NOI18N
+        jButton11.setText("làm mới");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        txtctpn.setText("Chi Tiết Phiếu Nhập");
+        txtctpn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtctpnActionPerformed(evt);
+            }
+        });
+
+        jDesktopPane2.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(txttim2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jButton11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(txtctpn, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
+        jDesktopPane2.setLayout(jDesktopPane2Layout);
+        jDesktopPane2Layout.setHorizontalGroup(
+            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addGap(159, 159, 159)
+                .addComponent(txttim2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton11)
+                .addGap(18, 18, 18)
+                .addComponent(txtctpn)
+                .addContainerGap(471, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1045, Short.MAX_VALUE)
+        );
+        jDesktopPane2Layout.setVerticalGroup(
+            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txttim2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtctpn)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(370, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jDesktopPane2)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jDesktopPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+
+        jTabbedPane1.addTab("Phiếu Nhập", jPanel3);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -588,6 +606,7 @@ public class sanpham1 extends javax.swing.JPanel {
     private void jPanel3ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel3ComponentShown
         // TODO add your handling code here:
        DAO_QLPN.dolentable(tblpn, 1);
+       txtctpn.enable(true);
     }//GEN-LAST:event_jPanel3ComponentShown
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
@@ -597,17 +616,14 @@ public class sanpham1 extends javax.swing.JPanel {
         // loaddatatable();
     }//GEN-LAST:event_jButton11ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-       
-    }//GEN-LAST:event_jButton10ActionPerformed
-
     private void txttim2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttim2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txttim2ActionPerformed
 
     private void tblpnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblpnMouseClicked
-        // TODO add your handling code here:
-        //  jButton8.setEnabled(true);
+          int row=tblpn.getSelectedRow();
+          txtctpn.enable(true);
+       mapn=tblpn.getValueAt(row, 0).toString();
     }//GEN-LAST:event_tblpnMouseClicked
 
     private void jPanel1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentShown
@@ -690,11 +706,17 @@ public class sanpham1 extends javax.swing.JPanel {
        
     }//GEN-LAST:event_txttimkiemKeyReleased
 
+    private void txtctpnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtctpnActionPerformed
+        // TODO add your handling code here:
+        chitietphieunhap ctpn=new chitietphieunhap();
+        jDesktopPane2.add(ctpn);
+        ctpn.setVisible(true);
+    }//GEN-LAST:event_txtctpnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bltthem;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
@@ -703,6 +725,7 @@ public class sanpham1 extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton7;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JDesktopPane jDesktopPanesp;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
@@ -718,6 +741,7 @@ public class sanpham1 extends javax.swing.JPanel {
     private javax.swing.JTextField txtbonho;
     private javax.swing.JTextField txtcam;
     private javax.swing.JTextField txtcpu;
+    private javax.swing.JButton txtctpn;
     private javax.swing.JTextField txtkhac;
     private javax.swing.JTextField txtmanhinh;
     private javax.swing.JTextField txtmasp;

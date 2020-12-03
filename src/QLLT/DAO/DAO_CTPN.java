@@ -5,7 +5,12 @@
  */
 package QLLT.DAO;
 
+import Ketnoi.KetNoi;
 import QLLT.classs.QLCTPN;
+import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -13,6 +18,7 @@ import QLLT.classs.QLCTPN;
  * @author vinh
  */
 public class DAO_CTPN {
+    
          public static void Insert(QLCTPN n) {
         try {
             String sql = "insert into chitietphieunhap(mapn, masp,tensp, soluong, dongia ) \n"

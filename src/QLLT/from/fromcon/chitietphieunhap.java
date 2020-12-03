@@ -5,17 +5,25 @@
  */
 package QLLT.from.fromcon;
 
+import Ketnoi.KetNoi;
+import QLLT.classs.piceFormatter;
+import QLLT.from.sanpham1;
+import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author vinh
  */
 public class chitietphieunhap extends javax.swing.JInternalFrame {
-
+ DefaultTableModel model;
     /**
      * Creates new form chitietphieunhap
      */
     public chitietphieunhap() {
         initComponents();
+        laydl();
     }
 
     /**
@@ -27,28 +35,49 @@ public class chitietphieunhap extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblpn = new javax.swing.JTable();
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("phiếu nhập chi tiết đang được cập nhập vui lòng quay lại sau ");
+        setClosable(true);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel2.setText("Chi Tiết Phiếu Nhập");
+
+        tblpn.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Mã PN", "Mã SP", "Tên SP", "Số Lượng", "Đơn Giá"
+            }
+        ));
+        jScrollPane1.setViewportView(tblpn);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(213, 213, 213))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -56,6 +85,31 @@ public class chitietphieunhap extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblpn;
     // End of variables declaration//GEN-END:variables
+ private void laydl() {
+        try {
+            String sql = "SELECT * from chitietphieunhap\n"
+                    + "where mapn = N'" + sanpham1.mapn + "'";
+            ResultSet rs = KetNoi.Select(sql);
+              model = (DefaultTableModel) tblpn.getModel(); 
+            model.setRowCount(0);
+            while (rs.next()) {
+                Vector sp = new Vector();
+                sp.add(rs.getString(1));
+                sp.add(rs.getString(2));
+                sp.add(rs.getString(3));
+                  sp.add(rs.getString(4));
+                sp.add(piceFormatter.format(rs.getFloat(5)));
+ 
+                model.addRow(sp);
+                
+            }
+
+        } catch (Exception e) {
+            System.out.println("lỗi load data");
+        }
+    }
 }

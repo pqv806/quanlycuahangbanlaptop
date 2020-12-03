@@ -42,19 +42,7 @@ CREATE TABLE khachhang
       CONSTRAINT pk_khachhang PRIMARY KEY ( makh )
     )
 GO
-CREATE TABLE khuyenmai
-    (
-      makhuyenmai NVARCHAR(15) NOT NULL ,
-      tenkn NVARCHAR(15) NOT NULL ,
-      dieukien FLOAT NOT NULL ,
-      phantramkhuyenmai FLOAT ,
-      ngayBD DATE NOT NULL ,
-	  ngayKT DATE NOT NULL ,
-      ghichu NVARCHAR(50) ,
-       CONSTRAINT pk_khuyenmai PRIMARY KEY ( makhuyenmai ) 
-      
-    )
-	GO
+
     
 CREATE TABLE hoadon
     (
@@ -62,12 +50,10 @@ CREATE TABLE hoadon
       manv NVARCHAR(15) NOT NULL ,
       makh NVARCHAR(15) NOT NULL ,
       ngaylap NVARCHAR(20) NOT NULL,
-	  makhuyenmai NVARCHAR(15) NULL,
       tongtien FLOAT NOT NULL ,
       CONSTRAINT pk_hoadon PRIMARY KEY ( mahd ) ,
       CONSTRAINT fk_hoadon_nhanvien FOREIGN KEY ( manv ) REFERENCES nhanvien ( manv ) ,
       CONSTRAINT fk_hoadon_khachhang FOREIGN KEY ( makh ) REFERENCES khachhang ( makh ),
-	   CONSTRAINT fk_hoadon_khuyenmai FOREIGN KEY ( makhuyenmai) REFERENCES khuyenmai ( makhuyenmai )
     )
 GO
 CREATE TABLE nhacungcap
@@ -85,7 +71,7 @@ CREATE TABLE phieunhap
       mapn NVARCHAR(15),
       mancc NVARCHAR(15) NOT NULL ,
       manv NVARCHAR(15) NOT NULL ,
-      ngaynhap DATETIME NOT NULL ,
+      ngaynhap NVARCHAR(15) NOT NULL ,
       tongtien FLOAT NOT NULL ,
       CONSTRAINT pk_phieunhap PRIMARY KEY ( mapn ) ,
       CONSTRAINT fk_phieunhap_nhacungcap FOREIGN KEY ( mancc ) REFERENCES nhacungcap ( mancc ) ,
@@ -117,10 +103,12 @@ GO
 CREATE TABLE hoadonchitiet
     (
       mahd NVARCHAR(15) NOT NULL ,
-      tensp NVARCHAR(15) NOT NULL ,
+      masp NVARCHAR(15) NOT NULL ,
+	  tensp NVARCHAR(20) NOT NULL,
       soluong INT NOT NULL ,
       dongia FLOAT NOT NULL ,
-      CONSTRAINT pk_hoadonchitiet PRIMARY KEY ( mahd ) ,
+      CONSTRAINT pk_hoadonchitiet PRIMARY KEY ( mahd, masp ) ,
+      CONSTRAINT fk_hoadonchitiet_sanpham FOREIGN KEY ( masp ) REFERENCES sanpham ( masp ) ,
       CONSTRAINT fk_hoadonchitiet_hoadon FOREIGN KEY ( mahd ) REFERENCES hoadon ( mahd )
     )
 GO
@@ -128,6 +116,7 @@ CREATE TABLE chitietphieunhap
     (
       mapn NVARCHAR(15) NOT NULL ,
       masp NVARCHAR(15) NOT NULL ,
+	  tensp NVARCHAR(15) NOT NULL,
       soluong INT NOT NULL ,
       dongia FLOAT NOT NULL ,
       CONSTRAINT pk_chitietphieunhap PRIMARY KEY ( mapn, masp ) ,
@@ -140,7 +129,7 @@ GO
     (
       matrahang NVARCHAR(15) NOT NULL ,
       masp NVARCHAR(15) NOT NULL ,
-	   mahd NVARCHAR(15) NOT NULL ,
+	  mahd NVARCHAR(15) NOT NULL ,
       makh NVARCHAR(15) NOT NULL ,
       phuongthuctra NVARCHAR(20) ,
       ngay DATE NOT NULL ,
