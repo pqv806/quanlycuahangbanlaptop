@@ -12,6 +12,7 @@ import QLLT.DAO.DAO_QLHD;
 import QLLT.DAO.nextid;
 import QLLT.classs.QLHD;
 import QLLT.classs.QLHDCT;
+import QLLT.classs.WritePDF;
 import QLLT.classs.piceFormatter;
 import com.sun.org.apache.bcel.internal.generic.FLOAD;
 import java.awt.HeadlessException;
@@ -68,6 +69,7 @@ public class banhang extends javax.swing.JPanel {
      * Creates new form banhang
      */
     public banhang() {
+       
         initComponents();
         DAO_BanHang.dolentable(tblsp, 1);
         ngay();
@@ -559,6 +561,7 @@ if(check())
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+      
        model1.removeRow(tblgiohang.getSelectedRow());
              Float thanhtiengiohang=soluongtronggiohang*giatienxoa;
             Float b=Float.valueOf(txttongtien1.getText());
@@ -650,8 +653,9 @@ if(check())
       
         int hoi = JOptionPane.showConfirmDialog(this, "In Hóa Đơn", "Bạn Có Muốn In Hóa Đơn", JOptionPane.YES_NO_OPTION);
         if (hoi == JOptionPane.YES_OPTION) {
-
-            inHD();
+                
+             new WritePDF().writeHoaDon(txthoadon.getText(),tblgiohang,model1,txttongtien.getText());
+            
 }
         
           loaddatatable1();
@@ -904,38 +908,7 @@ if(check())
 
     }
 
-    public void inHD() {
-        try {
-            Writer b = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("In.txt")));
-            String tenkh = cboKH.getSelectedItem().toString();
-            String tennv = cboNV.getSelectedItem().toString();
-            String ngaylap = txtngaylap.getText();
-            String tongtien = txttongtien.getText();
-
-            b.write("\t\t\t\t\t cửa hàng Labtop \n");
-            b.write("\t\t\t------------------------------------------------------------\r\n\r\n");
-            b.write("\t\t\t\t Chào mừng quý khách: " + cboKH.getSelectedItem().toString() + "\r\n\r\n");
-            b.write("\t\t\t\t\t HÓA ĐƠN BÁN HÀNG\r\n\r\n");
-            b.write("\tmã sản phẩm\tTên sản phẩm\tđơn giá\t\tSố lượng\tThành tiền\r\n");
-            b.write("\t\t\t-------------------------------------------------------------\r\n\r\n");
-            for (int i = 0; i < model1.getRowCount(); i++) {
-
-                masp = tblgiohang.getValueAt(i, 0).toString();
-                tensp = tblgiohang.getValueAt(i, 1).toString();
-                soluong = Integer.valueOf(tblgiohang.getValueAt(i, 2).toString());
-                dongia = tblgiohang.getValueAt(i, 3).toString();
-                thanhtien1 = tblgiohang.getValueAt(i, 4).toString();
-                b.write("\t" + masp + "\t\t" + tensp + "\t\t" + dongia + "\t" + soluong + "\t\t" + thanhtien1 + "\r\n");
-            }
-            b.write("\n\t\t\t\t\t\t\t Tổng tiền :" + tongtien + "\n");
-            b.write("\n\t\t\t---------------------CÁM ƠN QUÝ KHÁCH!----------------------\n");
-            b.write("\n\t\t\t\t\t\t\t\t Ngày lập :" + ngaylap + "\n");
-            b.close();
-            Runtime r = Runtime.getRuntime();
-            r.exec("notepad In.txt");
-        } catch (Exception e) {
-        }
-    }
+  
     public boolean check()
     {
      int soluongnhap=Integer.valueOf(txtsoluong.getText());

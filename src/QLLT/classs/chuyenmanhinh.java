@@ -44,12 +44,13 @@ public class chuyenmanhinh {
         this.root = jpnroot;
     }
 
+  
+
     public void setview(JPanel jpnItem, JLabel jlbItem) {
         kindselected = "nhóm 5";
         jpnItem.setBackground(new Color(96, 100, 191));
         jlbItem.setBackground(new Color(96, 100, 191));
-
-        root.removeAll();
+        root.removeAll();;
         root.setLayout(new BorderLayout());
         root.add(new nhom5());
         root.validate();
@@ -86,6 +87,7 @@ public class chuyenmanhinh {
             switch (kind) {
                     case "nhom 5":
                         node = new nhom5();
+                        
                         break;
                         case "bán hàng":
                             node = new banhang();
@@ -132,42 +134,46 @@ public class chuyenmanhinh {
                
 
             }
+            
             root.removeAll();
             root.setLayout(new BorderLayout());
             root.add(node);
             root.validate();
             root.repaint();
-            setbackgroud(kind);
+            setchanebackgroud(kind);
         }
 
-        @Override
-        public void mousePressed(MouseEvent e) {
-            kindselected = kind;
-            jpnItem.setBackground(new Color(96, 100, 191));
-            jblItem.setBackground(new Color(96, 100, 191));
-        }
+         @Override
+      public void mousePressed(MouseEvent e) {
+           kindselected = kind;
+           jpnItem.setBackground(new Color(96, 100, 191));
+           jblItem.setBackground(new Color(96, 100, 191));
+      }
 
-        @Override
-        public void mouseReleased(MouseEvent e) {
-        }
+      @Override
+      public void mouseReleased(MouseEvent e) {
 
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            jpnItem.setBackground(new Color(96, 100, 191));
-            jblItem.setBackground(new Color(96, 100, 191));
-        }
+      }
 
-        @Override
-        public void mouseExited(MouseEvent e) {
-            if (!kindselected.equalsIgnoreCase(kind)) {
+      @Override
+      public void mouseEntered(MouseEvent e) {
+          jpnItem.setBackground(new Color(96, 100, 191));
+          jblItem.setBackground(new Color(96, 100, 191));
+      }
+
+      @Override
+      public void mouseExited(MouseEvent e) {
+          if (!kindselected.equalsIgnoreCase(kind)) {
                 jpnItem.setBackground(new Color(76, 175, 80));
                 jblItem.setBackground(new Color(76, 175, 80));
-            }
-        }
+          }
+      }
+
+    
 
     }
 
-    private void setbackgroud(String kind) {
+    private void setchanebackgroud(String kind) {
         for (danhmuc item : listitem) {
             if (item.getKind().equalsIgnoreCase(kind)) {
                 item.getJpn().setBackground(new Color(96, 100, 191));

@@ -26,8 +26,8 @@ public class trangchinh extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
 
-        chuyenmanhinh cmh = new chuyenmanhinh(jpnview);
-        cmh.setview(jpnnhom5, jlbnhom5);
+       
+       
         List<danhmuc> listItem = new ArrayList<>();
         listItem.add(new danhmuc("nhom 5", jpnnhom5, jlbnhom5));
         listItem.add(new danhmuc("bán hàng", jpnbanhang, jlpbanhang));
@@ -40,7 +40,8 @@ public class trangchinh extends javax.swing.JFrame {
         listItem.add(new danhmuc("tài khoản", jpnTK, jlpTK));
         listItem.add(new danhmuc("thống kê", jpnthongke, jlpthongke));
         listItem.add(new danhmuc("bảo hành", jpnbaohanh, jlpbaohanh));
-      
+        chuyenmanhinh cmh = new chuyenmanhinh(jpnview);
+        cmh.setview(jpnnhom5, jlbnhom5);
         cmh.seteven(listItem);
     }
 

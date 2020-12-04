@@ -161,6 +161,7 @@ Ketnoi.KetNoi cn=new KetNoi();
             laydl();
              DAO_LSP.Insert(n);
              dispose();
+             
         }
      
     }//GEN-LAST:event_jButton1ActionPerformed
