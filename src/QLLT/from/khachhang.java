@@ -8,6 +8,7 @@ package QLLT.from;
 import Ketnoi.KetNoi;
 import QLLT.DAO.DAo_KH;
 import QLLT.classs.QLKH;
+import QLLT.classs.XuatExcel;
 import QLLT.from.fromcon.suaKH;
 import QLLT.from.fromcon.themkh1;
 import java.sql.Connection;
@@ -31,6 +32,7 @@ Ketnoi.KetNoi cn= new KetNoi();
     QLKH n= new QLKH();
     public static String makh,ten,diachi,sdt,trangthai;
  long count,sotrang,trang=1;
+  DefaultTableModel model;
     /**
      * Creates new form khachhang
      */
@@ -45,6 +47,7 @@ Ketnoi.KetNoi cn= new KetNoi();
         {
             sotrang=count/5 + 1;
         }
+       
         DAo_KH.dolentable(tblkh, 1);
          lbltrang.setText("1");
          lblsotrang.setText("1/"+sotrang);
@@ -181,7 +184,13 @@ Ketnoi.KetNoi cn= new KetNoi();
             }
         });
 
-        jButton2.setText("Xuất ds KH");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_ms_excel_30px.png"))); // NOI18N
+        jButton2.setText("Xuất EXCEL KH");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -216,9 +225,9 @@ Ketnoi.KetNoi cn= new KetNoi();
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(61, 61, 61)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(211, 211, 211))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(202, 202, 202))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(nextvetk, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -367,6 +376,12 @@ Ketnoi.KetNoi cn= new KetNoi();
         lbltrang.setText("" + trang);
     }//GEN-LAST:event_nexttientkActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         dskh();
+        new XuatExcel().xuatFileExcelKhachHang(tblkh, model);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bltthem;
@@ -401,5 +416,31 @@ Ketnoi.KetNoi cn= new KetNoi();
             
         } catch (Exception e) {
         }
+    }
+    public void dskh()
+    {
+         try {
+          
+            String sql = "SELECT *\n"
+                    + "FROM dbo.khachhang";
+           model = (DefaultTableModel) tblkh.getModel();
+            ResultSet rs = KetNoi.Select(sql);
+            Vector v = null;
+            model.setRowCount(0);
+            while (rs.next()) {
+                v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+            
+                model.addRow(v);
+
+            }
+            tblkh.setModel(model);
+        } catch (Exception e) {
+        }
+       
     }
 }

@@ -13,6 +13,7 @@ import QLLT.DAO.DAO_nhapHang;
 import QLLT.DAO.nextid;
 import QLLT.classs.QLCTPN;
 import QLLT.classs.QLPN;
+import QLLT.classs.WritePDF;
 import QLLT.classs.piceFormatter;
 import java.awt.HeadlessException;
 import java.awt.Image;
@@ -623,7 +624,7 @@ public class nhaphang extends javax.swing.JPanel {
         int hoi = JOptionPane.showConfirmDialog(this, "In Hóa Đơn", "Bạn Có Muốn In Hóa Đơn", JOptionPane.YES_NO_OPTION);
         if (hoi == JOptionPane.YES_OPTION) {
 
-            inHD();
+           new WritePDF().writephieunhap(txtpn.getText(), tblgiohang, model1, txttongtien.getText());
         }
         loaddatatable1();
 

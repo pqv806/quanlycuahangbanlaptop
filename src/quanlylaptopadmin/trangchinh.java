@@ -25,9 +25,6 @@ public class trangchinh extends javax.swing.JFrame {
     public trangchinh() {
         initComponents();
         setLocationRelativeTo(null);
-
-       
-       
         List<danhmuc> listItem = new ArrayList<>();
         listItem.add(new danhmuc("nhom 5", jpnnhom5, jlbnhom5));
         listItem.add(new danhmuc("bán hàng", jpnbanhang, jlpbanhang));

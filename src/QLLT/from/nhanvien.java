@@ -8,6 +8,7 @@ package QLLT.from;
 import Ketnoi.KetNoi;
 import QLLT.DAO.DAO_NV;
 import QLLT.classs.QLNV;
+import QLLT.classs.XuatExcel;
 import QLLT.from.fromcon.suaNV;
 import QLLT.from.fromcon.themNV;
 import java.sql.Connection;
@@ -82,6 +83,7 @@ Ketnoi.KetNoi cn = new KetNoi();
         jButton8 = new javax.swing.JButton();
         lbltrang = new javax.swing.JLabel();
         lblsotrang = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
@@ -182,6 +184,14 @@ Ketnoi.KetNoi cn = new KetNoi();
         lblsotrang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblsotrang.setText("Trang");
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8_ms_excel_30px.png"))); // NOI18N
+        jButton2.setText("Xuất EXCEL");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -204,7 +214,9 @@ Ketnoi.KetNoi cn = new KetNoi();
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 342, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 196, Short.MAX_VALUE)))
                 .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -228,7 +240,8 @@ Ketnoi.KetNoi cn = new KetNoi();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bltthem)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -317,6 +330,7 @@ Ketnoi.KetNoi cn = new KetNoi();
 
     private void txttimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimKeyReleased
         // TODO add your handling code here:
+       
        themDL();
        if(txttim.equals(""))
        {   
@@ -388,10 +402,17 @@ Ketnoi.KetNoi cn = new KetNoi();
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        dsnv();
+        new XuatExcel().xuatFileExcelNhanVien(tblnhanvien, model);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bltthem;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -426,5 +447,31 @@ Ketnoi.KetNoi cn = new KetNoi();
             
         } catch (Exception e) {
         }
+    }
+    public void dsnv()
+    {
+         try {
+          
+            String sql = "SELECT  *\n"
+                    + "FROM dbo.nhanvien";
+           model = (DefaultTableModel) tblnhanvien.getModel();
+            ResultSet rs = KetNoi.Select(sql);
+            Vector v = null;
+            model.setRowCount(0);
+            while (rs.next()) {
+                v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(rs.getString(4));
+                v.add(rs.getString(5));
+             v.add(rs.getString(6));
+                model.addRow(v);
+
+            }
+            tblnhanvien.setModel(model);
+        } catch (Exception e) {
+        }
+       
     }
 }

@@ -91,7 +91,9 @@ public class chuyenmanhinh {
                         break;
                         case "bán hàng":
                             node = new banhang();
+                           
                             break;
+                            
                              case "nhập hàng":
                             node = new nhaphang();
                             break;
