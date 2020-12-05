@@ -9,6 +9,7 @@ import Ketnoi.KetNoi;
 import QLLT.DAO.DAo_KH;
 import QLLT.classs.QLKH;
 import QLLT.classs.XuatExcel;
+import QLLT.from.fromcon.chitiethoadonkhachhangmua;
 import QLLT.from.fromcon.suaKH;
 import QLLT.from.fromcon.themkh1;
 import java.sql.Connection;
@@ -80,6 +81,7 @@ Ketnoi.KetNoi cn= new KetNoi();
         nexttien1tk = new javax.swing.JButton();
         nexttientk = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1044, 703));
         setLayout(new java.awt.CardLayout());
@@ -192,6 +194,13 @@ Ketnoi.KetNoi cn= new KetNoi();
             }
         });
 
+        jButton9.setText("xem chi tiết");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -205,6 +214,7 @@ Ketnoi.KetNoi cn= new KetNoi();
         jDesktopPane1.setLayer(nexttien1tk, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(nexttientk, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jButton9, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -225,9 +235,11 @@ Ketnoi.KetNoi cn= new KetNoi();
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(202, 202, 202))
+                        .addGap(97, 97, 97))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(nextvetk, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -253,6 +265,7 @@ Ketnoi.KetNoi cn= new KetNoi();
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bltthem)
+                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,6 +395,13 @@ Ketnoi.KetNoi cn= new KetNoi();
         new XuatExcel().xuatFileExcelKhachHang(tblkh, model);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        chitiethoadonkhachhangmua dm= new chitiethoadonkhachhangmua();
+        jDesktopPane1.add(dm);
+        dm.setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bltthem;
@@ -389,6 +409,7 @@ Ketnoi.KetNoi cn= new KetNoi();
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton9;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblsotrang;
