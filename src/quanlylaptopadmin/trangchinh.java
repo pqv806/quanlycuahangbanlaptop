@@ -418,8 +418,7 @@ public class trangchinh extends javax.swing.JFrame {
 
     private void jLabel1MouseClicked(MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
-        int hoi = JOptionPane.showConfirmDialog(this, "bạn có muốn đăng xuất");
-
+        int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn đăng xuất ?", "Đăng Xuất", JOptionPane.YES_NO_OPTION);
         if (hoi == JOptionPane.YES_OPTION) {
             new login().setVisible(true);
             dispose();
