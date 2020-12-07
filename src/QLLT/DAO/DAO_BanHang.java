@@ -42,6 +42,7 @@ public class DAO_BanHang {
 
             }
             tblsp.setModel(model);
+            rs.close();
         } catch (Exception e) {
         }
 

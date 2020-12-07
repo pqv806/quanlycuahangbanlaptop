@@ -6,6 +6,7 @@
 package QLLT.from;
 
 import Ketnoi.KetNoi;
+import QLLT.classs.piceFormatter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,17 +38,17 @@ public class thongke extends javax.swing.JPanel {
         model = new DefaultTableModel(data, headers);
         tblBanRa.setModel(model);
 
-        String headers2[] = {"Mã Hóa Đơn", "Tên Nhân Viên", "Tên Nhà Cung Cấp", "Ngày Nhập", "Tổng Tiền"};
+        String headers2[] = {"Mã Phiếu Nhập", "Tên Nhân Viên", "Tên Nhà Cung Cấp", "Ngày Nhập", "Tổng Tiền"};
         String data2[][] = null;
         model2 = new DefaultTableModel(data2, headers2);
         tblNhapVao.setModel(model2);
         
-        String headers3[] = {"Mã Hóa Đơn", "Tên Sản Phẩm", "Số Lượng", "Giá Bán", "Tổng Tiền"};
+        String headers3[] = {"Mã Hóa Đơn", "Tên Sản Phẩm", "Số Lượng", "Giá Bán"};
         String data3[][] = null;
         model3 = new DefaultTableModel(data3, headers3);
         tblChiTietBan.setModel(model3);
         
-        String headers4[] = {"Mã Hóa Đơn", "Tên Sản Phẩm", "Số Lượng", "Giá Nhập", "Tổng Tiền"};
+        String headers4[] = {"Mã Phiếu Nhập", "Tên Sản Phẩm", "Số Lượng", "Giá Nhập"};
         String data4[][] = null;
         model4 = new DefaultTableModel(data4, headers4);
         tblChiTietNhap.setModel(model4);
@@ -80,7 +81,7 @@ public class thongke extends javax.swing.JPanel {
                 v.add(rs.getString(2));
                 v.add(rs.getString(3));
                 v.add(rs.getString(4));
-                v.add(rs.getString(5));
+                v.add(piceFormatter.format(rs.getFloat(5)));
                 model.addRow(v);
             }
 
@@ -487,13 +488,55 @@ public class thongke extends javax.swing.JPanel {
         // TODO add your handling code here:
         int index = tblBanRa.getSelectedRow();
         String mahoadon = tblBanRa.getValueAt(index, 0).toString();
+            
+        try {
+          String sql = "SELECT hoadon.mahd,tensp,soluong,dongia,tongtien FROM dbo.hoadon JOIN dbo.hoadonchitiet ON hoadonchitiet.mahd = hoadon.mahd\n"
+                    + "where hoadon.mahd = N'" + mahoadon + "'";
+            ResultSet rs = KetNoi.Select(sql);
+            Vector v = null;
+            model3.setRowCount(0);
+            while (rs.next()) {
+                v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(piceFormatter.format(rs.getFloat(4)));
+            
+               
+                model3.addRow(v);
 
-        // mày tự truy xuất vào bảng 2 nhé //
+            }
+            tblChiTietBan.setModel(model3);
+        } catch (Exception e) {
+        }
 
     }//GEN-LAST:event_tblBanRaMouseClicked
 
     private void tblNhapVaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhapVaoMouseClicked
         // TODO add your handling code here:
+         int index = tblNhapVao.getSelectedRow();
+        String mapn = tblNhapVao.getValueAt(index, 0).toString();
+            
+        try {
+          String sql = "SELECT chitietphieunhap.mapn,tensp,soluong,dongia FROM dbo.phieunhap JOIN dbo.chitietphieunhap ON chitietphieunhap.mapn = phieunhap.mapn\n"
+                    + "where chitietphieunhap.mapn = N'" + mapn + "'";
+            ResultSet rs = KetNoi.Select(sql);
+            Vector v = null;
+            model4.setRowCount(0);
+            while (rs.next()) {
+                v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+            
+                v.add(piceFormatter.format(rs.getFloat(4)));
+               
+                model4.addRow(v);
+
+            }
+            tblChiTietNhap.setModel(model4);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_tblNhapVaoMouseClicked
 
 
