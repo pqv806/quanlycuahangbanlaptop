@@ -163,9 +163,8 @@ public class themquyen extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void clear() {
-      
+        
         txtchitiet.setText("");
-        txtq.setText("");
         txttk.setText("");
         }
     public void themDL() {

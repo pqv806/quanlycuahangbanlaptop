@@ -16,7 +16,10 @@ import QLLT.from.taikhoan;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -32,7 +35,8 @@ public class themTK extends javax.swing.JInternalFrame {
      */
     public themTK() {
         initComponents();
-        
+        loadComboBoxNhanVien();
+        loadComboBoxMaQuyen();
     }
 
     /**
@@ -45,23 +49,19 @@ public class themTK extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        txtq = new javax.swing.JTextField();
         txttk = new javax.swing.JTextField();
-        txtmnv = new javax.swing.JTextField();
         txtmk = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        cboMaNhanVien = new javax.swing.JComboBox<>();
+        cboMaQuyen = new javax.swing.JComboBox<>();
 
         setTitle("Thêm Tài Khoản");
 
         jDesktopPane1.setBackground(new java.awt.Color(240, 240, 240));
 
-        txtq.setBorder(javax.swing.BorderFactory.createTitledBorder("Mã Quyền"));
-
         txttk.setBorder(javax.swing.BorderFactory.createTitledBorder("Tên Tài Khoản"));
-
-        txtmnv.setBorder(javax.swing.BorderFactory.createTitledBorder("Mã Nhân Viên"));
 
         txtmk.setBorder(javax.swing.BorderFactory.createTitledBorder("Mật Khẩu"));
 
@@ -89,13 +89,17 @@ public class themTK extends javax.swing.JInternalFrame {
             }
         });
 
-        jDesktopPane1.setLayer(txtq, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        cboMaNhanVien.setBorder(javax.swing.BorderFactory.createTitledBorder("Mã Nhân Viên"));
+
+        cboMaQuyen.setBorder(javax.swing.BorderFactory.createTitledBorder("Mã Quyền"));
+
         jDesktopPane1.setLayer(txttk, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(txtmnv, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtmk, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(cboMaNhanVien, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(cboMaQuyen, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -114,10 +118,10 @@ public class themTK extends javax.swing.JInternalFrame {
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtmk, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txttk, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(83, 83, 83)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtmnv, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtq, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(78, 78, 78)
+                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cboMaNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboMaQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
@@ -126,17 +130,17 @@ public class themTK extends javax.swing.JInternalFrame {
                 .addGap(40, 40, 40)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txttk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtmnv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboMaNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtmk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboMaQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -181,26 +185,26 @@ public class themTK extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cboMaNhanVien;
+    private javax.swing.JComboBox<String> cboMaQuyen;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JTextField txtmk;
-    private javax.swing.JTextField txtmnv;
-    private javax.swing.JTextField txtq;
     private javax.swing.JTextField txttk;
     // End of variables declaration//GEN-END:variables
 
     private void clear() {
         txtmk.setText("");
-        txtmnv.setText("");
-        txtq.setText("");
+        cboMaNhanVien.setSelectedIndex(0);
+        cboMaQuyen.setSelectedIndex(0);
         txttk.setText("");
      }
      public void themDL()
     {
-        n.setManv(txtmnv.getText().trim());
-        n.setMaquyen(txtq.getText().trim());
+        n.setManv(cboMaNhanVien.getSelectedItem().toString().trim());
+        n.setMaquyen(cboMaQuyen.getSelectedItem().toString().trim());
         n.setTentk(txttk.getText().trim());
         n.setMk(txtmk.getText().trim());
        
@@ -209,7 +213,7 @@ public class themTK extends javax.swing.JInternalFrame {
      
      private boolean check()
     {
-        if(txtmk.getText().equals("") || txtmnv.getText().equals("") || txtq.getText().equals("") || txttk.getText().equals("")){
+        if(txtmk.getText().equals("") || txttk.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Nhập đầy đủ thông tin" );
             return false;
         }
@@ -218,5 +222,36 @@ public class themTK extends javax.swing.JInternalFrame {
             return false;
         }
         return true;
+    }
+
+    private void loadComboBoxNhanVien() {
+        try {
+            String sql = "SELECT manv\n"
+                    + "FROM dbo.nhanvien \n";
+            
+            ResultSet rs = KetNoi.Select(sql);
+
+            while (rs.next()) {
+                cboMaNhanVien.addItem(rs.getString(1));
+
+            }
+
+        } catch (Exception e) {
+        }
+    }
+
+    private void loadComboBoxMaQuyen() {
+        try {
+            String sql = "SELECT maquyen FROM dbo.phanquyen";
+            
+            ResultSet rs = KetNoi.Select(sql);
+
+            while (rs.next()) {
+                cboMaQuyen.addItem(rs.getString(1));
+
+            }
+
+        } catch (Exception e) {
+        }
     }
 }
