@@ -71,6 +71,7 @@ public class themquyen extends javax.swing.JInternalFrame {
             }
         });
 
+        txtq.setEditable(false);
         txtq.setBorder(javax.swing.BorderFactory.createTitledBorder("Mã Quyền"));
 
         txttk.setBorder(javax.swing.BorderFactory.createTitledBorder("Tên Quyền"));
