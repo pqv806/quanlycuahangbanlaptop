@@ -64,5 +64,9 @@ String ma;
     {
         return "PN" + String.valueOf(this.ma);
     }
+             public String maTH()
+    {
+        return "TH" + String.valueOf(this.ma);
+    }
     
 }

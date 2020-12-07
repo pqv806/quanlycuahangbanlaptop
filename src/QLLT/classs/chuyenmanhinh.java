@@ -7,7 +7,7 @@ package QLLT.classs;
 
 import QLLT.from.nhom5;
 import QLLT.from.banhang;
-import QLLT.from.baohanh;
+import QLLT.from.trahang;
 import QLLT.from.hoadon;
 import QLLT.from.khachhang;
 
@@ -128,7 +128,7 @@ public class chuyenmanhinh {
                             node = new thongke();
                             break;
                              case "bảo hành":
-                            node = new baohanh();
+                            node = new trahang();
                             break;
                             
                             default:

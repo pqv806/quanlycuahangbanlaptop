@@ -134,6 +134,7 @@ GO
       phuongthuctra NVARCHAR(20) ,
       ngay DATE NOT NULL ,
 	  lydodoitra NVARCHAR(50),
+	  trangthai NVARCHAR(50),
       ghichu NVARCHAR(50) ,
       CONSTRAINT trahang PRIMARY KEY ( matrahang ) ,
       CONSTRAINT fk_trahang_khachhang FOREIGN KEY ( makh ) REFERENCES khachhang ( makh ) ,

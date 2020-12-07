@@ -9,7 +9,6 @@ import Ketnoi.KetNoi;
 import QLLT.DAO.DAO_Quyen;
 import QLLT.DAO.nextid;
 import QLLT.classs.QLquyen;
-import QLLT.from.quyen;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
