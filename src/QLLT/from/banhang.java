@@ -76,9 +76,9 @@ public class banhang extends javax.swing.JPanel {
         dongho();
         id.layid();
         loadKH();
-        loadNV();
         jButton5.setEnabled(false);
         txthoadon.setText(id.mahoadon());
+        this.txtnhanvientesst.setText(login.tennv);
 
     }
 
@@ -114,8 +114,8 @@ public class banhang extends javax.swing.JPanel {
         txtgio = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         cboKH = new javax.swing.JComboBox<>();
-        cboNV = new javax.swing.JComboBox<>();
         txtngaylap = new javax.swing.JTextField();
+        txtnhanvientesst = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblgiohang = new javax.swing.JTable();
@@ -262,7 +262,7 @@ public class banhang extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 3, Short.MAX_VALUE)
+                        .addGap(0, 7, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -332,15 +332,11 @@ public class banhang extends javax.swing.JPanel {
             }
         });
 
-        cboNV.setBorder(javax.swing.BorderFactory.createTitledBorder("Nhân Viên"));
-        cboNV.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cboNVItemStateChanged(evt);
-            }
-        });
-
         txtngaylap.setEditable(false);
         txtngaylap.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        txtnhanvientesst.setEditable(false);
+        txtnhanvientesst.setBorder(javax.swing.BorderFactory.createTitledBorder("Nhân Viên"));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -367,8 +363,8 @@ public class banhang extends javax.swing.JPanel {
                     .addComponent(txthoadon, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cboNV, 0, 180, Short.MAX_VALUE)
-                    .addComponent(txttongtien1))
+                    .addComponent(txttongtien1, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(txtnhanvientesst))
                 .addGap(73, 73, 73))
         );
         jPanel5Layout.setVerticalGroup(
@@ -379,10 +375,10 @@ public class banhang extends javax.swing.JPanel {
                     .addComponent(txttongtien1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txthoadon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cboKH, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboNV, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                    .addComponent(txtnhanvientesst))
+                .addGap(21, 21, 21)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
@@ -495,7 +491,7 @@ public class banhang extends javax.swing.JPanel {
                         .addComponent(jButton5)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
@@ -531,6 +527,7 @@ public class banhang extends javax.swing.JPanel {
 
     private void bltthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bltthemActionPerformed
         // TODO add your handling code here:
+       laymanv();
 if(check())
 {
         tinhtien();
@@ -646,30 +643,10 @@ if(check())
              new WritePDF().writeHoaDon(txthoadon.getText(),tblgiohang,model1,txttongtien.getText());
             
 }
-        
+        id.layid();
+        txthoadon.setText(id.mahoadon());
           loaddatatable1();
     }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void cboNVItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboNVItemStateChanged
-        try {
-
-            int index = cboNV.getSelectedIndex();
-            if (index >= 0) {
-                String sql = "SELECT manv FROM dbo.nhanvien \n"
-                        + "WHERE tennv LIKE N'" + cboNV.getSelectedItem().toString() + "'";
-
-                ResultSet rs = KetNoi.Select(sql);
-
-                while (rs.next()) {
-
-                    manv = rs.getString(1);
-                }
-                rs.close();
-            }
-        } catch (Exception e) {
-            System.out.println("lỗi load table");
-        }
-    }//GEN-LAST:event_cboNVItemStateChanged
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -735,7 +712,6 @@ if(check())
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bltthem;
     private javax.swing.JComboBox<String> cboKH;
-    private javax.swing.JComboBox<String> cboNV;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -761,6 +737,7 @@ if(check())
     private javax.swing.JTextField txtlsp;
     private javax.swing.JTextField txtmasp;
     private javax.swing.JTextField txtngaylap;
+    private javax.swing.JTextField txtnhanvientesst;
     private javax.swing.JTextField txtsoluong;
     private javax.swing.JTextField txttensp;
     private javax.swing.JTextField txttim;
@@ -851,21 +828,21 @@ if(check())
         }
     }
 
-    private void loadNV() {
-        try {
-            String sql = "SELECT tennv FROM dbo.nhanvien";
-
-            ResultSet rs = KetNoi.Select(sql);
-
-            while (rs.next()) {
-                cboNV.addItem(rs.getString(1));
-
-            }
-
-        } catch (Exception e) {
-            System.out.println("lỗi load data");
-        }
-    }
+//    private void loadNV() {
+//        try {
+//            String sql = "SELECT tennv FROM dbo.nhanvien";
+//
+//            ResultSet rs = KetNoi.Select(sql);
+//
+//            while (rs.next()) {
+//                cboNV.addItem(rs.getString(1));
+//
+//            }
+//
+//        } catch (Exception e) {
+//            System.out.println("lỗi load data");
+//        }
+//    }
 
     private void laygiatien() {
         try {
@@ -883,13 +860,28 @@ if(check())
             System.out.println("lỗi load data");
         }
     }
+    private void laymanv() {
+        try {
+            String sql = " SELECT * FROM dbo.nhanvien\n"
+                    + "where tennv = N'" + txtnhanvientesst.getText() + "'";
+            ResultSet rs = KetNoi.Select(sql);
+
+            while (rs.next()) {
+
+                manv = rs.getString(1);
+                
+            }
+
+        } catch (Exception e) {
+            System.out.println("lỗi load data");
+        }
+    }
 
     public void laydl() {
 
         n.setMahd(txthoadon.getText());
         n.setMakh(makh);
         n.setManv(manv);
-       
         n.setNgaylap(txtngaylap.getText());
         n.setTongtien(Float.valueOf(txttongtien1.getText()));
         n.setTim(txttim.getText());

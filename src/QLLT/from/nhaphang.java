@@ -67,7 +67,7 @@ public class nhaphang extends javax.swing.JPanel {
         ngay();
         dongho();
         loadncc();
-        loadnv();
+         this.txtnhanvientesst.setText(login.tennv);
         DAO_BanHang.dolentablenhap(tblsp, 1);
         jButton5.setEnabled(false);
 
@@ -104,9 +104,9 @@ public class nhaphang extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         txtgio = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        cboNV = new javax.swing.JComboBox<>();
         cboncc = new javax.swing.JComboBox<>();
         txtngaynhap = new javax.swing.JTextField();
+        txtnhanvientesst = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblgiohang = new javax.swing.JTable();
@@ -298,13 +298,6 @@ public class nhaphang extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Ngày Nhập");
 
-        cboNV.setBorder(javax.swing.BorderFactory.createTitledBorder("Nhân Viên"));
-        cboNV.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cboNVItemStateChanged(evt);
-            }
-        });
-
         cboncc.setBorder(javax.swing.BorderFactory.createTitledBorder("Nhà Cung Cấp"));
         cboncc.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -320,6 +313,9 @@ public class nhaphang extends javax.swing.JPanel {
         txtngaynhap.setEditable(false);
         txtngaynhap.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        txtnhanvientesst.setEditable(false);
+        txtnhanvientesst.setBorder(javax.swing.BorderFactory.createTitledBorder("Nhân Viên"));
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -332,9 +328,9 @@ public class nhaphang extends javax.swing.JPanel {
                             .addComponent(txtpn)
                             .addComponent(cboncc, 0, 152, Short.MAX_VALUE))
                         .addGap(99, 99, 99)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboNV, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txttongtien1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txttongtien1, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                            .addComponent(txtnhanvientesst)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -347,20 +343,20 @@ public class nhaphang extends javax.swing.JPanel {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txttongtien1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtpn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboNV, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboncc, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                    .addComponent(cboncc, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtnhanvientesst, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7))
@@ -494,6 +490,7 @@ public class nhaphang extends javax.swing.JPanel {
 
     private void bltthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bltthemActionPerformed
         // TODO add your handling code here:
+        laymanv();
         tinhtien();
         String data1 = txtmasp.getText();
         String data2 = txttensp.getText();;
@@ -524,27 +521,6 @@ public class nhaphang extends javax.swing.JPanel {
     private void txttimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttimActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txttimActionPerformed
-
-    private void cboNVItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboNVItemStateChanged
-        try {
-
-            int index = cboNV.getSelectedIndex();
-            if (index >= 0) {
-                String sql = "SELECT manv FROM dbo.nhanvien \n"
-                        + "WHERE tennv LIKE N'" + cboNV.getSelectedItem().toString() + "'";
-
-                ResultSet rs = KetNoi.Select(sql);
-
-                while (rs.next()) {
-
-                    manv = rs.getString(1);
-                }
-                rs.close();
-            }
-        } catch (Exception e) {
-            System.out.println("lỗi load table");
-        }
-    }//GEN-LAST:event_cboNVItemStateChanged
 
     private void cbonccItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbonccItemStateChanged
         try {
@@ -643,7 +619,6 @@ public class nhaphang extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bltthem;
-    private javax.swing.JComboBox<String> cboNV;
     private javax.swing.JComboBox<String> cboncc;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
@@ -669,6 +644,7 @@ public class nhaphang extends javax.swing.JPanel {
     private javax.swing.JTextField txtlsp;
     private javax.swing.JTextField txtmasp;
     private javax.swing.JTextField txtngaynhap;
+    private javax.swing.JTextField txtnhanvientesst;
     private javax.swing.JTextField txtpn;
     private javax.swing.JTextField txtsoluong;
     private javax.swing.JTextField txttensp;
@@ -677,37 +653,7 @@ public class nhaphang extends javax.swing.JPanel {
     private javax.swing.JTextField txttongtien1;
     // End of variables declaration//GEN-END:variables
 
-    public void inHD() {
-        try {
-            Writer b = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("In.txt")));
-            String tenncc = cboncc.getSelectedItem().toString();
-            String tennv = cboNV.getSelectedItem().toString();
-            String ngaylap = txtngaynhap.getText();
-            String tongtien = txttongtien.getText();
-
-            b.write("\t\t\t\t\t cửa hàng Labtop \n");
-            b.write("\t\t\t------------------------------------------------------------\r\n\r\n");
-            b.write("\t\t\t\t\t HÓA ĐƠN NHẬP HÀNG\r\n\r\n");
-            b.write("\tmã sản phẩm\tTên sản phẩm\tđơn giá\t\tSố lượng\tThành tiền\r\n");
-            b.write("\t\t\t-------------------------------------------------------------\r\n\r\n");
-            for (int i = 0; i < model1.getRowCount(); i++) {
-
-                masp = tblgiohang.getValueAt(i, 0).toString();
-                tensp = tblgiohang.getValueAt(i, 1).toString();
-                soluong = Integer.valueOf(tblgiohang.getValueAt(i, 2).toString());
-                dongia = tblgiohang.getValueAt(i, 3).toString();
-                thanhtien1 = tblgiohang.getValueAt(i, 4).toString();
-                b.write("\t" + masp + "\t\t" + tensp + "\t\t" + dongia + "\t" + soluong + "\t\t" + thanhtien1 + "\r\n");
-            }
-            b.write("\n\t\t\t\t\t\t\t Tổng tiền :" + tongtien + "\n");
-            b.write("\n\t\t\t---------------------CÁM ƠN QUÝ KHÁCH!----------------------\n");
-            b.write("\n\t\t\t\t\t\t\t\t Ngày lập :" + ngaylap + "\n");
-            b.close();
-            Runtime r = Runtime.getRuntime();
-            r.exec("notepad In.txt");
-        } catch (Exception e) {
-        }
-    }
+   
 
     public void hinh(String hinh) {
         ImageIcon img = new ImageIcon("src\\img\\" + hinh);
@@ -752,20 +698,7 @@ public class nhaphang extends javax.swing.JPanel {
         txtngaynhap.setText(ldt.toString());
     }
 
-    private void loadnv() {
-        try {
-            String sql = "SELECT tennv FROM dbo.nhanvien";
-            ResultSet rs = KetNoi.Select(sql);
-
-            while (rs.next()) {
-                cboNV.addItem(rs.getString(1));
-
-            }
-
-        } catch (Exception e) {
-            System.out.println("lỗi load data");
-        }
-    }
+    
 
     private void loadncc() {
         try {
@@ -827,5 +760,21 @@ public class nhaphang extends javax.swing.JPanel {
         n.setTongtien(Float.valueOf(txttongtien1.getText()));
         n.setTim(txttim.getText());
 
+    }
+     private void laymanv() {
+        try {
+            String sql = " SELECT * FROM dbo.nhanvien\n"
+                    + "where tennv = N'" + txtnhanvientesst.getText() + "'";
+            ResultSet rs = KetNoi.Select(sql);
+
+            while (rs.next()) {
+
+                manv = rs.getString(1);
+                
+            }
+
+        } catch (Exception e) {
+            System.out.println("lỗi load data");
+        }
     }
 }

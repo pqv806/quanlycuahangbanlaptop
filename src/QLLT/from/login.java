@@ -21,6 +21,7 @@ import quanlylaptopadmin.trangchinh;
  */
 public class login extends javax.swing.JFrame {
   Ketnoi.KetNoi cn=new KetNoi();
+  public static String tennv;
     /**
      * Creates new form login
      */
@@ -157,10 +158,14 @@ public class login extends javax.swing.JFrame {
         boolean chay = DAO_Dangnhap.KT_DangNhap(TK, MK);
         if (chay) {
            JOptionPane.showMessageDialog(this, "đăng nhập thành công ");
-           dispose();
+           laytennv();
+           dispose();   
            
         }
         }
+       
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -171,7 +176,22 @@ public class login extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
- 
+ private void laytennv() {
+        try {
+            String sql = "SELECT tennv FROM dbo.taikhoan JOIN dbo.nhanvien ON nhanvien.manv = taikhoan.manv\n"
+                    + "where tentaikhoan = N'" + txt_user.getText() + "'";
+            ResultSet rs = KetNoi.Select(sql);
+
+            while (rs.next()) {
+
+                tennv = rs.getString(1);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("lỗi load data");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
