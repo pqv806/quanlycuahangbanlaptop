@@ -20,7 +20,7 @@ import QLLT.from.nhaphang;
 //import QLLT.from.sanpham;
 import QLLT.from.sanpham1;
 import QLLT.from.taikhoan;
-import QLLT.from.thongke;
+import QLLT.from.thongkeok;
 import QLLT.from.trangchu;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -126,7 +126,7 @@ public class chuyenmanhinh {
 //                            node = new quyen();
                             break;
                              case "thống kê":
-                            node = new thongke();
+                            node = new thongkeok();
                             break;
                              case "bảo hành":
                             node = new trahang();

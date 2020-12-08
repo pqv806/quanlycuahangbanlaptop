@@ -23,6 +23,8 @@ public class trangchinh extends javax.swing.JFrame {
      * Creates new form trangchinh
      */
     public trangchinh() {
+        
+        
         initComponents();
         setLocationRelativeTo(null);
         List<danhmuc> listItem = new ArrayList<>();
