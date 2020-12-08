@@ -577,9 +577,8 @@ public class taikhoan extends javax.swing.JPanel {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-//        model.setRowCount(0);
-//        txttim.setText("");
-//        loaddatatable();
+      txttim.setText("");
+      DAO_Quyen.dolentable(tblquyen, trang);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void tblquyenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblquyenMouseClicked
