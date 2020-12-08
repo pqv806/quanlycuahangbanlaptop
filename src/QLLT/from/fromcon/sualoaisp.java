@@ -8,7 +8,7 @@ package QLLT.from.fromcon;
 import Ketnoi.KetNoi;
 import QLLT.DAO.DAO_LSP;
 import QLLT.classs.QLLSP;
-import QLLT.from.loaisanpham;
+
 import QLLT.from.sanpham1;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -141,8 +141,6 @@ public class sualoaisp extends javax.swing.JInternalFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        loaisanpham nv = new loaisanpham();
-        nv.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 

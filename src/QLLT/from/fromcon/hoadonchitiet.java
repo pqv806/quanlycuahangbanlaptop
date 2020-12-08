@@ -91,9 +91,9 @@ public class hoadonchitiet extends javax.swing.JInternalFrame {
             while (rs.next()) {
                 Vector sp = new Vector();
                 sp.add(rs.getString(1));
-                sp.add(rs.getString(2));
                 sp.add(rs.getString(3));
-                sp.add(piceFormatter.format(rs.getFloat(4)));
+                sp.add(rs.getString(4));
+                sp.add(piceFormatter.format(rs.getFloat(5)));
  
                 model.addRow(sp);
                 

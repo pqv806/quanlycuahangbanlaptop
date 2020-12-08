@@ -9,7 +9,7 @@ import Ketnoi.KetNoi;
 import QLLT.DAO.DAO_LSP;
 import QLLT.DAO.nextid;
 import QLLT.classs.QLLSP;
-import QLLT.from.loaisanpham;
+
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -141,8 +141,6 @@ Ketnoi.KetNoi cn=new KetNoi();
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        loaisanpham nv = new loaisanpham();
-        nv.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
