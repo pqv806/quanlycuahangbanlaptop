@@ -21,6 +21,7 @@ import QLLT.from.nhaphang;
 import QLLT.from.sanpham1;
 import QLLT.from.taikhoan;
 import QLLT.from.thongke;
+import QLLT.from.trangchu;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -52,7 +53,7 @@ public class chuyenmanhinh {
         jlbItem.setBackground(new Color(96, 100, 191));
         root.removeAll();;
         root.setLayout(new BorderLayout());
-        root.add(new nhom5());
+        root.add(new trangchu());
         root.validate();
         root.repaint();
 
@@ -86,7 +87,7 @@ public class chuyenmanhinh {
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
                     case "nhom 5":
-                        node = new nhom5();
+                        node = new trangchu();
                         
                         break;
                         case "bán hàng":

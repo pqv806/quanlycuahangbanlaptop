@@ -340,6 +340,7 @@ public class banhang extends javax.swing.JPanel {
         });
 
         txtngaylap.setEditable(false);
+        txtngaylap.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
