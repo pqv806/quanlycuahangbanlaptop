@@ -18,21 +18,22 @@ import javax.swing.JOptionPane;
  * @author vinh
  */
 public class suaKH extends javax.swing.JInternalFrame {
-    Ketnoi.KetNoi cn= new KetNoi();
-    QLKH n=new QLKH();
+
+    Ketnoi.KetNoi cn = new KetNoi();
+    QLKH n = new QLKH();
+
     /**
      * Creates new form suaKH
      */
     public suaKH() {
         initComponents();
-        if(check()){
-            this.txtmaKH.setText(khachhang.makh);
-         this.txtSDT.setText(khachhang.sdt);
-          this.txtdiachi.setText(khachhang.diachi);
-           this.txttenKH.setText(khachhang.ten);
-            this.txttrangthai.setText(khachhang.trangthai);
-          
-        }
+
+        this.txtmaKH.setText(khachhang.makh);
+        this.txtSDT.setText(khachhang.sdt);
+        this.txtdiachi.setText(khachhang.diachi);
+        this.txttenKH.setText(khachhang.ten);
+        this.txttrangthai.setText(khachhang.trangthai);
+
     }
 
     /**
@@ -183,10 +184,10 @@ public class suaKH extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            if(check()){
+            if (check()) {
                 laydl();
-        DAo_KH.update(n);
-        dispose();
+                DAo_KH.update(n);
+                dispose();
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Sửa thất bại");
@@ -211,29 +212,30 @@ public class suaKH extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void clear() {
-         txtmaKH.setText("");
+        txtmaKH.setText("");
         txttenKH.setText("");
         txtSDT.setText("");
         txtdiachi.setText("");
         txttrangthai.setText("");
-       
+
     }
-    public void laydl()
-    {
+
+    public void laydl() {
         n.setDiachi(txtdiachi.getText());
         n.setMakh(txtmaKH.getText());
         n.setSdt(txtSDT.getText());
         n.setTenkh(txttenKH.getText());
         n.setTrangthai(txttrangthai.getText());
     }
-    private boolean check(){
-        if(txtSDT.getText().equals("") || txtdiachi.getText().equals("") || txtmaKH.getText().equals("") 
-                || txttenKH.getText().equals("") || txttrangthai.getText().equals("") ){
+
+    private boolean check() {
+        if (txtSDT.getText().equals("") || txtdiachi.getText().equals("") || txtmaKH.getText().equals("")
+                || txttenKH.getText().equals("") || txttrangthai.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Nhập đầy đủ thông tin");
             return false;
         }
         String mauPhone = "((84)|(0))\\d{9}";
-        if(!txtSDT.getText().matches(mauPhone)){
+        if (!txtSDT.getText().matches(mauPhone)) {
             JOptionPane.showMessageDialog(this, "số điện thoại không hợp lệ");
             return false;
         }
