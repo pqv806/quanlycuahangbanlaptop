@@ -328,10 +328,17 @@ public class themsp extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        laydl();
+        try {
+            if(check()){
+            laydl();
         DAO_QLSP.Insert(n);
         DAO_CTSP.Insert(m);
         dispose();
+       }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Thêm thành công");
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -423,5 +430,39 @@ public class themsp extends javax.swing.JInternalFrame {
 
         } catch (Exception e) {
         }
+    }
+    private boolean check(){
+        try {
+             try {
+            if(txtbonho.getText().equals("") || txtcamera.getText().equals("") || txtcpu.getText().equals("") ||
+                    txtgiaban.getText().equals("") || txtgianhap.getText().equals("") || txtmanhinh.getText().equals("") ||
+                    txtmasp.getText().equals("") || txtpin.getText().equals("") || txtram.getText().equals("") || txtvo.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Nhập đầy đủ thông tin");
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            if(Float.parseFloat(txtgiaban.getText()) < 0){
+                JOptionPane.showMessageDialog(this, "Giá bán phải lớn hơn 0");
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            if(Float.parseFloat(txtgianhap.getText()) < 0){
+                JOptionPane.showMessageDialog(this, "Giá nhập phải lớn hơn 0");
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            
+        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Thêm thất bại");
+        }
+        return true;
     }
 }
