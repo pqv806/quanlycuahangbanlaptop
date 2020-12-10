@@ -42,6 +42,7 @@ public class trangchinh extends javax.swing.JFrame {
         chuyenmanhinh cmh = new chuyenmanhinh(jpnview);
         cmh.setview(jpnnhom5, jlbnhom5);
         cmh.seteven(listItem);
+       
     }
 
     /**
@@ -54,7 +55,6 @@ public class trangchinh extends javax.swing.JFrame {
     private void initComponents() {
 
         jpnroot = new javax.swing.JPanel();
-        jpnview = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jpnmenu = new javax.swing.JPanel();
         jpnnhom5 = new javax.swing.JPanel();
@@ -80,6 +80,7 @@ public class trangchinh extends javax.swing.JFrame {
         jlpthongke = new javax.swing.JLabel();
         jpnbaohanh = new javax.swing.JPanel();
         jlpbaohanh = new javax.swing.JLabel();
+        jpnview = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cửa Hàng Bán LAPTOP");
@@ -87,19 +88,6 @@ public class trangchinh extends javax.swing.JFrame {
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
         getContentPane().setLayout(new java.awt.CardLayout());
-
-        jpnview.setPreferredSize(new java.awt.Dimension(900, 0));
-
-        javax.swing.GroupLayout jpnviewLayout = new javax.swing.GroupLayout(jpnview);
-        jpnview.setLayout(jpnviewLayout);
-        jpnviewLayout.setHorizontalGroup(
-            jpnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1052, Short.MAX_VALUE)
-        );
-        jpnviewLayout.setVerticalGroup(
-            jpnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
 
         jpnmenu.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -394,6 +382,19 @@ public class trangchinh extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jpnmenu);
 
+        jpnview.setPreferredSize(new java.awt.Dimension(900, 0));
+
+        javax.swing.GroupLayout jpnviewLayout = new javax.swing.GroupLayout(jpnview);
+        jpnview.setLayout(jpnviewLayout);
+        jpnviewLayout.setHorizontalGroup(
+            jpnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1052, Short.MAX_VALUE)
+        );
+        jpnviewLayout.setVerticalGroup(
+            jpnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jpnrootLayout = new javax.swing.GroupLayout(jpnroot);
         jpnroot.setLayout(jpnrootLayout);
         jpnrootLayout.setHorizontalGroup(
@@ -410,7 +411,7 @@ public class trangchinh extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(jpnrootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jpnview, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         getContentPane().add(jpnroot, "card2");

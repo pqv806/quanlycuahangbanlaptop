@@ -22,9 +22,9 @@ public class DAO_Quyen {
     
       public static void dolentable(JTable tblquyen, long trang) {
         try {
-            String sql = "SELECT TOP 5 *\n"
-                    + "FROM dbo.phanquyen \n"
-                    + "WHERE maquyen NOT IN (SELECT TOP " + (trang * 5 - 5) + " maquyen FROM dbo.phanquyen)";
+            String sql = "SELECT  *\n"
+                    + "FROM dbo.phanquyen \n";
+                  
             DefaultTableModel model = (DefaultTableModel) tblquyen.getModel();
             ResultSet rs = KetNoi.Select(sql);
             Vector v = null;

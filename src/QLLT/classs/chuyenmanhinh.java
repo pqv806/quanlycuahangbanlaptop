@@ -11,7 +11,6 @@ import QLLT.from.trahang;
 import QLLT.from.hoadon;
 import QLLT.from.khachhang;
 
-
 import QLLT.from.nhacungcap;
 import QLLT.from.nhaphang;
 //import QLLT.from.phieunhap;
@@ -45,8 +44,6 @@ public class chuyenmanhinh {
         this.root = jpnroot;
     }
 
-  
-
     public void setview(JPanel jpnItem, JLabel jlbItem) {
         kindselected = "nhóm 5";
         jpnItem.setBackground(new Color(96, 100, 191));
@@ -74,70 +71,65 @@ public class chuyenmanhinh {
         private JPanel jpnItem;
         private JLabel jblItem;
 
-        public labelevent( String kind, JPanel jpnItem, JLabel jblItem) {
-            
+        public labelevent(String kind, JPanel jpnItem, JLabel jblItem) {
+
             this.kind = kind;
             this.jpnItem = jpnItem;
             this.jblItem = jblItem;
         }
 
-        
-
         @Override
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
-                    case "nhom 5":
-                        node = new trangchu();
-                        
-                        break;
-                        case "bán hàng":
-                            node = new banhang();
-                           
-                            break;
-                            
-                             case "nhập hàng":
-                            node = new nhaphang();
-                            break;
-                             case "sản phẩm":
-                            node = new sanpham1();
-                            break;
-                             case "loại sản phẩm":
-                     
-                            break;
-                             case "hóa đơn":
-                            node = new hoadon();
-                            break;
-                             case "phiếu nhập":
+                case "nhom 5":
+                    node = new trangchu();
+                    break;
+                case "bán hàng":
+                    node = new banhang();
+                    break;
+
+                case "nhập hàng":
+                    node = new nhaphang();
+                    break;
+                case "sản phẩm":
+                    node = new sanpham1();
+                    break;
+                case "loại sản phẩm":
+
+                    break;
+                case "hóa đơn":
+                    node = new hoadon();
+                    break;
+                case "phiếu nhập":
 //                            node = new phieunhap();
-                            break;
-                             case "nhân viên":
-                        node = new QLLT.from.nhanvien();
-                            break;
-                             case "khách hàng":
-                            node = new khachhang();
-                            break;
-                             case "NCC":
-                            node = new nhacungcap();
-                            break;
-                             case "tài khoản":
-                            node = new taikhoan();
-                            break;
-                             case "quyền":
+                    break;
+                case "nhân viên":
+                    node = new QLLT.from.nhanvien();
+                    break;
+                case "khách hàng":
+                    node = new khachhang();
+                    break;
+                case "NCC":
+                    node = new nhacungcap();
+                    break;
+                case "tài khoản":
+                    node = new taikhoan();
+                    break;
+                case "quyền":
 //                            node = new quyen();
-                            break;
-                             case "thống kê":
-                            node = new thongkeok();
-                            break;
-                             case "bảo hành":
-                            node = new trahang();
-                            break;
-                            
-                            default:
-                                break;
-               
+                    break;
+                case "thống kê":
+                    node = new thongkeok();
+                    break;
+                case "bảo hành":
+                    node = new trahang();
+                    break;
+
+                default:
+                    break;
 
             }
-            
+
             root.removeAll();
             root.setLayout(new BorderLayout());
             root.add(node);
@@ -146,33 +138,31 @@ public class chuyenmanhinh {
             setchanebackgroud(kind);
         }
 
-         @Override
-      public void mousePressed(MouseEvent e) {
-           kindselected = kind;
-           jpnItem.setBackground(new Color(96, 100, 191));
-           jblItem.setBackground(new Color(96, 100, 191));
-      }
+        @Override
+        public void mousePressed(MouseEvent e) {
+            kindselected = kind;
+            jpnItem.setBackground(new Color(96, 100, 191));
+            jblItem.setBackground(new Color(96, 100, 191));
+        }
 
-      @Override
-      public void mouseReleased(MouseEvent e) {
+        @Override
+        public void mouseReleased(MouseEvent e) {
 
-      }
+        }
 
-      @Override
-      public void mouseEntered(MouseEvent e) {
-          jpnItem.setBackground(new Color(96, 100, 191));
-          jblItem.setBackground(new Color(96, 100, 191));
-      }
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            jpnItem.setBackground(new Color(96, 100, 191));
+            jblItem.setBackground(new Color(96, 100, 191));
+        }
 
-      @Override
-      public void mouseExited(MouseEvent e) {
-          if (!kindselected.equalsIgnoreCase(kind)) {
+        @Override
+        public void mouseExited(MouseEvent e) {
+            if (!kindselected.equalsIgnoreCase(kind)) {
                 jpnItem.setBackground(new Color(76, 175, 80));
                 jblItem.setBackground(new Color(76, 175, 80));
-          }
-      }
-
-    
+            }
+        }
 
     }
 

@@ -68,7 +68,7 @@ public class DAO_TK {
     public static void Delete(QLTK n) {
         try {
             String sql = "delete from taikhoan\n"
-                    + "where manv = N'" + n.getManv() + "'";
+                    + "where tentaikhoan = N'" + n.getTentk()+ "'";
 
             if (Ketnoi.KetNoi.Update(sql) > 0) {
 

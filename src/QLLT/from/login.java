@@ -8,7 +8,7 @@ package QLLT.from;
 import Ketnoi.KetNoi;
 
 import QLLT.DAO.DAO_Dangnhap;
-import QLLT.nhanvien.trangchinh1;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

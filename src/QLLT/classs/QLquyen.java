@@ -10,8 +10,10 @@ package QLLT.classs;
  * @author vinh
  */
 public class QLquyen {
-    public  String maq,ten  ,chitietq,tim;
+    public  String maq,ten,chitietq,tim;
+   
 
+  
     public String getTim() {
         return tim;
     }
@@ -43,5 +45,11 @@ public class QLquyen {
     public void setChitietq(String chitietq) {
         this.chitietq = chitietq;
     }
+
+ 
+
+ 
+
+  
     
 }

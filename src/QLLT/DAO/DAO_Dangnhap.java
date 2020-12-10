@@ -6,9 +6,10 @@
 package QLLT.DAO;
 
 import Ketnoi.KetNoi;
-import QLLT.nhanvien.trangchinh1;
+
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import phanquyen.trangchinh2;
 import quanlylaptopadmin.trangchinh;
 
 /**
@@ -39,14 +40,16 @@ public class DAO_Dangnhap {
                     if (rs.getString(2).matches(MK)) {
                         
                         role = rs.getString(4);
+                   
+                       
                        if (role.equals("Q01")) {
                     
                         trangchinh ql = new trangchinh();
                         ql.setVisible(true);
                      
-                    } else if (role.equals("Q02")) {
+                    } else if (role.equals(role)) {
                      
-                        trangchinh1 a = new trangchinh1();
+                        trangchinh2 a = new trangchinh2();
                         a.setVisible(true);
                    
                     }

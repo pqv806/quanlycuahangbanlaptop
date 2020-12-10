@@ -761,6 +761,7 @@ public class taikhoan extends javax.swing.JPanel {
     public void themDL() {
         n.setTim(txttim.getText());
         n.setManv(manv);
+        n.setTentk(ten);
         m.setMaq(mq);
     }
 }
