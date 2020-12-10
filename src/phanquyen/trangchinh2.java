@@ -264,7 +264,7 @@ public class trangchinh2 extends javax.swing.JFrame {
         jpnnhanvien.setLayout(jpnnhanvienLayout);
         jpnnhanvienLayout.setHorizontalGroup(
             jpnnhanvienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlpnhanvien, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(jlpnhanvien, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
         );
         jpnnhanvienLayout.setVerticalGroup(
             jpnnhanvienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,20 +381,17 @@ public class trangchinh2 extends javax.swing.JFrame {
         jpnmenu.setLayout(jpnmenuLayout);
         jpnmenuLayout.setHorizontalGroup(
             jpnmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnmenuLayout.createSequentialGroup()
-                .addGroup(jpnmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jpnthongke, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jpnNCC, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jpnkhachhang, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jpnnhanvien, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jpnhoadon, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jpnnhaphang, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jpnbanhang, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jpnnhom5, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jpnbaohanh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jpnsanpham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jpnTK, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                .addContainerGap(158, Short.MAX_VALUE))
+            .addComponent(jpnthongke, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(jpnNCC, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(jpnkhachhang, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(jpnnhanvien, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(jpnhoadon, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(jpnnhaphang, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(jpnbanhang, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(jpnnhom5, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(jpnbaohanh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(jpnsanpham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(jpnTK, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
         );
         jpnmenuLayout.setVerticalGroup(
             jpnmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,7 +417,7 @@ public class trangchinh2 extends javax.swing.JFrame {
                 .addComponent(jpnthongke, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addComponent(jpnbaohanh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jpnmenu);
@@ -431,7 +428,7 @@ public class trangchinh2 extends javax.swing.JFrame {
         jpnview.setLayout(jpnviewLayout);
         jpnviewLayout.setHorizontalGroup(
             jpnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1052, Short.MAX_VALUE)
+            .addGap(0, 1051, Short.MAX_VALUE)
         );
         jpnviewLayout.setVerticalGroup(
             jpnviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,7 +443,7 @@ public class trangchinh2 extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnview, javax.swing.GroupLayout.DEFAULT_SIZE, 1052, Short.MAX_VALUE))
+                .addComponent(jpnview, javax.swing.GroupLayout.DEFAULT_SIZE, 1051, Short.MAX_VALUE))
         );
         jpnrootLayout.setVerticalGroup(
             jpnrootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

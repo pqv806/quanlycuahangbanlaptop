@@ -45,7 +45,7 @@
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="217" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jpnview" pref="1052" max="32767" attributes="0"/>
+                  <Component id="jpnview" pref="1051" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -76,22 +76,17 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jpnthongke" alignment="0" pref="200" max="32767" attributes="0"/>
-                              <Component id="jpnNCC" alignment="0" pref="200" max="32767" attributes="0"/>
-                              <Component id="jpnkhachhang" alignment="0" pref="200" max="32767" attributes="0"/>
-                              <Component id="jpnnhanvien" alignment="0" pref="200" max="32767" attributes="0"/>
-                              <Component id="jpnhoadon" alignment="0" pref="200" max="32767" attributes="0"/>
-                              <Component id="jpnnhaphang" alignment="0" pref="200" max="32767" attributes="0"/>
-                              <Component id="jpnbanhang" alignment="0" pref="200" max="32767" attributes="0"/>
-                              <Component id="jpnnhom5" alignment="0" pref="200" max="32767" attributes="0"/>
-                              <Component id="jpnbaohanh" alignment="1" pref="200" max="32767" attributes="0"/>
-                              <Component id="jpnsanpham" alignment="1" pref="200" max="32767" attributes="0"/>
-                              <Component id="jpnTK" alignment="0" pref="200" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="158" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jpnthongke" alignment="0" pref="215" max="32767" attributes="0"/>
+                      <Component id="jpnNCC" alignment="0" pref="215" max="32767" attributes="0"/>
+                      <Component id="jpnkhachhang" alignment="0" pref="215" max="32767" attributes="0"/>
+                      <Component id="jpnnhanvien" alignment="0" pref="215" max="32767" attributes="0"/>
+                      <Component id="jpnhoadon" alignment="0" pref="215" max="32767" attributes="0"/>
+                      <Component id="jpnnhaphang" alignment="0" pref="215" max="32767" attributes="0"/>
+                      <Component id="jpnbanhang" alignment="0" pref="215" max="32767" attributes="0"/>
+                      <Component id="jpnnhom5" alignment="0" pref="215" max="32767" attributes="0"/>
+                      <Component id="jpnbaohanh" alignment="1" pref="215" max="32767" attributes="0"/>
+                      <Component id="jpnsanpham" alignment="1" pref="215" max="32767" attributes="0"/>
+                      <Component id="jpnTK" alignment="0" pref="215" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -118,7 +113,7 @@
                           <Component id="jpnthongke" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                           <Component id="jpnbaohanh" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="75" max="32767" attributes="0"/>
+                          <EmptySpace pref="81" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -364,7 +359,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jlpnhanvien" alignment="0" pref="200" max="32767" attributes="0"/>
+                          <Component id="jlpnhanvien" alignment="0" pref="215" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -614,7 +609,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1052" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="1051" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">

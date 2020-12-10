@@ -22,10 +22,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" pref="100" max="-2" attributes="0"/>
@@ -33,7 +33,7 @@
                       <Component id="jButton3" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jPanel1" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
@@ -44,14 +44,14 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="85" max="32767" attributes="0"/>
+              <EmptySpace pref="86" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtq" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txttk" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -64,7 +64,7 @@
                   <Component id="jButton2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="jButton3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -137,42 +137,46 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="cbban" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbnhap" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbdt" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbthongke" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbtk" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbncc" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbkh" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbnv" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbhd" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbsp" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cbban" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbnhap" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbdt" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbthongke" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbtk" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="cbonhap" max="32767" attributes="0"/>
-                              <Component id="cboban" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbothongke" alignment="0" max="32767" attributes="0"/>
                               <Component id="cbodoitra" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cbotk" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cboban" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cbothongke" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cbotk" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cbncc" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbkh" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbnv" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbhd" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbsp" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="cbosp" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cbohd" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cbonv" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cbokh" max="32767" attributes="0"/>
-                              <Component id="cboncc" alignment="0" pref="80" max="32767" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="cbosp" max="32767" attributes="0"/>
+                                  <Component id="cbohd" min="-2" pref="95" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="cboncc" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cbonv" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="cbokh" alignment="1" min="-2" pref="95" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -194,7 +198,7 @@
                       <Component id="cbsp" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cbosp" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cbhd" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cbohd" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -204,20 +208,17 @@
                       <Component id="cbnv" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cbonv" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cbkh" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                          <Component id="cbokh" min="-2" pref="20" max="-2" attributes="0"/>
-                      </Group>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cbkh" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbokh" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cbncc" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cboncc" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="6" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cbtk" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cbotk" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -240,7 +241,7 @@
       <SubComponents>
         <Component class="javax.swing.JCheckBox" name="cbban">
           <Properties>
-            <Property name="text" type="java.lang.String" value="b&#xe1;n h&#xe0;ng"/>
+            <Property name="text" type="java.lang.String" value="B&#xe1;n H&#xe0;ng"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbbanMouseClicked"/>
@@ -248,7 +249,7 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbnhap">
           <Properties>
-            <Property name="text" type="java.lang.String" value="nh&#x1ead;p h&#xe0;ng"/>
+            <Property name="text" type="java.lang.String" value="Nh&#x1ead;p H&#xe0;ng"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbnhapMouseClicked"/>
@@ -256,7 +257,7 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbsp">
           <Properties>
-            <Property name="text" type="java.lang.String" value="s&#x1ea3;n ph&#x1ea9;m"/>
+            <Property name="text" type="java.lang.String" value="S&#x1ea3;n Ph&#x1ea9;m"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbspMouseClicked"/>
@@ -264,7 +265,7 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbhd">
           <Properties>
-            <Property name="text" type="java.lang.String" value="h&#xf3;a &#x111;&#x1a1;n"/>
+            <Property name="text" type="java.lang.String" value="H&#xf3;a &#x110;&#x1a1;n"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbhdMouseClicked"/>
@@ -272,7 +273,7 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbnv">
           <Properties>
-            <Property name="text" type="java.lang.String" value="nh&#xe2;n vi&#xea;n"/>
+            <Property name="text" type="java.lang.String" value="Nh&#xe2;n Vi&#xea;n"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbnvMouseClicked"/>
@@ -280,7 +281,7 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbkh">
           <Properties>
-            <Property name="text" type="java.lang.String" value="kh&#xe1;ch h&#xe0;ng"/>
+            <Property name="text" type="java.lang.String" value="Kh&#xe1;ch H&#xe0;ng"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbkhMouseClicked"/>
@@ -288,22 +289,22 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbtk">
           <Properties>
-            <Property name="text" type="java.lang.String" value="t&#xe0;i kho&#x1ea3;n"/>
+            <Property name="text" type="java.lang.String" value="T&#xe0;i Kho&#x1ea3;n"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbthongke">
           <Properties>
-            <Property name="text" type="java.lang.String" value="th&#x1ed1;ng k&#xea;"/>
+            <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng K&#xea;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbdt">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#x110;&#x1ed5;i Trat"/>
+            <Property name="text" type="java.lang.String" value="&#x110;&#x1ed5;i Tr&#x1ea3;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbncc">
           <Properties>
-            <Property name="text" type="java.lang.String" value="nh&#xe0; cung c&#x1ea5;p"/>
+            <Property name="text" type="java.lang.String" value="Nh&#xe0; Cung C&#x1ea5;p"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cboban">
@@ -338,6 +339,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbospActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
