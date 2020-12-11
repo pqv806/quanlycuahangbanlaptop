@@ -291,21 +291,33 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="T&#xe0;i Kho&#x1ea3;n"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbtkMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbthongke">
           <Properties>
             <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng K&#xea;"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbthongkeMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbdt">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x110;&#x1ed5;i Tr&#x1ea3;"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbdtMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbncc">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nh&#xe0; Cung C&#x1ea5;p"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbnccMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cboban">
           <Properties>

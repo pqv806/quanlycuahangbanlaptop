@@ -24,7 +24,7 @@ public class themquyen extends javax.swing.JInternalFrame {
     Ketnoi.KetNoi cn = new KetNoi();
     QLquyen n = new QLquyen();
     nextid id = new nextid();
-    String ma, banhang1="a", nhaphang1="a", sanpham1="a", hd1="a",nv1="a",kh1="a";
+    String ma, banhang1="a", nhaphang1="a", sanpham1="a", hd1="a",nv1="a",kh1="a",ncc="a",tk="a",doitra="a",thongke="a";
 
     /**
      * Creates new form themquyen
@@ -37,6 +37,10 @@ public class themquyen extends javax.swing.JInternalFrame {
         cbohd.setEnabled(false);
         cbonv.setEnabled(false);
         cbokh.setEnabled(false);
+        cboncc.setEnabled(false);
+        cbothongke.setEnabled(false);
+        cbodoitra.setEnabled(false);
+        cbotk.setEnabled(false);
 
         id.layid();
 
@@ -156,12 +160,32 @@ public class themquyen extends javax.swing.JInternalFrame {
         });
 
         cbtk.setText("Tài Khoản");
+        cbtk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbtkMouseClicked(evt);
+            }
+        });
 
         cbthongke.setText("Thống Kê");
+        cbthongke.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbthongkeMouseClicked(evt);
+            }
+        });
 
         cbdt.setText("Đổi Trả");
+        cbdt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbdtMouseClicked(evt);
+            }
+        });
 
         cbncc.setText("Nhà Cung Cấp");
+        cbncc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbnccMouseClicked(evt);
+            }
+        });
 
         cboban.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BANHANG" }));
 
@@ -433,6 +457,62 @@ public class themquyen extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbospActionPerformed
 
+    private void cbnccMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbnccMouseClicked
+        // TODO add your handling code here:
+        if (cbncc.isSelected()) {
+            cboncc.setEnabled(true);
+            
+         ncc=cboncc.getSelectedItem().toString();
+        }
+        else
+        {
+                 cboncc.setEnabled(false);
+               ncc="";
+        }
+    }//GEN-LAST:event_cbnccMouseClicked
+
+    private void cbtkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbtkMouseClicked
+        // TODO add your handling code here:
+         if (cbtk.isSelected()) {
+            cbotk.setEnabled(true);
+            
+         tk=cbotk.getSelectedItem().toString();
+        }
+        else
+        {
+                 cbotk.setEnabled(false);
+               tk="";
+        }
+    }//GEN-LAST:event_cbtkMouseClicked
+
+    private void cbdtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbdtMouseClicked
+        // TODO add your handling code here:
+           if (cbdt.isSelected()) {
+            cbodoitra.setEnabled(true);
+            
+         doitra=cbodoitra.getSelectedItem().toString();
+        }
+        else
+        {
+                 cbodoitra.setEnabled(false);
+               doitra="";
+        }
+    }//GEN-LAST:event_cbdtMouseClicked
+
+    private void cbthongkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbthongkeMouseClicked
+        // TODO add your handling code here:
+          if (cbthongke.isSelected()) {
+            cbothongke.setEnabled(true);
+            
+         thongke=cbothongke.getSelectedItem().toString();
+        }
+        else
+        {
+                 cbothongke.setEnabled(false);
+               thongke="";
+        }
+    }//GEN-LAST:event_cbthongkeMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox cbban;
@@ -472,7 +552,7 @@ public class themquyen extends javax.swing.JInternalFrame {
     public void themDL() {
         n.setMaq(txtq.getText());
         n.setTen(txttk.getText());
-        n.setChitietq(banhang1 +" "+nhaphang1+" "+sanpham1+" "+hd1+" " +nv1+" "+kh1+" ");
+        n.setChitietq(banhang1 +" "+nhaphang1+" "+sanpham1+" "+hd1+" " +nv1+" "+kh1+" "+ncc+" "+tk+" "+thongke+" "+doitra+" ");
 
     }
 

@@ -55,7 +55,10 @@ public class trangchinh2 extends javax.swing.JFrame {
         jpnhoadon.setVisible(false);
         jpnnhanvien.setVisible(false);
         jpnkhachhang.setVisible(false);
+        jpnNCC.setVisible(false);
         jpnTK.setVisible(false);
+        jpnbaohanh.setVisible(false);
+        jpnthongke.setVisible(false);
 
         laychitietquyen();
         String[] chitietquyen1 = chitietquyen.split(" ");
@@ -65,6 +68,11 @@ public class trangchinh2 extends javax.swing.JFrame {
         String hoadon = chitietquyen1[3];
         String nhanvien = chitietquyen1[4];
         String khachhang = chitietquyen1[5];
+         String ncc = chitietquyen1[6];
+          String tk = chitietquyen1[7];
+           String thongke = chitietquyen1[8];
+            String doitra = chitietquyen1[9];
+        
       
 
         if (banhang.equals("BANHANG")) {
@@ -84,6 +92,18 @@ public class trangchinh2 extends javax.swing.JFrame {
         }
         if (khachhang.equals("QLKH")) {
             jpnkhachhang.setVisible(true);
+        }
+        if (ncc.equals("QLNCC")) {
+            jpnNCC.setVisible(true);
+        }
+        if (tk.equals("QLTK")) {
+            jpnTK.setVisible(true);
+        }
+        if (thongke.equals("QLThống kê")) {
+            jpnthongke.setVisible(true);
+        }
+        if (doitra.equals("QLDT")) {
+            jpnbaohanh.setVisible(true);
         }
 
     }
