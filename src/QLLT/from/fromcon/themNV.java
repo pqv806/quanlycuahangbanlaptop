@@ -249,14 +249,17 @@ public class themNV extends javax.swing.JInternalFrame {
             return false;
         }
          try {
-             fomat.setLenient(false);
              Date date = fomat.parse(txtngaysinh.getText().toString());
+             fomat.setLenient(false);
+             
              if(date.equals("")){
                  JOptionPane.showMessageDialog(this,"Nhập đầy đủ thông tin");
                  return false;
              }
+
          } catch (Exception e) {
              JOptionPane.showMessageDialog(this, "Lỗi định dạng ngày");
+             return false;
          }
          
          
