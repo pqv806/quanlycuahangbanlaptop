@@ -57,7 +57,7 @@ public class DAO_CTSP {
                     + ",N'" + n.getCamera()+ "'"
                     + ",N'" + n.getManhinh()+ "'"
                     + ",N'" + n.getPin()+ "'"
-                    + ",'" + n.getCpu()+ "'"
+                    + ",N'" + n.getCpu()+ "'"
                     + ",N'" + n.getVo() + "'"
                     + ",N'" + n.getKhac()+ "')";
 

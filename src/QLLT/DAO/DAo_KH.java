@@ -53,7 +53,7 @@ public class DAo_KH {
             String sql = "insert into khachhang(makh, tenkh, diachi, sdt, trangthai) \n"
                     + "values(N'" + n.getMakh()+ "'"
                     + ",N'" + n.getTenkh()+ "'"
-                    + ",'" + n.getDiachi()+ "'"
+                    + ",N'" + n.getDiachi()+ "'"
                     + ",N'" + n.getSdt()+ "'"  
                     + ",N'" + n.getTrangthai()+ "')";
 
@@ -88,13 +88,13 @@ public class DAo_KH {
         try {
             String sql = "update khachhang\n"
                     + "set tenkh = N'"+n.getTenkh()+"'"
-                    + ",diachi = '"+n.getDiachi()+"'"
+                    + ",diachi = N'"+n.getDiachi()+"'"
                  
-                    + ",sdt=N'"+n.getDiachi()+"'"
+                    + ",sdt=N'"+n.getSdt()+"'"
                   
                    
                     + ",trangthai=N'"+n.getTrangthai()+"'"
-                    + "where makh = '"+n.getMakh()+"'";
+                    + "where makh = N'"+n.getMakh()+"'";
             if (Ketnoi.KetNoi.Update(sql) > 0) {
                 System.out.println("Cập nhật thành công");
             } else {

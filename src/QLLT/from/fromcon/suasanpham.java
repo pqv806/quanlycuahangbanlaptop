@@ -104,7 +104,7 @@ public class suasanpham extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        lblhinh.setText("click chọn ảnh");
+        lblhinh.setText("Click Chọn Ảnh");
         lblhinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblhinhMouseClicked(evt);

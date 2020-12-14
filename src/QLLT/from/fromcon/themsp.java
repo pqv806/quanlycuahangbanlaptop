@@ -86,6 +86,7 @@ public class themsp extends javax.swing.JInternalFrame {
 
         txtgianhap.setBorder(javax.swing.BorderFactory.createTitledBorder("Giá Nhập"));
 
+        txtanh.setEditable(false);
         txtanh.setBorder(javax.swing.BorderFactory.createTitledBorder("Tên Ảnh"));
 
         txttrangthai.setColumns(20);
@@ -95,7 +96,7 @@ public class themsp extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Chọn Ảnh"));
 
-        lblhinh.setText("click chọn ảnh");
+        lblhinh.setText("Click Chọn Ảnh");
         lblhinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblhinhMouseClicked(evt);

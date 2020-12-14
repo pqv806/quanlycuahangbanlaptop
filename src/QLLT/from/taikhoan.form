@@ -206,7 +206,6 @@
                         <TitledBorder title="T&#xec;m Ki&#x1ebf;m"/>
                       </Border>
                     </Property>
-                    <Property name="requestFocusEnabled" type="boolean" value="false"/>
                   </Properties>
                   <AccessibilityProperties>
                     <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>

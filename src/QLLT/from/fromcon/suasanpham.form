@@ -172,7 +172,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblhinh">
           <Properties>
-            <Property name="text" type="java.lang.String" value="click ch&#x1ecd;n &#x1ea3;nh"/>
+            <Property name="text" type="java.lang.String" value="Click Ch&#x1ecd;n &#x1ea2;nh"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblhinhMouseClicked"/>

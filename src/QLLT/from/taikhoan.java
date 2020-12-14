@@ -152,7 +152,6 @@ public class taikhoan extends javax.swing.JPanel {
         });
 
         txttim.setBorder(javax.swing.BorderFactory.createTitledBorder("Tìm Kiếm"));
-        txttim.setRequestFocusEnabled(false);
         txttim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txttimActionPerformed(evt);
@@ -510,15 +509,15 @@ public class taikhoan extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         themDL();
 
-        int hoi = JOptionPane.showConfirmDialog(this, "xóa tài khoản");
+        int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn Xóa Không ?", "Hỏi Xóa", JOptionPane.YES_NO_OPTION);
         if (hoi == JOptionPane.YES_OPTION) {
             DAO_TK.Delete(n);
             DAO_TK.dolentable(tbltk, trang);
 
-            JOptionPane.showMessageDialog(this, "xóa thành công");
+            JOptionPane.showMessageDialog(this, "Xóa Thành Công");
 
         } else {
-            JOptionPane.showMessageDialog(this, "chưa xóa");
+            JOptionPane.showMessageDialog(this, "Chưa Xóa");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

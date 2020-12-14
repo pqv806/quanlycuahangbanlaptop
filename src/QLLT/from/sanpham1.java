@@ -144,6 +144,11 @@ public class sanpham1 extends javax.swing.JPanel {
                 txttimActionPerformed(evt);
             }
         });
+        txttim.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txttimKeyReleased(evt);
+            }
+        });
 
         tblsp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -402,16 +407,16 @@ public class sanpham1 extends javax.swing.JPanel {
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jButton12)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(txttimkiem, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton15)))
-                .addGap(0, 383, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1003, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -580,16 +585,16 @@ public class sanpham1 extends javax.swing.JPanel {
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
   
-            int hoi = JOptionPane.showConfirmDialog(this, "xóa loại sản phẩm");
+            int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn Xóa Không ?", "Hỏi Xóa", JOptionPane.YES_NO_OPTION);
             if (hoi == JOptionPane.YES_OPTION) {
                 m.setMalsp(maloai);
                 DAO_LSP.Delete(m);
                
-                JOptionPane.showMessageDialog(this, "xóa thành công");
+                JOptionPane.showMessageDialog(this, "Xóa Thành Công");
                 DAO_LSP.dolentable(tbllsp, 1);
 
             } else {
-                JOptionPane.showMessageDialog(this, "chưa xóa");
+                JOptionPane.showMessageDialog(this, "Chưa Xóa");
             }
 
        
@@ -665,16 +670,16 @@ public class sanpham1 extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         laydl();
-        int hoi = JOptionPane.showConfirmDialog(this, "xóa sản phẩm");
+        int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn Xóa Không ?", "Hỏi Xóa", JOptionPane.YES_NO_OPTION);
         if (hoi == JOptionPane.YES_OPTION) {
 
             DAO_QLSP.DeleteCTSP(n);
             DAO_QLSP.Delete(n);
-            JOptionPane.showMessageDialog(this, "xóa thành công");
+            JOptionPane.showMessageDialog(this, "Xóa Thành Công");
             DAO_QLSP.dolentable(tblsp, 1);
 
         } else {
-            JOptionPane.showMessageDialog(this, "chưa xóa");
+            JOptionPane.showMessageDialog(this, "Chưa Xóa");
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -718,6 +723,10 @@ public class sanpham1 extends javax.swing.JPanel {
         jDesktopPane2.add(ctpn);
         ctpn.setVisible(true);
     }//GEN-LAST:event_txtctpnActionPerformed
+
+    private void txttimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttimKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

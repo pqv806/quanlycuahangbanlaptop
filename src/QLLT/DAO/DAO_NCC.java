@@ -50,7 +50,7 @@ public class DAO_NCC {
             String sql = "insert into nhacungcap( mancc, tenncc, diachi, sdt, fax ) \n"
                     + "values(N'" + n.getMancc() + "'"
                     + ",N'" + n.getTenncc() + "'"
-                    + ",'" + n.getDiachi() + "'"
+                    + ",N'" + n.getDiachi() + "'"
                     + ",N'" + n.getSdt() + "'"
                     + ",N'" + n.getFax() + "')";
 
@@ -83,7 +83,7 @@ public class DAO_NCC {
         try {
             String sql = "update nhacungcap\n"
                     + "set tenncc = N'" + n.getTenncc() + "'"
-                    + ",diachi = '" + n.getDiachi() + "'"
+                    + ",diachi = N'" + n.getDiachi() + "'"
                     + ",sdt=N'" + n.getSdt() + "'"
                     + ",fax=N'" + n.getFax() + "'"
                     + "where mancc = '" + n.getMancc() + "'";
