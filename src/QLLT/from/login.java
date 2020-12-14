@@ -215,6 +215,8 @@ public class login extends javax.swing.JFrame {
                         a.setVisible(true);
                    
                     }
+               laytennv();
+               dispose();
             }
             else
             {
