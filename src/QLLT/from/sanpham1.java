@@ -10,6 +10,7 @@ import QLLT.DAO.DAO_LSP;
 import QLLT.DAO.DAO_QLPN;
 import QLLT.DAO.DAO_QLSP;
 import QLLT.classs.QLLSP;
+import QLLT.classs.QLPN;
 import QLLT.classs.QLSP;
 import QLLT.from.fromcon.chitietphieunhap;
 
@@ -48,6 +49,7 @@ public class sanpham1 extends javax.swing.JPanel {
     Ketnoi.KetNoi cn=new KetNoi();
     QLSP n= new QLSP();
     QLLSP m=new QLLSP();
+    QLPN l=new QLPN();
     
     /**
      * Creates new form sanpham1
@@ -477,9 +479,19 @@ public class sanpham1 extends javax.swing.JPanel {
         jScrollPane3.setViewportView(tblpn);
 
         txttim2.setBorder(javax.swing.BorderFactory.createTitledBorder("Tìm Kiếm"));
+        txttim2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                txttim2MouseReleased(evt);
+            }
+        });
         txttim2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txttim2ActionPerformed(evt);
+            }
+        });
+        txttim2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txttim2KeyReleased(evt);
             }
         });
 
@@ -611,7 +623,7 @@ public class sanpham1 extends javax.swing.JPanel {
         // TODO add your handling code here:
       
         DAO_LSP.dolentable(tbllsp, 1);
-        txttim.setText("");
+        txttimkiem.setText("");
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jPanel3ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel3ComponentShown
@@ -622,9 +634,9 @@ public class sanpham1 extends javax.swing.JPanel {
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
-        model.setRowCount(0);
-        txttim.setText("");
-        // loaddatatable();
+        DAO_QLPN.dolentable(tblpn, 1);
+        txttim2.setText("");
+       
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void txttim2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttim2ActionPerformed
@@ -726,7 +738,28 @@ public class sanpham1 extends javax.swing.JPanel {
 
     private void txttimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimKeyReleased
         // TODO add your handling code here:
+        laydl();
+        try {
+            DAO_QLSP.TimKiemSP(n, tblsp);
+        } catch (SQLException ex) {
+            Logger.getLogger(sanpham1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_txttimKeyReleased
+
+    private void txttim2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txttim2MouseReleased
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_txttim2MouseReleased
+
+    private void txttim2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttim2KeyReleased
+        // TODO add your handling code here:
+          laydl();
+        try {
+            DAO_QLPN.TimKiemPN(l, tblpn);
+        } catch (SQLException ex) {
+            Logger.getLogger(sanpham1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txttim2KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -822,6 +855,8 @@ public class sanpham1 extends javax.swing.JPanel {
      public void laydl()
      {
          n.setMasp(ma);
+         n.setTim(txttim.getText());
          m.setTim(txttimkiem.getText());
+         l.setTim(txttim2.getText());
      }
 }

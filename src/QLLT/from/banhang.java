@@ -657,7 +657,7 @@ if(check())
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        model.setRowCount(0);
+        
         txttim.setText("");
         DAO_BanHang.dolentable(tblsp, 1);
     }//GEN-LAST:event_jButton7ActionPerformed

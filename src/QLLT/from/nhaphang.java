@@ -8,10 +8,12 @@ package QLLT.from;
 import Ketnoi.KetNoi;
 import QLLT.DAO.DAO_BanHang;
 import QLLT.DAO.DAO_CTPN;
+import QLLT.DAO.DAO_QLHD;
 import QLLT.DAO.DAO_QLPN;
 import QLLT.DAO.DAO_nhapHang;
 import QLLT.DAO.nextid;
 import QLLT.classs.QLCTPN;
+import QLLT.classs.QLHD;
 import QLLT.classs.QLPN;
 import QLLT.classs.WritePDF;
 import QLLT.classs.piceFormatter;
@@ -24,6 +26,7 @@ import java.io.Writer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -32,6 +35,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -56,6 +61,8 @@ public class nhaphang extends javax.swing.JPanel {
     nextid id = new nextid();
     QLCTPN m = new QLCTPN();
     QLPN n = new QLPN();
+    QLHD l=new QLHD();
+   
 
     /**
      * Creates new form nhaphang
@@ -209,6 +216,11 @@ public class nhaphang extends javax.swing.JPanel {
         txttim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txttimActionPerformed(evt);
+            }
+        });
+        txttim.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txttimKeyReleased(evt);
             }
         });
 
@@ -513,7 +525,7 @@ public class nhaphang extends javax.swing.JPanel {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        model.setRowCount(0);
+        DAO_BanHang.dolentablenhap(tblsp, 1);
         txttim.setText("");
 
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -615,6 +627,16 @@ public class nhaphang extends javax.swing.JPanel {
         int row = tblsp.getSelectedRow();
         hienthi(row);
     }//GEN-LAST:event_tblspMouseClicked
+
+    private void txttimKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txttimKeyReleased
+        // TODO add your handling code here:
+        laydl();
+        try {
+            DAO_QLHD.TimKiemspnhap(l, tblsp);
+        } catch (SQLException ex) {
+            Logger.getLogger(nhaphang.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txttimKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -755,7 +777,7 @@ public class nhaphang extends javax.swing.JPanel {
         n.setMapn(txtpn.getText());
         n.setMancc(mancc);
         n.setManv(manv);
-
+        l.setTim(txttim.getText());
         n.setNgaylap(txtngaynhap.getText());
         n.setTongtien(Float.valueOf(txttongtien1.getText()));
         n.setTim(txttim.getText());

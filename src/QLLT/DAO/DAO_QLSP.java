@@ -119,6 +119,31 @@ public class DAO_QLSP {
         }
 
     }
+     public static  void TimKiemSP(QLSP n,JTable tblsp) throws SQLException {
+        String sql = "";
+
+        sql = "select * from dbo.sanpham \n"
+                    + "where tensp like N'%" + n.getTim()+ "%'";
+        ResultSet rs = KetNoi.Select(sql);
+           DefaultTableModel model = (DefaultTableModel) tblsp.getModel();
+        Vector v = null;
+            model.setRowCount(0);
+            while (rs.next()) {
+                v = new Vector();
+              v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(piceFormatter.format(rs.getFloat(4)));
+                v.add(piceFormatter.format(rs.getFloat(5)));
+                v.add(rs.getInt(6));
+                v.add(rs.getString(7));
+                v.add(rs.getString(8));
+      
+            
+                model.addRow(v);
+            }
+            tblsp.setModel(model);
+        }
 
     
 }

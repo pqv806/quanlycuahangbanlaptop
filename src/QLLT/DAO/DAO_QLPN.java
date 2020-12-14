@@ -88,7 +88,6 @@ public class DAO_QLPN {
                 v.add(rs.getString(3));
                 v.add(rs.getString(4));
                 v.add(rs.getString(5));              
-         
                 model.addRow(v);
             }
             tblpn.setModel(model);

@@ -115,7 +115,35 @@ public class DAO_QLHD {
                 v.add(rs.getString(1));
                 v.add(rs.getString(2));
                 v.add(rs.getString(3));
-                v.add(rs.getString(4));
+                v.add(piceFormatter.format(rs.getFloat(4)));
+                v.add(rs.getString(6));              
+                v.add(rs.getString(7));
+                model.addRow(v);
+            }
+            tblsp.setModel(model);
+        }
+   public static  void TimKiemspnhap(QLHD n,JTable tblsp) throws SQLException {
+        String sql = "";
+
+        sql = "select * from sanpham\n"
+                    + "where tensp like N'%" + n.getTim()+ "%'"
+                + "or masp like N'%" + n.getTim()+ "%'"
+                + "or tensp like N'%" + n.getTim()+ "%'"
+                + "or malsp like N'%" + n.getTim()+ "%'"
+                + "or giaban like N'%" + n.getTim()+ "%'"
+                + "or soluong like N'%" + n.getTim()+ "%'"
+                + "or hinhanh like N'%" + n.getTim()+ "%'"
+                + "or mota like N'%\" + n.getTim()+ \"%'";
+        ResultSet rs = KetNoi.Select(sql);
+           DefaultTableModel model = (DefaultTableModel) tblsp.getModel();
+        Vector v = null;
+            model.setRowCount(0);
+            while (rs.next()) {
+                v = new Vector();
+                v.add(rs.getString(1));
+                v.add(rs.getString(2));
+                v.add(rs.getString(3));
+                v.add(piceFormatter.format(rs.getFloat(5)));
                 v.add(rs.getString(6));              
                 v.add(rs.getString(7));
                 model.addRow(v);
