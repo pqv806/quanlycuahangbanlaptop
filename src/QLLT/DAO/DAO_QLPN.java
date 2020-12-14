@@ -7,6 +7,7 @@ package QLLT.DAO;
 
 import Ketnoi.KetNoi;
 import QLLT.classs.QLPN;
+import QLLT.classs.piceFormatter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,7 +36,7 @@ public class DAO_QLPN {
                 v.add(rs.getString(2));
                 v.add(rs.getString(3));
                 v.add(rs.getString(4));
-                v.add(rs.getString(5));
+                v.add(piceFormatter.format(rs.getFloat(5))); 
                
                 model.addRow(v);
 

@@ -12,6 +12,7 @@ import QLLT.classs.QLtrahang;
 import QLLT.from.hoadon;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -20,6 +21,8 @@ import java.time.LocalDate;
 public class trahang extends javax.swing.JInternalFrame {
     nextid id=new nextid();
     QLtrahang n=new QLtrahang();
+    DefaultComboBoxModel modelCombo = new DefaultComboBoxModel();
+    
     /**
      * Creates new form trahang
      */
@@ -32,6 +35,8 @@ public class trahang extends javax.swing.JInternalFrame {
         txtmatra.setText(id.maTH());
          LocalDate ldt = LocalDate.now();
         txtngay.setText(ldt.toString());
+        
+        
         
     }
 
@@ -267,11 +272,11 @@ public class trahang extends javax.swing.JInternalFrame {
             String sql = "SELECT masp FROM dbo.hoadonchitiet";
 
             ResultSet rs = KetNoi.Select(sql);
-
+            
             while (rs.next()) {
-                cbosp.addItem(rs.getString(1));
-
+                modelCombo.addElement(rs.getString(1));
             }
+            cbosp.setModel(modelCombo);
 
         } catch (Exception e) {
             System.out.println("lỗi load data");
