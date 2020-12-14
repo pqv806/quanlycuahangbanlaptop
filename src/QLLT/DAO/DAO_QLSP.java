@@ -121,9 +121,16 @@ public class DAO_QLSP {
     }
      public static  void TimKiemSP(QLSP n,JTable tblsp) throws SQLException {
         String sql = "";
-
-        sql = "select * from dbo.sanpham \n"
-                    + "where tensp like N'%" + n.getTim()+ "%'";
+        sql = "select * from sanpham\n"
+                    + "where tensp like N'%" + n.getTim()+ "%'"
+                + "or masp like N'%" + n.getTim()+ "%'"
+                + "or tensp like N'%" + n.getTim()+ "%'"
+                + "or malsp like N'%" + n.getTim()+ "%'"
+                + "or giaban like N'%" + n.getTim()+ "%'"
+                + "or soluong like N'%" + n.getTim()+ "%'"
+                + "or hinhanh like N'%" + n.getTim()+ "%'"
+                + "or mota like N'%\" + n.getTim()+ \"%'";
+                    
         ResultSet rs = KetNoi.Select(sql);
            DefaultTableModel model = (DefaultTableModel) tblsp.getModel();
         Vector v = null;
