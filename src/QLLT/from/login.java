@@ -8,11 +8,13 @@ package QLLT.from;
 import Ketnoi.KetNoi;
 
 import QLLT.DAO.DAO_Dangnhap;
+import static QLLT.DAO.DAO_Dangnhap.role;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import phanquyen.trangchinh2;
 import quanlylaptopadmin.trangchinh;
 
 /**
@@ -21,7 +23,7 @@ import quanlylaptopadmin.trangchinh;
  */
 public class login extends javax.swing.JFrame {
   Ketnoi.KetNoi cn=new KetNoi();
-  public static String tennv;
+  public static String tennv,role;
     /**
      * Creates new form login
      */
@@ -150,21 +152,21 @@ public class login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        if (txt_user.getText().equals("") || txt_pass.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "không được để trống ô nào");
-        } else {
-             String TK = txt_user.getText();
-        String MK = String.valueOf(txt_pass.getPassword());
-        boolean chay = DAO_Dangnhap.KT_DangNhap(TK, MK);
-        if (chay) {
-           JOptionPane.showMessageDialog(this, "đăng nhập thành công ");
-           laytennv();
-           dispose();   
-           
-        }
-        }
+//        if (txt_user.getText().equals("") || txt_pass.getText().equals("")) {
+//            JOptionPane.showMessageDialog(this, "không được để trống ô nào");
+//        } else {
+//             String TK = txt_user.getText();
+//        String MK = String.valueOf(txt_pass.getPassword());
+//        boolean chay = DAO_Dangnhap.KT_DangNhap(TK, MK);
+//        if (chay) {
+//           JOptionPane.showMessageDialog(this, "đăng nhập thành công ");
+//           laytennv();
+//           dispose();   
+//           
+//        }
+//        }
        
-        
+        dn();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -192,6 +194,40 @@ public class login extends javax.swing.JFrame {
             System.out.println("lỗi load data");
         }
     }
+ private  void  dn()
+ {
+      try {
+            String sql = "select * from dbo.taikhoan "
+                    + "where tentaikhoan =N'" + txt_user.getText() + "'"
+                    + "and  matkhau = N'" + txt_pass.getText()+ "'";
+            ResultSet rs = KetNoi.Select(sql);
+            if (rs.next()) {
+
+                role = rs.getString(4);
+               if (role.equals("Q01")) {
+                    
+                        trangchinh ql = new trangchinh();
+                        ql.setVisible(true);
+                     
+                    } else if (role.equals(role)) {
+                     
+                        trangchinh2 a = new trangchinh2();
+                        a.setVisible(true);
+                   
+                    }
+            }
+            else
+            {
+                   JOptionPane.showMessageDialog(this, "sai tài khoản hoặc mật khẩu");
+                      return;
+            }
+
+        } catch (Exception e) {
+            System.out.println("lỗi");
+            e.printStackTrace();
+        }
+ }
+         
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

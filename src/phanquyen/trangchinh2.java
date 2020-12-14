@@ -31,7 +31,7 @@ public class trangchinh2 extends javax.swing.JFrame {
     public trangchinh2() {
 
         initComponents();
-        maquyen = DAO_Dangnhap.role;
+        maquyen = login.role;
         setLocationRelativeTo(null);
         List<danhmuc> listItem = new ArrayList<>();
         listItem.add(new danhmuc("nhom 5", jpnnhom5, jlbnhom5));
