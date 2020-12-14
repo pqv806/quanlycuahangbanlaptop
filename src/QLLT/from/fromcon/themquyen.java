@@ -206,9 +206,9 @@ public class themquyen extends javax.swing.JInternalFrame {
 
         cboncc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "QLNCC" }));
 
-        cbothongke.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "QLThống kê" }));
+        cbothongke.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "QLTk" }));
 
-        cbotk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "QLTK" }));
+        cbotk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "QLTaiKhoan" }));
         cbotk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbotkActionPerformed(evt);

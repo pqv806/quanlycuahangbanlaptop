@@ -410,7 +410,7 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
-                <StringItem index="0" value="QLTh&#x1ed1;ng k&#xea;"/>
+                <StringItem index="0" value="QLTk"/>
               </StringArray>
             </Property>
           </Properties>
@@ -422,7 +422,7 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
-                <StringItem index="0" value="QLTK"/>
+                <StringItem index="0" value="QLTaiKhoan"/>
               </StringArray>
             </Property>
           </Properties>

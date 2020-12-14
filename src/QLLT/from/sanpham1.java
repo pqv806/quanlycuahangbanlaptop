@@ -604,7 +604,8 @@ public class sanpham1 extends javax.swing.JPanel {
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
-        model.setRowCount(0);
+      
+        DAO_LSP.dolentable(tbllsp, 1);
         txttim.setText("");
     }//GEN-LAST:event_jButton15ActionPerformed
 

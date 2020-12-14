@@ -57,23 +57,23 @@ public class trangchinh2 extends javax.swing.JFrame {
         jpnkhachhang.setVisible(false);
         jpnNCC.setVisible(false);
         jpnTK.setVisible(false);
-        jpnbaohanh.setVisible(false);
         jpnthongke.setVisible(false);
+        jpnbaohanh.setVisible(false);
+        
 
         laychitietquyen();
         String[] chitietquyen1 = chitietquyen.split(" ");
+     
         String banhang = chitietquyen1[0];
         String nhaphang = chitietquyen1[1];
         String sanpham = chitietquyen1[2];
         String hoadon = chitietquyen1[3];
         String nhanvien = chitietquyen1[4];
         String khachhang = chitietquyen1[5];
-         String ncc = chitietquyen1[6];
-          String tk = chitietquyen1[7];
-           String thongke = chitietquyen1[8];
-            String doitra = chitietquyen1[9];
-        
-      
+        String ncc = chitietquyen1[6];
+        String tk = chitietquyen1[7];
+        String thongke = chitietquyen1[8];
+        String doitra = chitietquyen1[9];
 
         if (banhang.equals("BANHANG")) {
             jpnbanhang.setVisible(true);
@@ -96,15 +96,16 @@ public class trangchinh2 extends javax.swing.JFrame {
         if (ncc.equals("QLNCC")) {
             jpnNCC.setVisible(true);
         }
-        if (tk.equals("QLTK")) {
+        if (tk.equals("QLTaiKhoan")) {
             jpnTK.setVisible(true);
         }
-        if (thongke.equals("QLThống kê")) {
-            jpnthongke.setVisible(true);
+         if (thongke.equals("QLTk")) {
+                jpnthongke.setVisible(true);
         }
         if (doitra.equals("QLDT")) {
             jpnbaohanh.setVisible(true);
         }
+       
 
     }
 
